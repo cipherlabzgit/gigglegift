@@ -5,9 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4B1761" />
   <base href="/">
 
-  <title>Login - Sensory - Kids Toys Store</title>
+  <title>Login - Giggles & Gifts</title>
 
   <!--== Favicon ==-->
   <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
@@ -40,13 +41,14 @@
   <link href="/assets/css/rangeslider.css" rel="stylesheet" />
   <!--== Main Style CSS ==-->
   <link href="/assets/css/style.css" rel="stylesheet" />
+  <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 
 </head>
 
-<body>
+<body class="sm-store">
 
   <!--wrapper start-->
-  <div class="wrapper">
+  <div class="wrapper page-shop-wrapper">
 
     <!--== Start Preloader Content ==-->
     <div class="preloader-wrap">
@@ -65,18 +67,11 @@
     <header class="header-wrapper">
       <div class="header-top">
         <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-5 col-md-4 col-lg-6">
-              <div class="header-info-left">
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-7 col-md-8 col-lg-6 sm-pl-0 xs-pl-15 header-top-right">
-              <div class="header-info">
-                <a href="tel://+94761487787"><i class="fa fa-phone"></i> +94761487787</a>
-                <a href="mailto:sales@sensory.lk"><i class="fa fa-envelope"></i> sales@sensory.lk</a>
-                <a href="login-register"><i class="fa fa-user"></i> Account</a>
-              </div>
-            </div>
+          <div class="sm-topbar">
+            <a href="https://wa.me/94761487787" target="_blank" rel="noopener">Order on WhatsApp +94 76 148 7787</a>
+            <span>Loved by Sri Lankan families</span>
+            <span>Islandwide delivery</span>
+            <span>Kaduwela, Sri Lanka</span>
           </div>
         </div>
       </div>
@@ -88,8 +83,8 @@
                 <div class="header-align-left">
                   <div class="header-logo-area">
                     <a href="/">
-                      <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                      <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                      <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                      <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
                     </a>
                   </div>
                 </div>
@@ -136,8 +131,8 @@
             <div class="col-4 col-sm-6 col-lg-2">
               <div class="header-logo-area">
                 <a href="/">
-                  <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                  <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                  <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                  <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
                 </a>
               </div>
             </div>
@@ -149,7 +144,7 @@
               <div class="header-navigation-area d-none d-md-block">
                 <ul class="main-menu nav position-relative" id="main-nav-menu">
                   <li><a class="ml--2" href="/">Home</a></li>
-                  <!-- Main category links are injected by JS (up to 5 categories) -->
+                  <li><a href="shop">Shop</a></li>
                 </ul>
               </div>
               <button type="button" class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
@@ -192,107 +187,78 @@
     <!--== End Header Wrapper ==-->
 
     <main class="main-content">
-      <!--== Start Page Title Area ==-->
-      <section class="page-title-area">
+      <section class="sm-auth-page">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12 m-auto">
-              <div class="page-title-content text-center">
-                <h2 class="title">My Account</h2>
-                <!-- <div class="bread-crumbs"><a href="/"> Home </a><span class="breadcrumb-sep"> // </span><span
-                    class="active"> My Account</span></div> -->
+          <div class="sm-auth-shell">
+            <div class="sm-auth-card">
+              <div class="sm-auth-brand">
+                <h1>My Account</h1>
+                <p id="sm-auth-subtitle">Sign in to track orders, wishlists, and more.</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--== End Page Title Area ==-->
 
-      <!--== Start Login Wrapper ==-->
-      <section class="login-register-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-5 login-register-border">
-              <div class="login-register-content">
-                <div class="login-register-title mb-30">
-                  <h2>Login</h2>
-                  <p>Welcome back! Please enter your username and password to login. </p>
-                </div>
-                <div class="login-register-style login-register-pr">
-                  <form id="login-form" action="#" method="post">
-                    <div id="login-message" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 4px;"></div>
-                    <div class="login-register-input">
-                      <input type="email" id="login-email" name="email" placeholder="Email address" required>
-                    </div>
-                    <div class="login-register-input">
-                      <input type="password" id="login-password" name="password" placeholder="Password" required>
-                      <div class="forgot">
-                        <a href="#">Forgot?</a>
-                      </div>
-                    </div>
-                    <div class="remember-me-btn">
-                      <input type="checkbox" id="remember-me">
-                      <label>Remember me</label>
-                    </div>
-                    <div class="btn-style-3">
-                      <button class="btn" type="submit" id="login-btn">Login</button>
-                    </div>
-                  </form>
-                </div>
+              <div class="sm-auth-tabs" role="tablist" aria-label="Account options">
+                <button type="button" class="sm-auth-tab is-active" role="tab" aria-selected="true" aria-controls="panel-login" id="tab-login" data-tab="login">Sign in</button>
+                <button type="button" class="sm-auth-tab" role="tab" aria-selected="false" aria-controls="panel-register" id="tab-register" data-tab="register">Create account</button>
+                <span class="sm-auth-tab-indicator" aria-hidden="true"></span>
               </div>
-            </div>
-            <div class="col-md-7">
-              <div class="login-register-content login-register-pl">
-                <div class="login-register-title mb-30">
-                  <h2>Register</h2>
-                  <p>Create new account today to reap the benefits of a personalized shopping experience. </p>
-                </div>
-                <div class="login-register-style">
-                  <form id="register-form" action="#" method="post">
-                    <div id="register-message" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 4px;"></div>
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="login-register-input">
-                          <input type="text" id="register-first-name" name="first-name" placeholder="First Name" required>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="login-register-input">
-                          <input type="text" id="register-last-name" name="last-name" placeholder="Last Name" required>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="login-register-input">
-                          <input type="email" id="register-email" name="email" placeholder="E-mail address" required>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="login-register-input">
-                          <input type="tel" id="register-mobile" name="mobile" placeholder="Phone No" required>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="login-register-input">
-                          <input type="password" id="register-password" name="password" placeholder="Password" required>
-                        </div>
-                      </div>
+
+              <div class="sm-auth-panels">
+                <div class="sm-auth-panel is-active" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+                  <form id="login-form" action="#" method="post" class="sm-auth-form">
+                    <div id="login-message" class="sm-auth-message" style="display: none;"></div>
+                    <div class="sm-auth-field">
+                      <label for="login-email">Email</label>
+                      <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" required>
                     </div>
-                    <div class="login-register-paragraph">
-                      <p>Your personal data will be used to support your experience throughout this website, to manage
-                        access to your account, and for other purposes described in our <a href="privacy-policy">privacy policy.</a>
-                      </p>
+                    <div class="sm-auth-field sm-auth-field-password">
+                      <label for="login-password">Password</label>
+                      <input type="password" id="login-password" name="password" placeholder="Your password" autocomplete="current-password" required>
+                      <a class="sm-auth-forgot" href="#">Forgot password?</a>
                     </div>
-                    <div class="btn-style-3">
-                      <button class="btn" type="submit" id="register-btn">Register</button>
+                    <div class="sm-auth-remember">
+                      <input type="checkbox" id="remember-me">
+                      <label for="remember-me">Keep me signed in</label>
                     </div>
+                    <button class="sm-auth-btn sm-auth-btn-primary" type="submit" id="login-btn">Sign in</button>
                   </form>
+                  <p class="sm-auth-switch">New here? <button type="button" class="sm-auth-switch-link" data-tab="register">Create an account</button></p>
+                </div>
+
+                <div class="sm-auth-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register">
+                  <form id="register-form" action="#" method="post" class="sm-auth-form">
+                    <div id="register-message" class="sm-auth-message" style="display: none;"></div>
+                    <div class="sm-auth-row">
+                      <div class="sm-auth-field">
+                        <label for="register-first-name">First name</label>
+                        <input type="text" id="register-first-name" name="first-name" placeholder="First name" autocomplete="given-name" required>
+                      </div>
+                      <div class="sm-auth-field">
+                        <label for="register-last-name">Last name</label>
+                        <input type="text" id="register-last-name" name="last-name" placeholder="Last name" autocomplete="family-name" required>
+                      </div>
+                    </div>
+                    <div class="sm-auth-field">
+                      <label for="register-email">Email</label>
+                      <input type="email" id="register-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                    </div>
+                    <div class="sm-auth-field">
+                      <label for="register-mobile">Phone</label>
+                      <input type="tel" id="register-mobile" name="mobile" placeholder="+94 7X XXX XXXX" autocomplete="tel" required>
+                    </div>
+                    <div class="sm-auth-field">
+                      <label for="register-password">Password</label>
+                      <input type="password" id="register-password" name="password" placeholder="At least 6 characters" autocomplete="new-password" required>
+                    </div>
+                    <p class="sm-auth-privacy">By creating an account you agree to our <a href="privacy-policy">privacy policy</a>.</p>
+                    <button class="sm-auth-btn sm-auth-btn-primary" type="submit" id="register-btn">Create account</button>
+                  </form>
+                  <p class="sm-auth-switch">Already have an account? <button type="button" class="sm-auth-switch-link" data-tab="login">Sign in</button></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!--== End Login Wrapper ==-->
     </main>
 
     <!--== Start Footer Area Wrapper ==-->
@@ -304,10 +270,10 @@
               <div class="widget-item item-style3">
                 <div class="about-widget">
                   <a class="footer-logo" href="/">
-                    <img src="/assets/img/logo-light.png" alt="Logo">
+                    <img src="/assets/img/logo-light.png" alt="Giggles & Gifts">
                   </a>
                   <p>
-                  Sensory a brand of ANKH Trading Pvt Ltd is a curated destination for premium sensory books, toddler sensory, and early learning products, created to support holistic childhood development. We bring together safe, reliable, and thoughtfully designed sensory essentials in one place—making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
+                  Giggles & Gifts, a brand of ANKH Trading Pvt Ltd, is a curated destination for toys, gifts, and early learning products for kids. We bring together safe, reliable, and thoughtfully designed essentials in one place, making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
 0 
                 </p>
                 </div>
@@ -351,7 +317,7 @@
                   <p class="widget-address">296/A/1 , Level 2 <br>New Kandy Road, <br>Kothalawala, <br>Kaduwela,
                     <br>Sri Lanka</p>
                   <ul class="widget-contact-info">
-                    <li>Phone: <a href="tel://+94761487787">+94761487787</a></li>
+                    <li>Phone: <a href="tel:+94761487787">+94761487787</a></li>
                     <li>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></li>
                   </ul>
                 </div>
@@ -366,7 +332,7 @@
             <div class="row text-center">
               <div class="col-sm-12">
                 <div class="widget-copyright">
-                  <p><i class="fa fa-copyright"></i> 2025 <span>Sensory. </span> All Rights Reserved</p>
+                  <p><i class="fa fa-copyright"></i> 2026 <span>Giggles & Gifts. </span> All Rights Reserved</p>
                 </div>
               </div>
             </div>
@@ -594,27 +560,42 @@
     (function($) {
       'use strict';
 
+      const authSubtitles = {
+        login: 'Sign in to track orders, wishlists, and more.',
+        register: 'Join Giggles & Gifts ? shop toys, gifts, and learning products for kids.'
+      };
+
+      function switchAuthTab(tab) {
+        const isLogin = tab === 'login';
+        $('.sm-auth-tab').removeClass('is-active').attr('aria-selected', 'false');
+        $('#tab-' + tab).addClass('is-active').attr('aria-selected', 'true');
+        $('.sm-auth-tab-indicator').toggleClass('is-register', !isLogin);
+        $('.sm-auth-panel').removeClass('is-active');
+        $('#panel-' + tab).addClass('is-active');
+        $('#sm-auth-subtitle').text(authSubtitles[tab]);
+        $('#login-message, #register-message').hide();
+      }
+
       $(document).ready(function() {
-        // Update cart count on page load
         if (typeof CartService !== 'undefined') {
           CartService.updateCartCount();
         }
-        
-        // Check if user is already logged in
+
         const currentUser = window.getCurrentUser();
         if (currentUser) {
-          // Check for redirect parameter
           const urlParams = new URLSearchParams(window.location.search);
           const redirectUrl = urlParams.get('redirect');
-          
-          // Redirect to specified page or default to my account page
-          if (redirectUrl) {
-            window.location.href = redirectUrl;
-          } else {
-            window.location.href = 'my-account';
-          }
+          window.location.href = redirectUrl || 'my-account';
           return;
         }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialTab = urlParams.get('tab') === 'register' ? 'register' : 'login';
+        switchAuthTab(initialTab);
+
+        $('.sm-auth-tab, .sm-auth-switch-link').on('click', function() {
+          switchAuthTab($(this).data('tab'));
+        });
 
         // Handle login form submission
         $('#login-form').on('submit', async function(e) {
@@ -677,35 +658,23 @@
               }, 1000);
             } else {
               showLoginMessage(result.message || 'Login failed. Please check your credentials.', 'error');
-              loginBtn.prop('disabled', false).text('Login');
+              loginBtn.prop('disabled', false).text('Sign in');
             }
           } catch (error) {
             showLoginMessage('An error occurred. Please try again.', 'error');
             console.error('Login error:', error);
-            loginBtn.prop('disabled', false).text('Login');
+            loginBtn.prop('disabled', false).text('Sign in');
           }
         });
-        
-        // Function to show login message
+
+        function showAuthMessage($el, message, type) {
+          $el.removeClass('is-success is-error');
+          $el.addClass(type === 'success' ? 'is-success' : 'is-error');
+          $el.text(message).fadeIn();
+        }
+
         function showLoginMessage(message, type) {
-          const messageDiv = $('#login-message');
-          messageDiv.removeClass('alert-success alert-danger');
-          
-          if (type === 'success') {
-            messageDiv.addClass('alert-success').css({
-              'background-color': '#d4edda',
-              'color': '#155724',
-              'border': '1px solid #c3e6cb'
-            });
-          } else {
-            messageDiv.addClass('alert-danger').css({
-              'background-color': '#f8d7da',
-              'color': '#721c24',
-              'border': '1px solid #f5c6cb'
-            });
-          }
-          
-          messageDiv.text(message).fadeIn();
+          showAuthMessage($('#login-message'), message, type);
         }
 
         // Handle registration form submission
@@ -750,19 +719,12 @@
             const result = await window.registerCustomer(customerData);
             
             if (result.success) {
-              // Show success message
-              showRegisterMessage('Registration successful! You can now login with your credentials.', 'success');
-              
-              // Clear form
+              const registeredEmail = email;
               $('#register-form')[0].reset();
-              
-              // Optionally redirect to login section or show login form
-              setTimeout(function() {
-                // Scroll to login section
-                $('html, body').animate({
-                  scrollTop: $('.login-register-border').offset().top - 100
-                }, 500);
-              }, 2000);
+              switchAuthTab('login');
+              $('#login-email').val(registeredEmail);
+              showLoginMessage('Account created! Sign in with your email and password.', 'success');
+              $('#login-password').focus();
             } else {
               showRegisterMessage(result.message || 'Registration failed. Please try again.', 'error');
             }
@@ -770,38 +732,12 @@
             showRegisterMessage('An error occurred. Please try again.', 'error');
             console.error('Registration error:', error);
           } finally {
-            // Re-enable submit button
-            registerBtn.prop('disabled', false).text('Register');
+            registerBtn.prop('disabled', false).text('Create account');
           }
         });
-        
-        // Function to show registration message
+
         function showRegisterMessage(message, type) {
-          const messageDiv = $('#register-message');
-          messageDiv.removeClass('alert-success alert-danger');
-          
-          if (type === 'success') {
-            messageDiv.addClass('alert-success').css({
-              'background-color': '#d4edda',
-              'color': '#155724',
-              'border': '1px solid #c3e6cb'
-            });
-          } else {
-            messageDiv.addClass('alert-danger').css({
-              'background-color': '#f8d7da',
-              'color': '#721c24',
-              'border': '1px solid #f5c6cb'
-            });
-          }
-          
-          messageDiv.text(message).fadeIn();
-          
-          // Auto-hide success messages after 5 seconds
-          if (type === 'success') {
-            setTimeout(function() {
-              messageDiv.fadeOut();
-            }, 5000);
-          }
+          showAuthMessage($('#register-message'), message, type);
         }
       });
     })(jQuery);

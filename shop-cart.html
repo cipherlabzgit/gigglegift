@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4B1761" />
     <base href="/">
 
-    <title>Shop Cart - Sensory - Kids Toys Store</title>
+    <title>Shop Cart - Giggles & Gifts</title>
 
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
@@ -40,10 +41,11 @@
     <link href="/assets/css/rangeslider.css" rel="stylesheet"/>
     <!--== Main Style CSS ==-->
     <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 
 </head>
 
-<body>
+<body class="sm-store">
 
 <!--wrapper start-->
 <div class="wrapper page-shop-wrapper">
@@ -65,18 +67,10 @@
   <header class="header-wrapper">
     <div class="header-top">
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-5 col-md-4 col-lg-6">
-            <div class="header-info-left">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-7 col-md-8 col-lg-6 sm-pl-0 xs-pl-15 header-top-right">
-            <div class="header-info">
-              <a href="tel://+94761487787"><i class="fa fa-phone"></i> +94761487787</a>
-              <a href="mailto:sales@sensory.lk"><i class="fa fa-envelope"></i> sales@sensory.lk</a>
-              <a href="login-register"><i class="fa fa-user"></i> Account</a>
-            </div>
-          </div>
+        <div class="sm-topbar">
+          <a href="tel:+94761487787">Call: +94 76 148 7787</a>
+          <span>Loved by Sri Lankan families � Islandwide delivery</span>
+          <span>Kaduwela, Sri Lanka</span>
         </div>
       </div>
     </div>
@@ -88,8 +82,8 @@
               <div class="header-align-left">
                 <div class="header-logo-area">
                   <a href="/">
-                    <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                    <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                    <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                    <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
                   </a>
                 </div>
               </div>
@@ -136,8 +130,8 @@
           <div class="col-4 col-sm-6 col-lg-2">
             <div class="header-logo-area">
               <a href="/">
-                <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
               </a>
             </div>
           </div>
@@ -193,15 +187,12 @@
   
   <main class="main-content">
     <!--== Start Page Title Area ==-->
-    <section class="page-title-area">
+    <section class="page-title-area sm-cart-hero">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12 m-auto">
-            <div class="page-title-content text-center">
-              <h2 class="title">Cart</h2>
-              <!-- <div class="bread-crumbs"><a href="/"> Home </a><span class="breadcrumb-sep"> // </span><span class="active"> Cart</span></div> -->
-            </div>
-          </div>
+        <div class="sm-cart-hero-copy">
+          <p class="sm-cart-kicker">Giggles & Gifts shop</p>
+          <h2 class="title">My Cart</h2>
+          <p class="sm-cart-count" id="cart-item-count">Your selected items</p>
         </div>
       </div>
     </section>
@@ -210,62 +201,42 @@
     <!--== Start Cart Area Wrapper ==-->
     <section class="product-area cart-page-area">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 m-auto">
-            <div class="section-title text-center">
-              <h2 class="title">Cart</h2>
+        <div class="sm-cart-layout">
+          <div class="sm-cart-items">
+            <div id="cart-items-container">
+              <!-- Cart items will be loaded dynamically here -->
             </div>
+            <a class="sm-cart-back" href="shop"><i class="ion-ios-arrow-left"></i> Continue shopping</a>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="cart-table-wrap">
-              <div class="cart-table table-responsive">
-                <table>
-                  <thead>
-                    <tr>
-                      <th class="width-thumbnail"></th>
-                      <th class="width-name">Product</th>
-                      <th class="width-price"> Price</th>
-                      <th class="width-quantity">Quantity</th>
-                      <th class="width-subtotal">Subtotal</th>
-                      <th class="width-remove"></th>
-                    </tr>
-                  </thead>
-                  <tbody id="cart-items-container">
-                    <!-- Cart items will be loaded dynamically here -->
-                  </tbody>
-              </table>
+          <aside class="sm-cart-summary grand-total-wrap">
+            <h3>Order summary</h3>
+            <div class="sm-cart-progress" id="cart-delivery-progress">
+              <div class="sm-cart-progress-bar"><span id="cart-progress-fill"></span></div>
+              <p id="cart-delivery-note">Free delivery for orders over LKR 40,000</p>
+              <p class="sm-cart-ship">Packed from Kaduwela. Islandwide timing is confirmed on WhatsApp after you order.</p>
+            </div>
+            <div class="grand-total-content">
+              <div class="sm-cart-line">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">LKR 0.00</strong>
+              </div>
+              <div class="sm-cart-line">
+                <span>Delivery</span>
+                <strong id="cart-delivery">LKR 450.00</strong>
+              </div>
+              <div class="sm-cart-line is-total">
+                <span>Total</span>
+                <strong id="cart-total">LKR 0.00</strong>
               </div>
             </div>
-            <div class="cart-shiping-update-wrapper">
-              <div class="cart-shiping-btn continure-btn">
-                <a class="btn btn-link" href="shop"><i class="ion-ios-arrow-left"></i> Back To Shop</a>
-              </div>
-              <div class="cart-shiping-btn update-btn">
-                <div class="grand-total-wrap">
-                  <div class="grand-total-content">
-                    <div class="grand-total" style="display:flex;justify-content:space-between;align-items:center;">
-                      <h5 style="margin:0;">Subtotal</h5>
-                      <span id="cart-subtotal" style="font-weight:600;">LKR 0.00</span>
-                    </div>
-                    <div class="grand-total" style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
-                      <h5 style="margin:0;">Delivery</h5>
-                      <span id="cart-delivery" style="font-weight:600;">LKR 450.00</span>
-                    </div>
-                    <p id="cart-delivery-note" style="font-size:12px;color:#666;margin:4px 0 8px;">Free delivery for orders over LKR 40,000</p>
-                    <div class="grand-total" style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee;padding-top:8px;">
-                      <h4 style="margin:0;">Total</h4>
-                      <span id="cart-total" style="font-weight:700;">LKR 0.00</span>
-                    </div>
-                  </div>
-                  <div class="grand-total-btn">
-                    <a class="btn btn-link" href="shop-checkout">Proceed to checkout</a>
-                  </div>
-                </div>
-              </div>
+            <div class="grand-total-btn">
+              <a class="btn btn-link sm-cart-checkout" href="shop-checkout">Proceed to checkout</a>
             </div>
-          </div>
+            <div class="sm-cart-trust">
+              <span>Islandwide delivery</span>
+              <span>Secure checkout</span>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -273,65 +244,49 @@
   </main>
 
   <!--== Start Footer Area Wrapper ==-->
-  <footer class="footer-area default-style" >
+    <footer class="footer-area default-style sm-footer">
     <div class="footer-main">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-4">
-            <div class="widget-item item-style3">
-              <div class="about-widget">
-                <a class="footer-logo" href="/">
-                  <img src="/assets/img/logo-light.png" alt="Logo">
-                </a>
-                <p>
-                  Sensory a brand of ANKH Trading Pvt Ltd is a curated destination for premium sensory books, toddler sensory, and early learning products, created to support holistic childhood development. We bring together safe, reliable, and thoughtfully designed sensory essentials in one place—making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
-0 
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget-item item-style1">
-              <h4 class="widget-title">Quick Links</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-1">Quick Links</h4>
-              <div id="dividerId-1" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap">
-                  <ul class="nav-menu nav item-hover-style">
-                    <li><a href="/">- Home</a></li>
-                    <li><a href="about">- About</a></li>
-                    <li><a href="shop">- Shop</a></li>
-                    <li><a href="contact">- Contact</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="widget-item item-style2">
-              <h4 class="widget-title">Company</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-3">Company</h4>
-              <div id="dividerId-3" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap item-hover-style">
-                  <ul class="nav-menu nav">
-                    <li><a href="terms-and-conditions">- Terms & Conditions</a></li>
-                    <li><a href="privacy-policy">- Privacy Policy</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-3">
             <div class="widget-item">
-              <h4 class="widget-title">Store Information.</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-4">Store Information.</h4>
-              <div id="dividerId-4" class="collapse widget-collapse-body">
-                <p class="widget-address">296/A/1 , Level 2 <br>New Kandy Road, <br>Kothalawala, <br>Kaduwela,
-                    <br>Sri Lanka</p>
-                  <ul class="widget-contact-info">
-                    <li>Phone: <a href="tel://+94761487787">+94761487787</a></li>
-                    <li>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></li>
-                  </ul>
-              </div>
+              <a class="footer-logo" href="/">
+                <img src="/assets/img/logo.png" alt="Giggles & Gifts">
+              </a>
+              <p>Capturing the joy of firsts: sensory books, toys and gifts for early learning.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <div class="widget-item">
+              <h4 class="widget-title">Shop</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="shop">Shop All</a></li>
+                  <li><a href="about">About</a></li>
+                  <li><a href="contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Help</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="contact">Delivery info</a></li>
+                  <li><a href="terms-and-conditions">Returns</a></li>
+                  <li><a href="privacy-policy">Privacy</a></li>
+                  <li><a href="contact">FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Visit</h4>
+              <p>Call: <a href="tel:+94761487787">+94 76 148 7787</a></p>
+              <p>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></p>
+              <p>Kaduwela, Sri Lanka</p>
             </div>
           </div>
         </div>
@@ -339,18 +294,9 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <div class="footer-bottom-content">
-          <div class="row text-center">
-            <div class="col-sm-12">
-              <div class="widget-copyright">
-                <p><i class="fa fa-copyright"></i> 2025 <span>Sensory. </span> All Rights Reserved</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p><i class="fa fa-copyright"></i> 2026 Giggles & Gifts | sensory.lk</p>
       </div>
     </div>
-    <div class="footer-shape bg-img" data-bg-img="/assets/img/photos/footer1.png"></div>
   </footer>
   <!--== End Footer Area Wrapper ==-->
   
@@ -749,12 +695,14 @@
       }
       
       if (!cart || !Array.isArray(cart) || cart.length === 0) {
-        container.html('<tr><td colspan="7" class="text-center">Your cart is empty. <a href="shop">Continue Shopping</a></td></tr>');
+        container.html('<div class="sm-cart-empty"><i class="fa fa-shopping-cart"></i><h3>Your cart is empty</h3><p>Add a few favourites and they will show up here.</p><a class="sm-cart-empty-btn" href="shop">Browse products</a></div>');
+        $('#cart-item-count').text('0 items');
         if (subtotalEl.length) subtotalEl.text('LKR 0.00');
         if (deliveryEl.length) deliveryEl.text('LKR 0.00');
         if (deliveryNoteEl.length) {
           deliveryNoteEl.text('Free delivery for orders over LKR 40,000').css('color', '#666');
         }
+        $('#cart-progress-fill').css('width', '0%');
         if (totalEl.length) totalEl.text('LKR 0.00');
         return;
       }
@@ -771,11 +719,15 @@
         
         // Handle price: even if 0, still display the item
         const itemPrice = parseFloat(item.price) || 0;
+        const originalPrice = parseFloat(item.originalPrice) || itemPrice;
         const itemQuantity = parseInt(item.quantity) || 1;
         const itemTotal = itemPrice * itemQuantity;
         subtotal += itemTotal;
+        const unitPriceHtml = originalPrice > itemPrice
+          ? '<span class="sm-price-old">' + formatPrice(originalPrice) + '</span> <span class="sm-price-offer">' + formatPrice(itemPrice) + '</span> each'
+          : formatPrice(itemPrice) + ' each';
         
-        const imageUrl = item.imageURL || item.imageUrl || 'https://www.holoimage.net/images/no-image.jpg';
+        const imageUrl = item.imageURL || item.imageUrl || (item.images && item.images[0] && (item.images[0].imageUrl || item.images[0].imageURL || item.images[0])) || 'https://www.holoimage.net/images/no-image.jpg';
         const productName = item.name || 'Product';
         
         // Get stock level for this item
@@ -790,13 +742,13 @@
         // Stock status indicator
         let stockStatusHtml = '';
         if (isOutOfStock) {
-          stockStatusHtml = '<span class="text-danger"><small>Out of Stock</small></span>';
+          stockStatusHtml = '<span class="sm-cart-badge is-out">Out of stock</span>';
         } else if (isOverStock) {
-          stockStatusHtml = `<span class="text-warning"><small>Only ${availableStock} available</small></span>`;
+          stockStatusHtml = `<span class="sm-cart-badge is-low">Only ${availableStock} available</span>`;
         } else if (availableStock <= 5) {
-          stockStatusHtml = `<span class="text-warning"><small>Only ${availableStock} left</small></span>`;
+          stockStatusHtml = `<span class="sm-cart-badge is-low">Only ${availableStock} left</span>`;
         } else {
-          stockStatusHtml = `<span class="text-success"><small>In Stock (${availableStock})</small></span>`;
+          stockStatusHtml = `<span class="sm-cart-badge is-in">In stock</span>`;
         }
         
         console.log('Rendering cart item:', {
@@ -809,23 +761,26 @@
         });
         
         const rowHtml = `
-          <tr data-product-id="${item.id}" class="${isOutOfStock || isOverStock ? 'table-warning' : ''}">
-            <td class="product-thumbnail">
-              <a  href="javascript:void(0)"><img src="${imageUrl}" alt="${productName}" onerror="this.src='https://www.holoimage.net/images/no-image.jpg'"></a>
-            </td>
-            <td class="product-name">
-              <h5><a href="shop.html">${productName}</a></h5>
+          <article class="sm-cart-item ${isOutOfStock || isOverStock ? 'is-warning' : ''}" data-product-id="${item.id}">
+            <div class="sm-cart-item-media">
+              <img class="sm-cart-item-image" src="${imageUrl}" alt="${productName}" onerror="this.src='https://www.holoimage.net/images/no-image.jpg'">
+            </div>
+            <div class="sm-cart-item-info">
+              <h3>${productName}</h3>
               ${stockStatusHtml}
-            </td>
-            <td class="product-price"><span class="amount">${formatPrice(itemPrice)}</span></td>
-            <td class="cart-quality">
-              <div class="product-details-quality">
-                <input type="number" class="input-text qty text cart-qty-input" step="1" min="1" max="${availableStock}" name="quantity" value="${itemQuantity}" title="Qty" data-product-id="${item.id}" ${isOutOfStock ? 'disabled' : ''}>
-              </div>
-            </td>
-            <td class="product-total"><span class="item-total">${formatPrice(itemTotal)}</span></td>
-            <td class="product-remove"><a href="javascript:void(0)" class="remove-cart-item" data-product-id="${item.id}"><i class="ion-ios-trash-outline"></i></a></td>
-          </tr>
+              <div class="sm-cart-item-price">${unitPriceHtml}</div>
+            </div>
+            <div class="sm-cart-item-qty">
+              <button type="button" class="sm-qty-btn sm-qty-minus" data-product-id="${item.id}" ${isOutOfStock || itemQuantity <= 1 ? 'disabled' : ''}>-</button>
+              <input type="number" class="input-text qty text cart-qty-input" step="1" min="1" max="${availableStock}" name="quantity" value="${itemQuantity}" title="Qty" data-product-id="${item.id}" ${isOutOfStock ? 'disabled' : ''}>
+              <button type="button" class="sm-qty-btn sm-qty-plus" data-product-id="${item.id}" ${isOutOfStock || itemQuantity >= availableStock ? 'disabled' : ''}>+</button>
+            </div>
+            <div class="sm-cart-item-total">
+              <span>Subtotal</span>
+              <strong class="item-total">${formatPrice(itemTotal)}</strong>
+            </div>
+            <button type="button" class="sm-cart-item-remove remove-cart-item" data-product-id="${item.id}" aria-label="Remove"><i class="ion-ios-trash-outline"></i></button>
+          </article>
         `;
         
         container.append(rowHtml);
@@ -834,13 +789,17 @@
       const deliveryCharge = subtotal >= 40000 ? 0 : 450;
       const grandTotal = subtotal + deliveryCharge;
       
+      const itemCount = cart.reduce(function(sum, item) { return sum + (parseInt(item.quantity) || 1); }, 0);
+      $('#cart-item-count').text(itemCount + (itemCount === 1 ? ' item' : ' items'));
+      const progress = Math.min(100, Math.round((subtotal / 40000) * 100));
+      $('#cart-progress-fill').css('width', progress + '%');
       if (subtotalEl.length) subtotalEl.text(formatPrice(subtotal));
       if (deliveryEl.length) deliveryEl.text(deliveryCharge === 0 ? 'FREE' : formatPrice(deliveryCharge));
       if (deliveryNoteEl.length) {
         if (deliveryCharge === 0) {
-          deliveryNoteEl.text('You qualify for free delivery!').css('color', '#28a745');
+          deliveryNoteEl.text('You qualify for free delivery!').css('color', '#1f7a45');
         } else {
-          deliveryNoteEl.text('Free delivery for orders over LKR 40,000').css('color', '#666');
+          deliveryNoteEl.text('Add ' + formatPrice(40000 - subtotal) + ' more for free delivery').css('color', '#6b6270');
         }
       }
       if (totalEl.length) totalEl.text(formatPrice(grandTotal));
@@ -849,7 +808,7 @@
       if (hasStockIssues) {
         const warningHtml = '<div class="alert alert-warning mt-3" id="stock-warning"><strong>Warning:</strong> Some items in your cart have stock issues. Please adjust quantities or remove unavailable items before checkout.</div>';
         if (!$('#stock-warning').length) {
-          container.closest('table').after(warningHtml);
+          container.after(warningHtml);
         }
       } else {
         $('#stock-warning').remove();
@@ -862,6 +821,17 @@
     }
   }
   
+  $(document).on('click', '.sm-qty-minus, .sm-qty-plus', function() {
+    const $input = $(this).siblings('.cart-qty-input');
+    if (!$input.length || $input.prop('disabled')) {
+      return;
+    }
+    const current = parseInt($input.val()) || 1;
+    const maxStock = parseInt($input.attr('max')) || 9999;
+    const next = $(this).hasClass('sm-qty-plus') ? current + 1 : current - 1;
+    $input.val(Math.min(maxStock, Math.max(1, next))).trigger('change');
+  });
+
   // Handle quantity change with stock validation
   $(document).on('change', '.cart-qty-input', async function() {
     const $input = $(this);

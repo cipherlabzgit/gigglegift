@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4B1761" />
     <base href="/">
 
-    <title>Shop - Sensory - Kids Toys Store</title>
+    <title>Shop - Giggles & Gifts</title>
 
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
@@ -40,10 +41,11 @@
     <link href="/assets/css/rangeslider.css" rel="stylesheet"/>
     <!--== Main Style CSS ==-->
     <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 
 </head>
 
-<body>
+<body class="sm-store">
 
 <!--wrapper start-->
 <div class="wrapper page-shop-wrapper">
@@ -52,18 +54,10 @@
   <header class="header-wrapper">
     <div class="header-top">
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-5 col-md-4 col-lg-6">
-            <div class="header-info-left">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-7 col-md-8 col-lg-6 sm-pl-0 xs-pl-15 header-top-right">
-            <div class="header-info">
-              <a href="tel://+94761487787"><i class="fa fa-phone"></i> +94761487787</a>
-              <a href="mailto:sales@sensory.lk"><i class="fa fa-envelope"></i> sales@sensory.lk</a>
-              <a href="login-register"><i class="fa fa-user"></i> Account</a>
-            </div>
-          </div>
+        <div class="sm-topbar">
+          <a href="tel:+94761487787">Call: +94 76 148 7787</a>
+          <span>Loved by Sri Lankan families ? Islandwide delivery</span>
+          <span>Kaduwela, Sri Lanka</span>
         </div>
       </div>
     </div>
@@ -75,8 +69,8 @@
               <div class="header-align-left">
                 <div class="header-logo-area">
                   <a href="/">
-                    <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                    <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                    <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                    <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
                   </a>
                 </div>
               </div>
@@ -123,8 +117,8 @@
           <div class="col-4 col-sm-6 col-lg-2">
             <div class="header-logo-area">
               <a href="/">
-                <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
               </a>
             </div>
           </div>
@@ -136,7 +130,7 @@
               <div class="header-navigation-area d-none d-md-block">
                 <ul class="main-menu nav position-relative" id="main-nav-menu">
                   <li><a class="ml--2" href="/">Home</a></li>
-                  <!-- Main category links are injected by JS (up to 5 categories) -->
+                  <li><a href="shop">Shop</a></li>
                 </ul>
               </div>
               <button type="button" class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
@@ -185,8 +179,8 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-12 m-auto">
-            <div class="page-title-content text-center">
-              <h2 class="title">Product</h2>
+            <div class="page-title-content">
+              <h2 class="title">Shop</h2>
               <!-- <div class="bread-crumbs"><a href="/"> Home </a><span class="breadcrumb-sep"> // </span><span class="active"> Product</span></div> -->
             </div>
           </div>
@@ -195,34 +189,86 @@
     </section>
     <!--== End Page Title Area ==-->
 
-    <!--== Start Inline Product Search ==-->
-    <div class="container" style="margin-top: -10px; margin-bottom: 10px;">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10 col-sm-12">
-          <div class="shop-inline-search" style="position: relative;">
-            <input type="text" id="shop-search-input" class="form-control" placeholder="Search products by name..."
-              style="width: 100%; padding: 14px 50px 14px 22px; border: 2px solid #eee; border-radius: 50px; font-size: 15px; outline: none; transition: border-color 0.3s; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.06);"
-              onfocus="this.style.borderColor='#f379a7'" onblur="this.style.borderColor='#eee'">
-            <button id="shop-search-btn" type="button"
-              style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: #f379a7; border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: background 0.3s;"
-              onmouseover="this.style.background='#e0608e'" onmouseout="this.style.background='#f379a7'">
-              <i class="pe-7s-search"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--== End Inline Product Search ==-->
-
     <!--== Start Shop Area Wrapper ==-->
     <div class="product-area product-grid-area">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 order-0 order-lg-1">
+          <div class="col-lg-3 order-1 order-lg-0 mb-4 mb-lg-0">
+            <div class="sm-filter-panel">
+              <div class="widget-item">
+                <div class="widget-title">
+                  <h3 class="title">Categories</h3>
+                </div>
+                <div class="widget-body">
+                  <div class="widget-categories">
+                    <ul id="product-categories-list">
+                      <!-- Categories will be loaded dynamically here -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="widget-item widget-parent">
+                <div class="widget-title">
+                  <h3 class="title">Child's Age</h3>
+                </div>
+                <div class="widget-body">
+                  <div class="sm-parent-chips" data-parent="age"></div>
+                </div>
+              </div>
+              <div class="widget-item widget-parent">
+                <div class="widget-title">
+                  <h3 class="title">Gift Budget</h3>
+                </div>
+                <div class="widget-body">
+                  <div class="sm-parent-chips" data-parent="gift"></div>
+                  <a class="sm-parent-wa" data-parent-wa="gift" href="https://wa.me/94761487787" target="_blank" rel="noopener">
+                    <i class="fa fa-whatsapp"></i> Ask on WhatsApp
+                  </a>
+                </div>
+              </div>
+              <div class="widget-item">
+                <div class="widget-title">
+                  <h3 class="title">Price</h3>
+                </div>
+                <div class="widget-body">
+                  <div class="price-input-fields" style="display: flex; flex-direction: column; gap: 12px;">
+                    <input type="number" id="price-min-input" class="form-control" placeholder="Min LKR">
+                    <input type="number" id="price-max-input" class="form-control" placeholder="Max LKR">
+                    <div style="display: flex; gap: 8px; margin-bottom: 28px;">
+                      <button type="button" id="apply-price-filter" class="btn btn-theme" style="flex: 1;">Apply</button>
+                      <button type="button" id="reset-price-filter" class="btn" onclick="window.resetPriceFilter && window.resetPriceFilter()" style="flex: 1; background: #fff; border: 1px solid #eadfe6; border-radius: 999px; font-weight: 700;">Reset</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="widget-item widget-availability" style="margin-top: 24px; padding-top: 8px;">
+                <div class="widget-title">
+                  <h3 class="title">Availability</h3>
+                </div>
+                <div class="widget-body">
+                  <div class="form-check" style="margin-bottom: 10px;">
+                    <input class="form-check-input" type="checkbox" id="show-in-stock" checked>
+                    <label class="form-check-label" for="show-in-stock">In Stock <span id="in-stock-count">(0)</span></label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="show-out-of-stock" checked>
+                    <label class="form-check-label" for="show-out-of-stock">Out of Stock <span id="out-of-stock-count">(0)</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9 order-0 order-lg-1">
             <div class="shop-content">
               <div class="shop-toolbar-wrap">
                 <div class="product-showing-status">
                   <p class="count-result"></p>
+                </div>
+                <div class="shop-inline-search" style="position: relative; min-width: 240px; flex: 1;">
+                  <input type="text" id="shop-search-input" class="form-control" placeholder="Search products">
+                  <button id="shop-search-btn" type="button" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer;">
+                    <i class="pe-7s-search"></i>
+                  </button>
                 </div>
                 <div class="product-view-mode">
                   <nav>
@@ -249,10 +295,10 @@
               </div>
               <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="column-three" role="tabpanel" aria-labelledby="column-three-tab">
-                  <div id="search-results-message" style="display: none; margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-left: 4px solid #f379a7; border-radius: 4px;">
+                  <div id="search-results-message" style="display: none; margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-left: 4px solid #4B1761; border-radius: 4px;">
                     <p style="margin: 0; display: flex; justify-content: space-between; align-items: center;">
                       <span><strong>Search Results for:</strong> <span id="search-term-display"></span></span>
-                      <button onclick="clearSearch()" style="background: #f379a7; color: white; border: none; padding: 5px 15px; border-radius: 3px; cursor: pointer; font-size: 14px;">Clear Search</button>
+                      <button onclick="clearSearch()" style="background: #4B1761; color: white; border: none; padding: 5px 15px; border-radius: 3px; cursor: pointer; font-size: 14px;">Clear Search</button>
                     </p>
                   </div>
                   <div id="active-filters-display" style="display: none; margin-bottom: 15px; padding: 8px 12px; background-color: #e8f4f8; border-left: 3px solid #2196F3; border-radius: 3px;">
@@ -278,80 +324,10 @@
               </div>
               <div class="row">
                 <div class="col-lg-12">
-                  <div class="pagination-area mb-md-50">
+                  <div class="pagination-area">
                     <nav>
                       <!-- Pagination will be loaded dynamically here -->
                     </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 order-1 order-lg-0">
-            <div class="sidebar-area shop-sidebar-area">
-              <div class="widget-item">
-                <div class="widget-title">
-                  <h3 class="title">Product Categories</h3>
-                </div>
-                <div class="widget-body">
-                  <div class="widget-categories">
-                    <ul id="product-categories-list">
-                      <!-- Categories will be loaded dynamically here -->
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 order-2 order-lg-2">
-            <div class="sidebar-area shop-sidebar-area" style="position: sticky; top: 20px;">
-              <div class="widget-item">
-                <div class="widget-filter">
-                  <div class="widget-title">
-                    <h3 class="title">Price Filter</h3>
-                  </div>
-                  <div class="widget-body">
-                    <div class="widget-price-filter">
-                      <div class="price-input-fields" style="display: flex; flex-direction: column; gap: 15px;">
-                        <div class="price-input-group">
-                          <label for="price-min-input" style="display: block; margin-bottom: 5px; font-weight: 500;">Min Amount (LKR)</label>
-                          <input type="number" id="price-min-input" class="form-control" placeholder="Enter min amount" step="1" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                        </div>
-                        <div class="price-input-group">
-                          <label for="price-max-input" style="display: block; margin-bottom: 5px; font-weight: 500;">Max Amount (LKR)</label>
-                          <input type="number" id="price-max-input" class="form-control" placeholder="Enter max amount" step="1" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                        </div>
-                        <div style="display: flex; gap: 10px;">
-                          <button type="button" id="apply-price-filter" class="btn btn-theme" style="flex: 1; padding: 10px;">Apply</button>
-                          <button type="button" id="reset-price-filter" class="btn btn-outline-secondary" onclick="window.resetPriceFilter && window.resetPriceFilter()" style="flex: 1; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; color: #333; cursor: pointer;">Reset</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="widget-item">
-                <div class="widget-filter">
-                  <div class="widget-title">
-                    <h3 class="title">Availability</h3>
-                  </div>
-                  <div class="widget-body">
-                    <div class="widget-availability-filter">
-                      <div class="form-check" style="margin-bottom: 10px;">
-                        <input class="form-check-input" type="checkbox" id="show-in-stock" checked style="cursor: pointer;">
-                        <label class="form-check-label" for="show-in-stock" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                          <span style="width: 10px; height: 10px; background: #4CAF50; border-radius: 50%; display: inline-block;"></span>
-                          In Stock <span id="in-stock-count" style="color: #888; font-size: 12px;">(0)</span>
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="show-out-of-stock" checked style="cursor: pointer;">
-                        <label class="form-check-label" for="show-out-of-stock" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                          <span style="width: 10px; height: 10px; background: #f44336; border-radius: 50%; display: inline-block;"></span>
-                          Out of Stock <span id="out-of-stock-count" style="color: #888; font-size: 12px;">(0)</span>
-                        </label>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -364,64 +340,49 @@
   </main>
 
   <!--== Start Footer Area Wrapper ==-->
-  <footer class="footer-area default-style" >
+    <footer class="footer-area default-style sm-footer">
     <div class="footer-main">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-4">
-            <div class="widget-item item-style3">
-              <div class="about-widget">
-                <a class="footer-logo" href="/">
-                  <img src="/assets/img/logo-light.png" alt="Logo">
-                </a>
-                <p>
-                  Sensory a brand of ANKH Trading Pvt Ltd is a curated destination for premium sensory books, toddler sensory, and early learning products, created to support holistic childhood development. We bring together safe, reliable, and thoughtfully designed sensory essentials in one place—making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget-item item-style1">
-              <h4 class="widget-title">Quick Links</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-1">Quick Links</h4>
-              <div id="dividerId-1" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap">
-                  <ul class="nav-menu nav item-hover-style">
-                    <li><a href="/">- Home</a></li>
-                    <li><a href="about">- About</a></li>
-                    <li><a href="shop">- Shop</a></li>
-                    <li><a href="contact">- Contact</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="widget-item item-style2">
-              <h4 class="widget-title">Company</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-3">Company</h4>
-              <div id="dividerId-3" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap item-hover-style">
-                  <ul class="nav-menu nav">
-                    <li><a href="terms-and-conditions">- Terms & Conditions</a></li>
-                    <li><a href="privacy-policy">- Privacy Policy</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-3">
             <div class="widget-item">
-              <h4 class="widget-title">Store Information.</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-4">Store Information.</h4>
-              <div id="dividerId-4" class="collapse widget-collapse-body">
-                <p class="widget-address">296/A/1 , Level 2 <br>New Kandy Road, <br>Kothalawala, <br>Kaduwela,
-                    <br>Sri Lanka</p>
-                  <ul class="widget-contact-info">
-                    <li>Phone: <a href="tel://+94761487787">+94761487787</a></li>
-                    <li>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></li>
-                  </ul>
-              </div>
+              <a class="footer-logo" href="/">
+                <img src="/assets/img/logo.png" alt="Giggles & Gifts">
+              </a>
+              <p>Capturing the joy of firsts: sensory books, toys and gifts for early learning.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <div class="widget-item">
+              <h4 class="widget-title">Shop</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="shop">Shop All</a></li>
+                  <li><a href="about">About</a></li>
+                  <li><a href="contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Help</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="contact">Delivery info</a></li>
+                  <li><a href="terms-and-conditions">Returns</a></li>
+                  <li><a href="privacy-policy">Privacy</a></li>
+                  <li><a href="contact">FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Visit</h4>
+              <p>Call: <a href="tel:+94761487787">+94 76 148 7787</a></p>
+              <p>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></p>
+              <p>Kaduwela, Sri Lanka</p>
             </div>
           </div>
         </div>
@@ -429,18 +390,9 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <div class="footer-bottom-content">
-          <div class="row text-center">
-            <div class="col-sm-12">
-              <div class="widget-copyright">
-                <p><i class="fa fa-copyright"></i> 2025 <span>Sensory. </span> All Rights Reserved</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p><i class="fa fa-copyright"></i> 2026 Giggles & Gifts | sensory.lk</p>
       </div>
     </div>
-    <div class="footer-shape bg-img" data-bg-img="/assets/img/photos/footer1.png"></div>
   </footer>
   <!--== End Footer Area Wrapper ==-->
 
@@ -456,28 +408,8 @@
       <button type="button" class="btn-close product-quick-view-close">
         <span class="pe-7s-close"><i class="lastudioicon-e-remove"></i></span>
       </button>
-      <div class="product-quick-view-content">
-        <div class="row row-gutter-0">
-          <div class="col-lg-6 col-md-6 col-12">
-            <div class="thumb">
-              <button type="button" class="quick-view-nav-arrow quick-view-prev" id="quick-view-prev" aria-label="Previous image">
-                <i class="ion-chevron-left"></i>
-              </button>
-              <img id="quick-view-main-image" src="/assets/img/shop/quick-view1.jpg" alt="Image">
-              <button type="button" class="quick-view-nav-arrow quick-view-next" id="quick-view-next" aria-label="Next image">
-                <i class="ion-chevron-right"></i>
-              </button>
-              <div class="product-image-thumbnails" id="quick-view-thumbnails">
-                <!-- Thumbnails will be loaded dynamically -->
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-12">
-            <div class="content" id="quick-view-content">
-              <!-- Quick view content will be loaded dynamically -->
-            </div>
-          </div>
-        </div>
+      <div class="product-quick-view-content" id="quick-view-page">
+        <!-- Product detail popup is rendered here -->
       </div>
     </div>
     <div class="canvas-overlay"></div>
@@ -522,7 +454,7 @@
           <form action="#" method="post">
             <div class="search-form position-relative">
               <label for="search-input" class="visually-hidden">Search</label>
-              <input id="search-input" type="search" class="form-control" placeholder="Search entire store…">
+              <input id="search-input" type="search" class="form-control" placeholder="Search entire store?">
               <button class="btn-search" type="submit"><i class="ion-ios-search-strong"></i></button>
             </div>
           </form>
@@ -573,16 +505,19 @@
   <script src="/assets/js/tippy.all.min.js"></script>
   <!--=== API Config Js ===-->
   <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/product-image-url.js?v=1"></script>
   <!--=== Cart & Wishlist Service Js ===-->
-  <script src="/assets/js/cart-service.js"></script>
+  <script src="/assets/js/cart-service.js?v=wishlist-toggle-1"></script>
   <!--=== API Service Js ===-->
-  <script src="/assets/js/api-service.js"></script>
+  <script src="/assets/js/api-service.js?v=product-images-1"></script>
   <!--=== Custom Js ===-->
-  <script src="/assets/js/custom.js"></script>
+  <script src="/assets/js/parent-shop.js?v=2"></script>
+  <script src="/assets/js/custom.js?v=offer-banners-1"></script>
+  <script src="/assets/js/product-detail-modal.js?v=9"></script>
   <style>
     /* Active Category Styling */
     #product-categories-list li a.active {
-      color: #f379a7 !important;
+      color: #4B1761 !important;
       font-weight: 600;
     }
     
@@ -602,7 +537,7 @@
       content: "\2713";
       display: inline-block;
       margin-right: 8px;
-      color: #f379a7;
+      color: #4B1761;
       font-size: 14px;
       line-height: 1;
     }
@@ -722,7 +657,7 @@
     }
 
     .quick-view-nav-arrow:hover {
-      background: #f379a7;
+      background: #4B1761;
       color: #fff;
     }
 
@@ -846,11 +781,13 @@
     }
     
     .product-item.out-of-stock-item .product-thumb img {
-      opacity: 0.6;
+      opacity: 1;
     }
     
     .product-item .product-thumb {
       position: relative;
+      background: #ffffff !important;
+      background-color: #ffffff !important;
     }
     
     .add-to-cart-btn.disabled {
@@ -942,6 +879,8 @@
 
     // Render products function
     function renderProducts(products, containerId) {
+      window.allShopProducts = allProducts;
+      window.shopStockMap = stockMap;
       const container = $(containerId);
       if (!container || !container.length) {
         // Container not found
@@ -990,8 +929,8 @@
       
       products.forEach((product) => {
         const productImage = (product.imageURL && product.imageURL.trim() !== '') ? product.imageURL : defaultImage;
-        const productPrice = product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0);
-        const formattedPrice = formatPrice(productPrice);
+        const productPrice = typeof getEffectivePrice === 'function' ? getEffectivePrice(product) : (product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0));
+        const formattedPrice = typeof renderPriceHtml === 'function' ? renderPriceHtml(product) : formatPrice(productPrice);
         
         // Get stock for this product (try both number and string keys)
         const hasStockRecord = stockMap.has(product.id) || stockMap.has(String(product.id)) || stockMap.has(Number(product.id));
@@ -1009,7 +948,13 @@
           imageUrls: product.imageUrls || [],
           sellingPrice: product.sellingPrice || 0,
           unitPrice: product.unitPrice || 0,
+          maximumRetailPrice: product.maximumRetailPrice || 0,
           description: product.description || '',
+          categoryName: product.categoryName || '',
+          categoryId: product.categoryId || null,
+          sku: product.sku || product.SKU || '',
+          code: product.code || '',
+          unitOfMeasureName: product.unitOfMeasureName || '',
           maxStock: productStock
         };
         const productDataAttr = JSON.stringify(productData).replace(/'/g, '&#39;');
@@ -1041,26 +986,32 @@
           ? ''
           : `<a class="action-quick-view add-to-cart-btn" href="javascript:void(0)" data-product='${productDataAttr}'><i class="ion-ios-cart"></i></a>`;
 
+        const wishlistBtnHtml = `<button type="button" class="sm-fav-wish add-to-wishlist-btn" data-product='${productDataAttr}' aria-label="Add to wishlist"><i class="ion-heart"></i></button>`;
+
         // Visible cart action for grid cards
         const gridCartActionHtml = isOutOfStock
-          ? `<button type="button" class="shop-card-cart-btn disabled" disabled>Out of Stock</button>`
-          : `<button type="button" class="shop-card-cart-btn add-to-cart-btn" data-product='${productDataAttr}'><i class="ion-ios-cart"></i> Add to Cart</button>`;
+          ? `<button type="button" class="shop-card-cart-btn disabled" disabled>Add to Cart</button>
+             <button type="button" class="shop-card-view-btn quick-view-btn" data-product='${productDataAttr}'>View details</button>`
+          : `<button type="button" class="shop-card-cart-btn add-to-cart-btn" data-product='${productDataAttr}'>Add to Cart</button>
+             <button type="button" class="shop-card-view-btn quick-view-btn" data-product='${productDataAttr}'>View details</button>`;
         
         if (containerId === '#products-container-list') {
           // List view
           productHtml = `
             <div class="${colClass}">
-              <div class="product-item ${isOutOfStock ? 'out-of-stock-item' : ''}">
+              <div class="product-item ${isOutOfStock ? 'out-of-stock-item' : ''}" data-product='${productDataAttr}'>
                 <div class="product-thumb">
                   ${stockBadgeHtml}
-                  <img src="${productImage}" alt="${product.name}">
+                  ${wishlistBtnHtml}
+                  <img src="${productImage}" alt="${product.name}" onerror="this.onerror=null;this.src='https://www.holoimage.net/images/no-image.jpg';">
                   <div class="product-action">
                     ${cartButtonHtml}
                     <a class="action-quick-view quick-view-btn" href="javascript:void(0)" data-product='${productDataAttr}'><i class="ion-arrow-expand"></i></a>
-                    <a class="action-quick-view add-to-wishlist-btn" href="javascript:void(0)" data-product='${productDataAttr}'><i class="ion-heart"></i></a>
                   </div>
                 </div>
                 <div class="product-info">
+                  ${product.categoryName ? `<div class="sm-card-meta">${product.categoryName}</div>` : ''}
+                  ${window.SensoryParent ? window.SensoryParent.ageChipHtml(product) : ''}
                   <div class="rating">
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
@@ -1082,17 +1033,19 @@
           // Grid view
           productHtml = `
             <div class="${colClass}">
-              <div class="product-item ${isOutOfStock ? 'out-of-stock-item' : ''}">
+              <div class="product-item ${isOutOfStock ? 'out-of-stock-item' : ''}" data-product='${productDataAttr}'>
                 <div class="product-thumb">
                   ${stockBadgeHtml}
-                  <img src="${productImage}" alt="${product.name}">
+                  ${wishlistBtnHtml}
+                  <img src="${productImage}" alt="${product.name}" onerror="this.onerror=null;this.src='https://www.holoimage.net/images/no-image.jpg';">
                   <div class="product-action">
                     ${cartButtonHtml}
                     <a class="action-quick-view quick-view-btn" href="javascript:void(0)" data-product='${productDataAttr}'><i class="ion-arrow-expand"></i></a>
-                    <a class="action-quick-view add-to-wishlist-btn" href="javascript:void(0)" data-product='${productDataAttr}'><i class="ion-heart"></i></a>
                   </div>
                 </div>
                 <div class="product-info">
+                  ${product.categoryName ? `<div class="sm-card-meta">${product.categoryName}</div>` : ''}
+                  ${window.SensoryParent ? window.SensoryParent.ageChipHtml(product) : ''}
                   <div class="rating">
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
@@ -1116,9 +1069,34 @@
         
         container.append(productHtml);
       });
+
+      window.allShopProducts = allProducts;
+      window.shopStockMap = stockMap;
       
       // Attach event handlers
       attachEventHandlers();
+      markShopWishlistHearts();
+    }
+
+    async function markShopWishlistHearts() {
+      try {
+        if (typeof window.WishlistService === 'undefined' || typeof window.WishlistService.getWishlist !== 'function') {
+          return;
+        }
+        const wishlist = await window.WishlistService.getWishlist();
+        if (!Array.isArray(wishlist) || !wishlist.length) return;
+        const ids = new Set(wishlist.map(function (item) {
+          return String(item.productId != null ? item.productId : item.id);
+        }));
+        $('#products-container .sm-fav-wish, #products-container-list .sm-fav-wish').each(function () {
+          try {
+            const data = JSON.parse($(this).attr('data-product') || '{}');
+            if (data.id != null && ids.has(String(data.id))) {
+              $(this).addClass('is-favourited');
+            }
+          } catch (e) { /* ignore */ }
+        });
+      } catch (e) { /* ignore */ }
     }
     
     // Format price
@@ -1170,6 +1148,7 @@
       
       $(document).off('click', '.add-to-wishlist-btn').on('click', '.add-to-wishlist-btn', async function(e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         const $this = $(this);
         let productData;
         
@@ -1190,12 +1169,21 @@
           $this.prop('disabled', true);
           
           try {
-            const result = await window.WishlistService.addToWishlist(productData);
+            const toggle = typeof window.WishlistService.toggleWishlist === 'function'
+              ? window.WishlistService.toggleWishlist
+              : window.WishlistService.addToWishlist;
+            const result = await toggle.call(window.WishlistService, productData);
             
             if (result.success) {
-              showToast(result.message || 'Product added to wishlist!', 'success');
+              if (result.removed) {
+                $this.removeClass('is-favourited added');
+                showToast(result.message || 'Removed from wishlist', 'success');
+              } else {
+                $this.addClass('is-favourited');
+                showToast(result.message || 'Product added to wishlist!', 'success');
+              }
             } else {
-              showToast(result.message || 'Failed to add product to wishlist', 'error');
+              showToast(result.message || 'Failed to update wishlist', 'error');
             }
           } catch (error) {
             // Error adding to wishlist
@@ -1214,6 +1202,11 @@
     let currentPage = 1;
     const itemsPerPage = 12;
     let allProducts = [];
+    let catalogProducts = []; // Full catalog for sidebar counts (never category-filtered)
+    let catalogProductsPromise = null;
+    let catalogIsComplete = false;
+    let shopCategories = [];
+    let categoryDescendantIds = new Map();
     let filteredProducts = [];
     let totalProductsCount = 0; // Store total count from API before filtering
     let minPrice = 0;
@@ -1224,7 +1217,7 @@
     let currentSortOrder = 'default'; // Current sort order
     let shopLoadGeneration = 0; // Guards against stale async responses
     
-    // Resolve category label for active filters (menu bar uses full navigation — sidebar may not exist yet)
+    // Resolve category label for active filters (menu bar uses full navigation ? sidebar may not exist yet)
     function getCategoryDisplayNameForFilter(categoryId) {
       const id = String(categoryId);
       if (window.categoryNameById && typeof window.categoryNameById.get === 'function') {
@@ -1238,26 +1231,61 @@
       return `Category #${categoryId}`;
     }
     
+    // Compact page list so the number line stays aligned under the product grid
+    function buildPaginationPages(current, total) {
+      if (total <= 1) return [];
+      if (total <= 7) {
+        return Array.from({ length: total }, (_, i) => i + 1);
+      }
+      const pages = new Set([1, total, current, current - 1, current + 1, current - 2, current + 2]);
+      const sorted = Array.from(pages).filter(function (p) {
+        return p >= 1 && p <= total;
+      }).sort(function (a, b) { return a - b; });
+      const result = [];
+      for (let i = 0; i < sorted.length; i++) {
+        if (i > 0 && sorted[i] - sorted[i - 1] > 1) {
+          result.push('ellipsis');
+        }
+        result.push(sorted[i]);
+      }
+      return result;
+    }
+
     // Render pagination
     function renderPagination(totalItems) {
-      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
+      }
+      if (totalPages <= 1) {
+        $('.pagination-area nav').html('');
+        return;
+      }
+
+      const pageItems = buildPaginationPages(currentPage, totalPages).map(function (page) {
+        if (page === 'ellipsis') {
+          return '<li class="page-ellipsis" aria-hidden="true"><span>...</span></li>';
+        }
+        return `
+          <li>
+            <a class="page-number ${page === currentPage ? 'active' : ''}" href="javascript:void(0)" data-page="${page}">${page}</a>
+          </li>
+        `;
+      }).join('');
+
       const paginationHtml = `
-        <ul class="page-numbers justify-content-end">
+        <ul class="page-numbers">
           ${currentPage > 1 ? `
             <li>
-              <a class="page-number" href="javascript:void(0)" data-page="${currentPage - 1}">
+              <a class="page-number" href="javascript:void(0)" data-page="${currentPage - 1}" aria-label="Previous page">
                 <i class="fa fa-angle-left"></i>
               </a>
             </li>
           ` : ''}
-          ${Array.from({ length: totalPages }, (_, i) => i + 1).map(page => `
-            <li>
-              <a class="page-number ${page === currentPage ? 'active' : ''}" href="javascript:void(0)" data-page="${page}">${page}</a>
-            </li>
-          `).join('')}
+          ${pageItems}
           ${currentPage < totalPages ? `
             <li>
-              <a class="page-number next" href="javascript:void(0)" data-page="${currentPage + 1}">
+              <a class="page-number next" href="javascript:void(0)" data-page="${currentPage + 1}" aria-label="Next page">
                 <i class="fa fa-angle-right"></i>
               </a>
             </li>
@@ -1280,6 +1308,10 @@
           window.history.pushState({ page: page }, '', newUrl);
           
           displayProducts();
+          var $shopTop = $('.page-shop-wrapper');
+          if ($shopTop.length) {
+            $('html, body').animate({ scrollTop: $shopTop.offset().top - 80 }, 200);
+          }
         }
       });
     }
@@ -1293,7 +1325,7 @@
       
       // Filter by price range - products must be within min and max
       return products.filter(product => {
-        const productPrice = product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0);
+        const productPrice = typeof getEffectivePrice === 'function' ? getEffectivePrice(product) : (product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0));
         // If product has no price (0), include it
         if (productPrice === 0) {
           return true;
@@ -1390,15 +1422,15 @@
       switch (currentSortOrder) {
         case 'price-low':
           sortedProducts.sort((a, b) => {
-            const priceA = a.sellingPrice || a.unitPrice || 0;
-            const priceB = b.sellingPrice || b.unitPrice || 0;
+            const priceA = typeof getEffectivePrice === 'function' ? getEffectivePrice(a) : (a.sellingPrice || a.unitPrice || 0);
+            const priceB = typeof getEffectivePrice === 'function' ? getEffectivePrice(b) : (b.sellingPrice || b.unitPrice || 0);
             return priceA - priceB;
           });
           break;
         case 'price-high':
           sortedProducts.sort((a, b) => {
-            const priceA = a.sellingPrice || a.unitPrice || 0;
-            const priceB = b.sellingPrice || b.unitPrice || 0;
+            const priceA = typeof getEffectivePrice === 'function' ? getEffectivePrice(a) : (a.sellingPrice || a.unitPrice || 0);
+            const priceB = typeof getEffectivePrice === 'function' ? getEffectivePrice(b) : (b.sellingPrice || b.unitPrice || 0);
             return priceB - priceA;
           });
           break;
@@ -1432,27 +1464,106 @@
       return sortedProducts;
     }
     
-    // True when product belongs to a category row: direct assignment or subcategory under a parent
+    function rebuildCategoryDescendantIds() {
+      categoryDescendantIds = new Map();
+      shopCategories.forEach(function(category) {
+        categoryDescendantIds.set(String(category.id), new Set([String(category.id)]));
+      });
+      let added = true;
+      while (added) {
+        added = false;
+        shopCategories.forEach(function(category) {
+          if (category.parentCategoryId == null || category.parentCategoryId === '') return;
+          const parentId = String(category.parentCategoryId);
+          const childId = String(category.id);
+          const parentSet = categoryDescendantIds.get(parentId);
+          const childSet = categoryDescendantIds.get(childId);
+          if (!parentSet || !childSet) return;
+          childSet.forEach(function(id) {
+            if (!parentSet.has(id)) {
+              parentSet.add(id);
+              added = true;
+            }
+          });
+        });
+      }
+    }
+
+    function getCategoryAndDescendantIds(categoryId) {
+      const cid = String(categoryId);
+      return categoryDescendantIds.get(cid) || new Set([cid]);
+    }
+
+    // Direct category, parentCategoryId on the product, or any child category
     function productBelongsToCategory(product, categoryId) {
       if (!categoryId || categoryId === 'all') return true;
       const cid = String(categoryId);
-      if (String(product.categoryId || '') === cid) return true;
+      const productCat = String(product.categoryId || '');
+      if (productCat && getCategoryAndDescendantIds(cid).has(productCat)) return true;
       if (product.parentCategoryId != null && product.parentCategoryId !== undefined &&
           String(product.parentCategoryId) === cid) return true;
       return false;
     }
     
-    // Update category counts based on current filters (without reloading from API)
+    // Full catalog for sidebar counts ? not the currently selected category slice
+    async function ensureCatalogProducts() {
+      if (catalogIsComplete && catalogProducts && catalogProducts.length > 0) {
+        return catalogProducts;
+      }
+      if (catalogProductsPromise) {
+        return catalogProductsPromise;
+      }
+      catalogProductsPromise = (async function() {
+        try {
+          const result = window.fetchAllProducts
+            ? await window.fetchAllProducts(null, '')
+            : await window.fetchProducts(0, 1000, null, '');
+          const fetched = (result && result.items) ? result.items : [];
+          const byId = new Map(fetched.map(function(product) {
+            return [String(product.id), product];
+          }));
+          (catalogProducts || []).forEach(function(product) {
+            if (!byId.has(String(product.id))) {
+              byId.set(String(product.id), product);
+            }
+          });
+          catalogProducts = Array.from(byId.values());
+          catalogIsComplete = fetched.length > 0;
+        } catch (_) {
+          if (!catalogIsComplete) {
+            catalogProducts = catalogProducts || [];
+          }
+        } finally {
+          catalogProductsPromise = null;
+        }
+        return catalogProducts;
+      })();
+      return catalogProductsPromise;
+    }
+
+    // Update category counts from the full catalog (price/stock/search only ? never category)
     function updateCategoryCounts() {
-      if (!allProducts || allProducts.length === 0) return;
-      // Get the currently filtered products (after all filters except category)
-      let productsForCounting = allProducts;
+      if (!catalogProducts || catalogProducts.length === 0) return;
+      let productsForCounting = catalogProducts;
       
       // Apply price filter
       productsForCounting = filterProductsByPrice(productsForCounting);
       
       // Apply stock filter
       productsForCounting = filterProductsByStock(productsForCounting);
+
+      // Apply search so counts match the search, not the selected category
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchKeyword = urlParams.get('search') || '';
+      if (searchKeyword && searchKeyword.trim() !== '') {
+        const terms = searchKeyword.toLowerCase().trim().split(/\s+/);
+        productsForCounting = productsForCounting.filter(product => {
+          const name = (product.name || '').toLowerCase();
+          const description = (product.description || '').toLowerCase();
+          const code = (product.code || '').toLowerCase();
+          return terms.every(word => name.includes(word) || description.includes(word) || code.includes(word));
+        });
+      }
       
       // Calculate total for "All Categories"
       const totalFilteredCount = productsForCounting.length;
@@ -1491,6 +1602,11 @@
       
       // Apply price filter to all products (including search results)
       let tempFiltered = filterProductsByPrice(allProducts);
+
+      const isOfferShopPage = new URLSearchParams(window.location.search).get('offerBanner');
+      if (!isOfferShopPage && window.SensoryParent && typeof window.SensoryParent.filterProducts === 'function') {
+        tempFiltered = window.SensoryParent.filterProducts(tempFiltered);
+      }
       
       // Apply stock filter
       filteredProducts = filterProductsByStock(tempFiltered);
@@ -1507,9 +1623,13 @@
       // If no filtered products, that's okay - we'll show "No products found" message
       // Don't automatically show all products if filter results are empty
       
-      // Ensure currentPage is valid
+      // Ensure currentPage is valid (12 items = 3 columns ? 4 rows)
       if (isNaN(currentPage) || currentPage < 1) {
         currentPage = 1;
+      }
+      const totalPages = Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage));
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
       }
       
       const startIndex = (currentPage - 1) * itemsPerPage;
@@ -1549,9 +1669,9 @@
       const searchKeyword = urlParams.get('search') || '';
       if (searchKeyword && searchKeyword.trim() !== '') {
         activeFiltersList.append(`
-          <span class="active-filter-badge" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; background-color: #fff; border: 1px solid #f379a7; border-radius: 12px; font-size: 12px;">
+          <span class="active-filter-badge" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; background-color: #fff; border: 1px solid #4B1761; border-radius: 12px; font-size: 12px;">
             <span>Search: "${searchKeyword}"</span>
-            <button type="button" class="clear-filter-btn" data-filter="search" style="background: none; border: none; color: #f379a7; cursor: pointer; font-size: 14px; padding: 0; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; line-height: 1;">&times;</button>
+            <button type="button" class="clear-filter-btn" data-filter="search" style="background: none; border: none; color: #4B1761; cursor: pointer; font-size: 14px; padding: 0; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; line-height: 1;">&times;</button>
           </span>
         `);
         hasFilters = true;
@@ -1566,6 +1686,21 @@
           <span class="active-filter-badge" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; background-color: #fff; border: 1px solid #2196F3; border-radius: 12px; font-size: 12px;">
             <span>Category: ${categoryName}</span>
             <button type="button" class="clear-filter-btn" data-filter="category" style="background: none; border: none; color: #2196F3; cursor: pointer; font-size: 14px; padding: 0; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; line-height: 1;">&times;</button>
+          </span>
+        `);
+        hasFilters = true;
+        filterCount++;
+      }
+
+      const offerBannerId = urlParams.get('offerBanner');
+      if (offerBannerId) {
+        const offerLabel = window.offerBannerTitle
+          ? `Offer: ${window.offerBannerTitle}`
+          : `Offer #${offerBannerId}`;
+        activeFiltersList.append(`
+          <span class="active-filter-badge" style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; background-color: #fff; border: 1px solid #4B1761; border-radius: 12px; font-size: 12px;">
+            <span>${offerLabel}</span>
+            <button type="button" class="clear-filter-btn" data-filter="offerBanner" style="background: none; border: none; color: #4B1761; cursor: pointer; font-size: 14px; padding: 0; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; line-height: 1;">&times;</button>
           </span>
         `);
         hasFilters = true;
@@ -1660,6 +1795,14 @@
           window.history.pushState({}, '', newUrl);
           currentPage = 1;
           loadProducts();
+        } else if (filterType === 'offerBanner') {
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.delete('offerBanner');
+          const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+          window.history.pushState({}, '', newUrl);
+          window.offerBannerTitle = '';
+          currentPage = 1;
+          loadProducts();
         } else if (filterType === 'price') {
           // Clear price filter
           resetPriceFilter();
@@ -1674,6 +1817,7 @@
         // Clear all filters
         const newUrl = window.location.pathname;
         window.history.pushState({}, '', newUrl);
+        window.offerBannerTitle = '';
         // Clear search inputs
         $('#search').val('');
         $('#search-input').val('');
@@ -1706,9 +1850,10 @@
       const urlParams = new URLSearchParams(window.location.search);
       const hasSearch = urlParams.get('search') && urlParams.get('search').trim() !== '';
       const hasCategory = urlParams.get('category');
+      const hasOfferBanner = urlParams.get('offerBanner');
       const hasPriceFilter = (priceRange.min > 0 || (priceRange.max > 0 && priceRange.max < 999999999));
       const hasStockFilterActive = !(stockFilter.showInStock && stockFilter.showOutOfStock);
-      const hasAnyFilter = hasSearch || hasCategory || hasPriceFilter || hasStockFilterActive;
+      const hasAnyFilter = hasSearch || hasCategory || hasOfferBanner || hasPriceFilter || hasStockFilterActive;
       
       if (filteredTotal > 0) {
         if (hasAnyFilter) {
@@ -1752,8 +1897,39 @@
           $(id).html('<div class="col-12"><p class="text-center">Loading products...</p></div>');
         });
 
-        // Fetch products from API
-        const result = await window.fetchProducts(0, 1000, categoryId, searchKeyword);
+        const offerBannerId = urlParams.get('offerBanner');
+        let items = [];
+
+        if (offerBannerId) {
+          let offerProductIds = [];
+          try {
+            let banner = typeof window.fetchBannerById === 'function'
+              ? await window.fetchBannerById(offerBannerId)
+              : null;
+            if (typeof window.normalizeWebsiteBanner === 'function' && banner) {
+              banner = window.normalizeWebsiteBanner(banner) || banner;
+            }
+            offerProductIds = Array.isArray(banner && banner.productIds)
+              ? banner.productIds
+              : (Array.isArray(banner && banner.ProductIds) ? banner.ProductIds : []);
+            window.offerBannerTitle = (banner && (banner.title || banner.Title)) || '';
+          } catch (_) {
+            offerProductIds = [];
+            window.offerBannerTitle = '';
+          }
+          if (offerProductIds.length > 0 && typeof window.fetchOfferProducts === 'function') {
+            items = await window.fetchOfferProducts(offerProductIds);
+          }
+        } else {
+          window.offerBannerTitle = '';
+          const result = window.fetchAllProducts
+            ? await window.fetchAllProducts(categoryId, searchKeyword)
+            : await window.fetchProducts(0, 1000, categoryId, searchKeyword);
+          items = (result && result.items) ? result.items : [];
+          if (categoryId) {
+            items = items.filter(p => productBelongsToCategory(p, categoryId));
+          }
+        }
         if (myGen !== shopLoadGeneration) return;
 
         // Fetch stock levels
@@ -1766,15 +1942,7 @@
         }
         if (myGen !== shopLoadGeneration) return;
 
-        // --- Process results ---
-        let items = (result && result.items) ? result.items : [];
-
-        // Always apply client-side category filter so grid matches the URL
-        if (categoryId) {
-          items = items.filter(p => productBelongsToCategory(p, categoryId));
-        }
-
-        // Client-side keyword filter (API param name mismatch — keyword vs search)
+        // Client-side keyword filter (API param name mismatch ? keyword vs search)
         if (searchKeyword && searchKeyword.trim() !== '') {
           const terms = searchKeyword.toLowerCase().trim().split(/\s+/);
           items = items.filter(p => {
@@ -1784,7 +1952,7 @@
           });
         }
 
-        // Empty result — render empty grids via renderProducts so all 3 tabs are consistent
+        // Empty result ? render empty grids via renderProducts so all 3 tabs are consistent
         if (!items.length) {
           allProducts = [];
           filteredProducts = [];
@@ -1795,6 +1963,10 @@
           updateStockCounts();
           updateProductCount();
           updateActiveFiltersDisplay();
+          ensureCatalogProducts().then(function() {
+            if (myGen !== shopLoadGeneration) return;
+            updateCategoryCounts();
+          });
           if (searchKeyword) {
             const p2 = new URLSearchParams(window.location.search);
             if (!p2.get('search')) { p2.set('search', searchKeyword); window.history.replaceState({}, '', window.location.pathname + '?' + p2.toString()); }
@@ -1823,6 +1995,19 @@
         // Commit to state and render
         allProducts = items;
         totalProductsCount = items.length;
+        // Keep catalog complete: unfiltered load replaces it, category load merges into it
+        if (!categoryId && !(searchKeyword && searchKeyword.trim()) && items.length) {
+          catalogProducts = items.slice();
+          catalogIsComplete = true;
+        } else if (items.length) {
+          const byId = new Map((catalogProducts || []).map(function(product) {
+            return [String(product.id), product];
+          }));
+          items.forEach(function(product) {
+            byId.set(String(product.id), product);
+          });
+          catalogProducts = Array.from(byId.values());
+        }
 
         if (!window.priceSliderInitialized) {
           initializePriceFilter();
@@ -1831,6 +2016,10 @@
         }
 
         displayProducts();
+        ensureCatalogProducts().then(function() {
+          if (myGen !== shopLoadGeneration) return;
+          updateCategoryCounts();
+        });
 
         if (searchKeyword) {
           const cp = new URLSearchParams(window.location.search);
@@ -1869,18 +2058,10 @@
         const categories = await window.fetchCategories();
         
         if (categories && categories.length > 0) {
-          // Use allProducts if already loaded; otherwise fetch all products for counting
-          let productsForCounting;
-          if (allProducts && allProducts.length > 0) {
-            productsForCounting = allProducts;
-          } else {
-            try {
-              const allProductsResult = await window.fetchProducts(0, 1000, null, '');
-              productsForCounting = (allProductsResult && allProductsResult.items) ? allProductsResult.items : [];
-            } catch (_) {
-              productsForCounting = [];
-            }
-          }
+          shopCategories = categories;
+          rebuildCategoryDescendantIds();
+          // Always count from the full catalog, never the selected category slice
+          let productsForCounting = await ensureCatalogProducts();
 
           // Apply search filter if active
           const urlParams = new URLSearchParams(window.location.search);
@@ -1899,7 +2080,7 @@
           const hasPriceFilter = (priceRange.min > 0 || (priceRange.max > 0 && priceRange.max < 999999999));
           if (hasPriceFilter) {
             productsForCounting = productsForCounting.filter(product => {
-              const productPrice = product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0);
+              const productPrice = typeof getEffectivePrice === 'function' ? getEffectivePrice(product) : (product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0));
               if (productPrice === 0) return true;
               if (priceRange.min > 0 && productPrice < priceRange.min) return false;
               if (priceRange.max > 0 && priceRange.max < 999999999 && productPrice > priceRange.max) return false;
@@ -1925,7 +2106,8 @@
             category.productCount = productsForCounting.filter(product => productBelongsToCategory(product, catId)).length;
           });
 
-          renderCategories(categories);
+          const visibleCategories = categories.filter(category => (category.productCount || 0) > 0);
+          renderCategories(visibleCategories, productsForCounting.length);
           if (typeof updateActiveFiltersDisplay === 'function') {
             updateActiveFiltersDisplay();
           }
@@ -1966,7 +2148,7 @@
       $('#product-categories-list li').removeClass('active');
       $('#product-categories-list li a').css('color', '');
       $('#product-categories-list li:first-child').addClass('active');
-      $('#product-categories-list li:first-child a').css('color', '#f379a7');
+      $('#product-categories-list li:first-child a').css('color', '#4B1761');
       
       // Reset page
       currentPage = 1;
@@ -2142,7 +2324,7 @@
     }
     
     // Render categories with product counts
-    function renderCategories(categories) {
+    function renderCategories(categories, uniqueProductCount) {
       const categoriesList = $('#product-categories-list');
       if (!categoriesList || !categoriesList.length) {
         return;
@@ -2156,7 +2338,9 @@
       const searchKeyword = urlParams.get('search') || '';
       
       // Calculate total product count for "All Categories"
-      const totalProductCount = categories.reduce((sum, cat) => sum + (cat.productCount || 0), 0);
+      const totalProductCount = (typeof uniqueProductCount === 'number')
+        ? uniqueProductCount
+        : categories.reduce((sum, cat) => sum + (cat.productCount || 0), 0);
       
       // Add "All Categories" option first
       const allCategoriesParams = new URLSearchParams();
@@ -2312,27 +2496,14 @@
       // Always initialize - load categories first, then products
       // Categories don't depend on product containers
       initializePage();
+      document.addEventListener('sensory:parent-filter', function () {
+        currentPage = 1;
+        displayProducts();
+      });
     });
     
     // Separate initialization function for better error handling
     function initializePage() {
-      let quickViewImages = [];
-      let quickViewCurrentIndex = 0;
-
-      function showQuickViewImageByIndex(targetIndex) {
-        if (!quickViewImages || quickViewImages.length === 0) {
-          return;
-        }
-
-        const totalImages = quickViewImages.length;
-        quickViewCurrentIndex = ((targetIndex % totalImages) + totalImages) % totalImages;
-        const activeImage = quickViewImages[quickViewCurrentIndex];
-
-        $('#quick-view-main-image').attr('src', activeImage);
-        $('#quick-view-thumbnails .thumbnail-item').removeClass('active');
-        $(`#quick-view-thumbnails .thumbnail-item[data-image-index="${quickViewCurrentIndex}"]`).addClass('active');
-      }
-
       // Populate search inputs when page loads
       const urlParams = new URLSearchParams(window.location.search);
       const searchKeyword = urlParams.get('search') || '';
@@ -2452,273 +2623,28 @@
         window.CartService.updateCartCount();
       }
 
-      // Function to show quick view modal with product data
       function showQuickViewModal(product) {
-        const productName = product.name || 'Product Name';
-        
-        // Get price - handle null, undefined, and 0 values properly
-        let productPrice = 0;
-        
-        // Check sellingPrice first
-        if (product.sellingPrice !== null && product.sellingPrice !== undefined) {
-          if (product.sellingPrice > 0) {
-            productPrice = product.sellingPrice;
-          } else if (product.unitPrice !== null && product.unitPrice !== undefined && product.unitPrice > 0) {
-            productPrice = product.unitPrice;
-          } else {
-            productPrice = product.sellingPrice; // Use even if 0
-          }
-        } 
-        // If no sellingPrice, check unitPrice
-        else if (product.unitPrice !== null && product.unitPrice !== undefined) {
-          productPrice = product.unitPrice;
+        window.allShopProducts = allProducts;
+        window.shopStockMap = stockMap;
+        if (window.SensoryProductModal) {
+          window.SensoryProductModal.open(product);
         }
-        
-        const productDescription = product.description || 'No description available.';
-        // Use formatPrice function with thousand separators
-        const formattedPrice = window.formatPrice ? window.formatPrice(productPrice) : (productPrice > 0 ? 'LKR ' + parseFloat(productPrice).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 'Price not available');
-        
-        // Handle images - use images array if available, otherwise fallback to imageUrl/imageURL
-        let productImages = [];
-        let mainImage = 'https://www.holoimage.net/images/no-image.jpg';
-        
-        if (product.images && Array.isArray(product.images) && product.images.length > 0) {
-          // Use images array - first image as main, all as thumbnails
-          productImages = product.images.map(img => img.imageUrl || img.imageURL).filter(url => url);
-          if (productImages.length > 0) {
-            mainImage = productImages[0];
-          }
-        } else if (product.imageUrls && Array.isArray(product.imageUrls) && product.imageUrls.length > 0) {
-          // Fallback to imageUrls array
-          productImages = product.imageUrls.filter(url => url);
-          if (productImages.length > 0) {
-            mainImage = productImages[0];
-          }
-        } else {
-          // Fallback to single imageUrl/imageURL
-          const singleImage = product.imageUrl || product.imageURL;
-          if (singleImage) {
-            mainImage = singleImage;
-            productImages = [singleImage];
-          }
-        }
-        quickViewImages = productImages && productImages.length > 0 ? productImages : [mainImage];
-        quickViewCurrentIndex = 0;
-
-        // Update modal main image
-        $('#quick-view-main-image').attr('src', mainImage).attr('alt', productName);
-        
-        // Update thumbnails
-        const thumbnailsContainer = $('#quick-view-thumbnails');
-        thumbnailsContainer.empty();
-        
-        // Show thumbnails if there are multiple images
-        if (productImages.length > 1) {
-          thumbnailsContainer.show(); // Ensure container is visible
-          productImages.forEach((imageUrl, index) => {
-            const isActive = index === 0 ? 'active' : '';
-            const thumbnailHtml = `
-              <div class="thumbnail-item ${isActive}" data-image-index="${index}">
-                <img src="${imageUrl}" alt="${productName} - Image ${index + 1}">
-              </div>
-            `;
-            thumbnailsContainer.append(thumbnailHtml);
-          });
-          
-          // Add click handlers for thumbnails
-          thumbnailsContainer.off('click', '.thumbnail-item').on('click', '.thumbnail-item', function() {
-            const newIndex = parseInt($(this).attr('data-image-index'), 10);
-            if (!Number.isNaN(newIndex)) {
-              showQuickViewImageByIndex(newIndex);
-            }
-          });
-        } else {
-          // Hide thumbnails container if only one image
-          thumbnailsContainer.hide();
-        }
-
-        // Show or hide navigation arrows based on image count
-        if (quickViewImages.length > 1) {
-          $('#quick-view-prev, #quick-view-next').removeClass('hidden');
-        } else {
-          $('#quick-view-prev, #quick-view-next').addClass('hidden');
-        }
-
-        showQuickViewImageByIndex(0);
-        
-        // Get stock level for this product from stock map first (website-side source of truth)
-        const stockFromMap = stockMap.get(product.id) ?? stockMap.get(String(product.id)) ?? stockMap.get(Number(product.id));
-        const hasStockRecord = stockFromMap !== undefined;
-        const fallbackStock = Number(product.maxStock);
-        const productStock = Number.isFinite(stockFromMap)
-          ? Number(stockFromMap)
-          : (Number.isFinite(fallbackStock) && fallbackStock > 0 ? fallbackStock : 0);
-        const isOutOfStock = hasStockRecord && productStock <= 0;
-        
-        // Stock info HTML
-        let stockInfoHtml = '';
-        if (isOutOfStock) {
-          stockInfoHtml = '<div class="modal-stock-info out-of-stock"><i class="ion-close-circled"></i> Out of Stock</div>';
-        } else if (productStock <= 5) {
-          stockInfoHtml = `<div class="modal-stock-info low-stock"><i class="ion-alert-circled"></i> Only ${productStock} left in stock - order soon!</div>`;
-        } else {
-          stockInfoHtml = `<div class="modal-stock-info in-stock"><i class="ion-checkmark-circled"></i> In Stock (${productStock} available)</div>`;
-        }
-        
-        // Update product with maxStock for cart
-        product.maxStock = productStock;
-        
-        // Update modal content
-        const modalContent = `
-          <div class="single-product-info">
-            <h4 class="title">${productName}</h4>
-            <div class="prices">
-              <span class="price">${formattedPrice}</span>
-            </div>
-            <div class="product-rating">
-              <div class="rating">
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-              </div>
-            </div>
-            ${stockInfoHtml}
-            <p class="product-desc">${productDescription}</p>
-            <div class="quick-product-action">
-              <div class="action-top">
-                ${isOutOfStock ? '' : `
-                <div class="pro-qty">
-                  <input type="text" id="modal-quantity" title="Quantity" value="1" min="1" max="${productStock}" data-max-stock="${productStock}" />
-                </div>
-                <button class="btn btn-theme add-to-cart-btn" data-product='${JSON.stringify(product)}'>Add to Cart</button>
-                `}
-                <a class="btn-wishlist add-to-wishlist-btn" href="javascript:void(0)" data-product='${JSON.stringify(product)}'>Add to Wishlist</a>
-              </div>
-            </div>
-          </div>
-        `;
-        
-        $('#quick-view-content').html(modalContent);
-        
-        // Initialize quantity buttons for the modal
-        const modalProQty = $('#quick-view-content .pro-qty');
-        if (modalProQty.length > 0 && modalProQty.find('.qty-btn').length === 0) {
-          modalProQty.append('<a href="#" class="inc qty-btn"><i class="fa fa-plus"></i></a>');
-          modalProQty.append('<a href="#" class="dec qty-btn"><i class="fa fa-minus"></i></a>');
-        }
-        
-        // Prevent any scroll behavior - just lock the scroll
-        const scrollPosition = window.pageYOffset || window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        
-        // Store scroll position
-        $('html, body').data('scroll-position', scrollPosition);
-        
-        // Lock scroll by adding fix class to both html and body
-        $('html, body').addClass('fix');
-        
-        // Show modal
-        $('.product-quick-view-modal').addClass('active');
       }
 
-      // Handle quick view modal - use event delegation for dynamically created elements
       $(document).on('click', '.quick-view-btn', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        e.stopImmediatePropagation();
-        
-        const productDataStr = $(this).attr('data-product');
-        if (!productDataStr) return;
-        
+        const productDataStr = $(this).attr('data-product') || $(this).closest('.product-item').attr('data-product');
+        if (!productDataStr) {
+          return;
+        }
         try {
-          const product = JSON.parse(productDataStr);
-          
-          // Always try to get the full product data (including images) from the product list
-          // Try to find the full product from allProducts array
-          if (typeof allProducts !== 'undefined' && allProducts.length > 0) {
-            const fullProduct = allProducts.find(p => p.id === product.id);
-            if (fullProduct) {
-              const uiStock = product.maxStock;
-              Object.assign(product, fullProduct);
-              // Keep website-calculated stock; do not overwrite it with unrelated product fields.
-              if (uiStock !== undefined) {
-                product.maxStock = uiStock;
-              }
-            }
-          } else if (typeof window.homeProducts !== 'undefined' && window.homeProducts.length > 0) {
-            const fullProduct = window.homeProducts.find(p => p.id === product.id);
-            if (fullProduct) {
-              const uiStock = product.maxStock;
-              Object.assign(product, fullProduct);
-              if (uiStock !== undefined) {
-                product.maxStock = uiStock;
-              }
-            }
-          }
-          
-          showQuickViewModal(product);
+          showQuickViewModal(JSON.parse(productDataStr));
         } catch (error) {
-          // Error parsing product data
+          // Ignore invalid product payloads
         }
       });
 
-      // Close modal handlers (if not already handled by custom.js)
-      $(document).on('click', '.product-quick-view-modal .btn-close, .canvas-overlay', function() {
-        $('.product-quick-view-modal').removeClass('active');
-        quickViewImages = [];
-        quickViewCurrentIndex = 0;
-        
-        // Remove fix class from both html and body
-        $('html, body').removeClass('fix');
-        
-        // Restore scroll position
-        const scrollPosition = $('html').data('scroll-position') || $('body').data('scroll-position') || 0;
-        
-        // Use requestAnimationFrame to ensure DOM updates before scrolling
-        requestAnimationFrame(function() {
-          window.scrollTo(0, scrollPosition);
-          $('html, body').removeData('scroll-position');
-        });
-      });
-
-      // Quick view image navigation arrows
-      $(document).on('click', '#quick-view-prev', function(e) {
-        e.preventDefault();
-        if (!$('.product-quick-view-modal').hasClass('active') || quickViewImages.length <= 1) {
-          return;
-        }
-        showQuickViewImageByIndex(quickViewCurrentIndex - 1);
-      });
-
-      $(document).on('click', '#quick-view-next', function(e) {
-        e.preventDefault();
-        if (!$('.product-quick-view-modal').hasClass('active') || quickViewImages.length <= 1) {
-          return;
-        }
-        showQuickViewImageByIndex(quickViewCurrentIndex + 1);
-      });
-
-      // Keyboard arrow keys for quick view image navigation
-      $(document).on('keydown', function(e) {
-        if (!$('.product-quick-view-modal').hasClass('active') || quickViewImages.length <= 1) {
-          return;
-        }
-
-        const activeTag = (document.activeElement && document.activeElement.tagName || '').toLowerCase();
-        if (activeTag === 'input' || activeTag === 'textarea') {
-          return;
-        }
-
-        if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          showQuickViewImageByIndex(quickViewCurrentIndex - 1);
-        } else if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          showQuickViewImageByIndex(quickViewCurrentIndex + 1);
-        }
-      });
-      
       // Handle quantity buttons in modal (event delegation for dynamically created elements)
       $(document).on('click', '.product-quick-view-modal .qty-btn', function(e) {
         e.preventDefault();

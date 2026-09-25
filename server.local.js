@@ -1,9 +1,19 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const API_GATEWAY_URL = process.env.API_GATEWAY_URL || 'http://localhost:7000';
+
+// Proxy /api to local API Gateway (same routing as production)
+// Express strips the mount prefix from req.url, so re-add /api for the gateway.
+app.use('/api', createProxyMiddleware({
+  target: API_GATEWAY_URL,
+  changeOrigin: true,
+  pathRewrite: (path) => '/api' + path,
+}));
 
 // Get all HTML files and create routes without .html extension
 const htmlFiles = fs.readdirSync(__dirname)
@@ -13,6 +23,14 @@ const htmlFiles = fs.readdirSync(__dirname)
 // Route for the home page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/cart', (req, res) => {
+  res.sendFile(path.join(__dirname, 'shop-cart.html'));
+});
+
+app.get('/wishlist', (req, res) => {
+  res.sendFile(path.join(__dirname, 'shop-wishlist.html'));
 });
 
 // Create routes for each HTML file (without .html extension)
@@ -66,10 +84,10 @@ app.listen(PORT, () => {
   console.log(`\n=== Server Started ===`);
   console.log(`Server is running on http://localhost:${PORT}`);
   console.log(`Open your browser and navigate to http://localhost:${PORT}`);
+  console.log(`\nAPI proxy: /api -> ${API_GATEWAY_URL}/api`);
   console.log(`\nRegistered routes:`);
   console.log(`  GET /`);
   htmlFiles.forEach(route => console.log(`  GET /${route}`));
   console.log(`\nTotal routes: ${htmlFiles.length + 1}`);
   console.log(`=====================\n`);
 });
-

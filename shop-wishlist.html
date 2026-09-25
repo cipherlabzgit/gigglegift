@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4B1761" />
     <base href="/">
 
-    <title>Wishlist - Sensory - Kids Toys Store</title>
+    <title>Wishlist - Giggles & Gifts</title>
 
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
@@ -40,10 +41,11 @@
     <link href="/assets/css/rangeslider.css" rel="stylesheet"/>
     <!--== Main Style CSS ==-->
     <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 
 </head>
 
-<body>
+<body class="sm-store">
 
 <!--wrapper start-->
 <div class="wrapper page-wishlist-wrapper">
@@ -65,18 +67,11 @@
   <header class="header-wrapper">
     <div class="header-top">
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-5 col-md-4 col-lg-6">
-            <div class="header-info-left">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-7 col-md-8 col-lg-6 sm-pl-0 xs-pl-15 header-top-right">
-            <div class="header-info">
-              <a href="tel://+94761487787"><i class="fa fa-phone"></i> +94761487787</a>
-              <a href="mailto:sales@sensory.lk"><i class="fa fa-envelope"></i> sales@sensory.lk</a>
-              <a href="login-register"><i class="fa fa-user"></i> Account</a>
-            </div>
-          </div>
+        <div class="sm-topbar">
+          <a href="https://wa.me/94761487787" target="_blank" rel="noopener">Order on WhatsApp +94 76 148 7787</a>
+          <span>Loved by Sri Lankan families</span>
+          <span>Islandwide delivery</span>
+          <span>Kaduwela, Sri Lanka</span>
         </div>
       </div>
     </div>
@@ -88,8 +83,8 @@
               <div class="header-align-left">
                 <div class="header-logo-area">
                   <a href="/">
-                    <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                    <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                    <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                    <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
                   </a>
                 </div>
               </div>
@@ -136,8 +131,8 @@
           <div class="col-4 col-sm-6 col-lg-2">
             <div class="header-logo-area">
               <a href="/">
-                <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
               </a>
             </div>
           </div>
@@ -149,7 +144,7 @@
               <div class="header-navigation-area d-none d-md-block">
                 <ul class="main-menu nav position-relative" id="main-nav-menu">
                   <li><a class="ml--2" href="/">Home</a></li>
-                  <!-- Main category links are injected by JS (up to 5 categories) -->
+                  <li><a href="shop">Shop</a></li>
                 </ul>
               </div>
               <button type="button" class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
@@ -193,58 +188,24 @@
   <!--== End Header Wrapper ==-->
   
   <main class="main-content">
-    <!--== Start Page Title Area ==-->
-    <section class="page-title-area">
+    <section class="sm-wish-page">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12 m-auto">
-            <div class="page-title-content text-center">
-              <h2 class="title">Wishlist</h2>
-              <!-- <div class="bread-crumbs"><a href="/"> Home </a><span class="breadcrumb-sep"> // </span><span class="active"> Wishlist</span></div> -->
-            </div>
+        <div class="sm-wish-layout">
+          <aside class="sm-wish-nav">
+            <p class="sm-wish-hello">Hello,<br><strong id="wish-user-name">Guest</strong></p>
+            <a href="my-account"><i class="ion-android-person"></i> My account</a>
+            <a href="my-account#orders"><i class="ion-ios-list-outline"></i> Order history</a>
+            <a class="is-active" href="shop-wishlist"><i class="ion-heart"></i> My Wishlist</a>
+            <a href="shop-cart"><i class="ion-ios-cart"></i> My Cart</a>
+            <a href="login-register" id="wish-auth-link"><i class="ion-log-in"></i> Log in</a>
+          </aside>
+          <div class="sm-wish-main">
+            <h2>My Wishlist</h2>
+            <div id="wishlist-items-container"></div>
           </div>
         </div>
       </div>
     </section>
-    <!--== End Page Title Area ==-->
-
-    <!--== Start Wishlist Area Wrapper ==-->
-    <section class="product-area wishlist-page-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 m-auto">
-            <div class="section-title text-center">
-              <h2 class="title">Wishlist</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <form action="#">
-              <div class="wishlist-table-content">
-                <div class="table-content table-responsive">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th class="width-remove"></th>
-                        <th class="width-name">Product</th>
-                        <th class="width-price"> Unit price </th>
-                        <th class="width-stock-status"> Stock status </th>
-                        <th class="width-wishlist-cart"></th>
-                      </tr>
-                    </thead>
-                    <tbody id="wishlist-items-container">
-                      <!-- Wishlist items will be loaded dynamically here -->
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--== End Wishlist Area Wrapper ==-->
   </main>
 
   <!--== Start Footer Area Wrapper ==-->
@@ -256,10 +217,10 @@
             <div class="widget-item item-style3">
               <div class="about-widget">
                 <a class="footer-logo" href="/">
-                  <img src="/assets/img/logo-light.png" alt="Logo">
+                  <img src="/assets/img/logo-light.png" alt="Giggles & Gifts">
                 </a>
                 <p>
-                  Sensory a brand of ANKH Trading Pvt Ltd is a curated destination for premium sensory books, toddler sensory, and early learning products, created to support holistic childhood development. We bring together safe, reliable, and thoughtfully designed sensory essentials in one place—making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
+                  Giggles & Gifts, a brand of ANKH Trading Pvt Ltd, is a curated destination for toys, gifts, and early learning products for kids. We bring together safe, reliable, and thoughtfully designed essentials in one place, making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
 0 
                 </p>
               </div>
@@ -303,7 +264,7 @@
                 <p class="widget-address">296/A/1 , Level 2 <br>New Kandy Road, <br>Kothalawala, <br>Kaduwela,
                     <br>Sri Lanka</p>
                   <ul class="widget-contact-info">
-                    <li>Phone: <a href="tel://+94761487787">+94761487787</a></li>
+                    <li>Phone: <a href="tel:+94761487787">+94761487787</a></li>
                     <li>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></li>
                   </ul>
               </div>
@@ -318,7 +279,7 @@
           <div class="row text-center">
             <div class="col-sm-12">
               <div class="widget-copyright">
-                <p><i class="fa fa-copyright"></i> 2025 <span>Sensory. </span> All Rights Reserved</p>
+                <p><i class="fa fa-copyright"></i> 2026 <span>Giggles & Gifts. </span> All Rights Reserved</p>
               </div>
             </div>
           </div>
@@ -478,7 +439,7 @@
 <!--=== API Config Js ===-->
 <script src="/assets/js/config.js"></script>
 <!--=== Cart & Wishlist Service Js ===-->
-<script src="/assets/js/cart-service.js"></script>
+<script src="/assets/js/cart-service.js?v=wishlist-local-1"></script>
 <!--=== API Service Js ===-->
 <script src="/assets/js/api-service.js"></script>
 <!--=== Custom Js ===-->
@@ -667,40 +628,80 @@
     return 'LKR ' + parseFloat(price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
   
+  function escapeWishHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function setupWishAccountNav() {
+    const user = typeof getCurrentUser === 'function' ? getCurrentUser() : null;
+    const name = user && (user.firstName || user.name || user.email);
+    $('#wish-user-name').text(name || 'Guest');
+    const $auth = $('#wish-auth-link');
+    if (user && user.id) {
+      $auth.html('<i class="ion-log-out"></i> Logout').attr('href', 'javascript:void(0)');
+      $auth.off('click.wishauth').on('click.wishauth', function (e) {
+        e.preventDefault();
+        if (typeof window.logoutUser === 'function') {
+          window.logoutUser();
+        }
+        window.location.href = '/';
+      });
+    } else {
+      $auth.html('<i class="ion-log-in"></i> Log in').attr('href', 'login-register');
+    }
+  }
+
   // Render wishlist items
   async function renderWishlist() {
     const container = $('#wishlist-items-container');
+    setupWishAccountNav();
     
-    // Check if user is logged in
-    if (typeof WishlistService === 'undefined' || !WishlistService.isLoggedIn()) {
-      container.html('<tr><td colspan="5" class="text-center">Please <a href="login-register">login</a> to view your wishlist.</td></tr>');
+    if (typeof WishlistService === 'undefined') {
+      container.html('<div class="sm-wish-empty">Wishlist is unavailable right now.</div>');
       return;
     }
     
     try {
-      // Show loading state
-      container.html('<tr><td colspan="5" class="text-center">Loading wishlist...</td></tr>');
+      container.html('<div class="sm-wish-empty">Loading wishlist...</div>');
       
       const wishlist = await WishlistService.getWishlist();
-      
-      console.log('Wishlist items received:', wishlist);
+      let stockMap = new Map();
+      if (typeof window.getStockMap === 'function') {
+        try {
+          stockMap = await window.getStockMap();
+        } catch (error) {
+          stockMap = new Map();
+        }
+      }
       
       if (!wishlist || wishlist.length === 0) {
-        container.html('<tr><td colspan="5" class="text-center">Your wishlist is empty. <a href="/">Continue Shopping</a></td></tr>');
+        container.html('<div class="sm-wish-empty"><h3>Your wishlist is empty</h3><p>Save favourites from the shop and they will show up here.</p><a href="shop">Continue shopping</a></div>');
         return;
       }
       
       container.empty();
       
       wishlist.forEach((item) => {
-        // Handle different API response formats
-        // The API returns items with: id (wishlist item ID), productId, productName, productPrice
-        const itemId = item.id; // This is the wishlist item ID
+        const itemId = item.id;
         const productId = item.productId || item.id;
         const productName = item.productName || item.name || 'Product';
         const productPrice = item.productPrice || item.price || 0;
-        // Try to get image from product data if available, otherwise use placeholder
-        const imageURL = item.imageURL || item.imageUrl || item.productImageURL || 'https://www.holoimage.net/images/no-image.jpg';
+        const productCode = item.productCode || item.sku || item.code || '';
+        const imageURL = item.imageURL || item.imageUrl || item.productImageURL || '';
+        const stock = stockMap.get(productId) || stockMap.get(String(productId)) || stockMap.get(Number(productId));
+        const hasStock = Number.isFinite(Number(stock));
+        const stockHtml = hasStock
+          ? (Number(stock) > 0
+            ? '<span class="sm-wish-stock is-in">Available</span>'
+            : '<span class="sm-wish-stock is-out">Out of stock</span>')
+          : '';
+        const imageHtml = imageURL && !/no-image|holoimage/i.test(imageURL)
+          ? '<img src="' + escapeWishHtml(imageURL) + '" alt="' + escapeWishHtml(productName) + '">'
+          : '<span class="sm-wish-fallback">' + escapeWishHtml(String(productName).trim().charAt(0) || 'P') + '</span>';
         
         const productData = {
           id: productId,
@@ -711,29 +712,23 @@
         };
         
         const rowHtml = `
-          <tr data-product-id="${productId}" data-item-id="${itemId}">
-            <td class="product-remove"><a href="javascript:void(0)" class="remove-wishlist-item" data-item-id="${itemId}" data-product-id="${productId}">×</a></td>
-            <td class="product-name">
-              <h5>
-                <a href="shop.html">${productName}</a>
-                <a href="javascript:void(0)" class="wishlist-quick-view-btn" data-product-id="${productId}" style="margin-left: 10px; color: #f379a7; font-size: 14px;" title="View Details">
-                  <i class="ion-arrow-expand"></i> View Details
-                </a>
-              </h5>
-            </td>
-            <td class="product-price"><span class="amount">${formatPrice(productPrice)}</span></td>
-            <td class="stock-status">
-              <span><i class="fa fa-check"></i> In Stock</span>
-            </td>
-            <td class="wishlist-cart"><a href="javascript:void(0)" class="add-wishlist-to-cart" data-product='${JSON.stringify(productData)}'>Add to Cart</a></td>
-          </tr>
+          <article class="sm-wish-item" data-product-id="${escapeWishHtml(productId)}" data-item-id="${escapeWishHtml(itemId)}">
+            <a class="sm-wish-media" href="product?id=${encodeURIComponent(productId)}">${imageHtml}</a>
+            <div class="sm-wish-info">
+              <a href="product?id=${encodeURIComponent(productId)}">${escapeWishHtml(productName)}</a>
+              ${productCode ? '<span class="sm-wish-code">' + escapeWishHtml(productCode) + '</span>' : ''}
+              <strong>${escapeWishHtml(formatPrice(productPrice))}</strong>
+              ${stockHtml}
+            </div>
+            <button type="button" class="sm-wish-remove remove-wishlist-item" data-item-id="${escapeWishHtml(itemId)}" data-product-id="${escapeWishHtml(productId)}">Remove</button>
+            <button type="button" class="sm-wish-cart add-wishlist-to-cart" data-product='${JSON.stringify(productData).replace(/'/g, '&#39;')}'>Add to Cart</button>
+          </article>
         `;
         
         container.append(rowHtml);
       });
     } catch (error) {
-      console.error('Error loading wishlist:', error);
-      container.html('<tr><td colspan="5" class="text-center">Error loading wishlist. Please try again later.</td></tr>');
+      container.html('<div class="sm-wish-empty">Error loading wishlist. Please try again later.</div>');
     }
   }
   
@@ -775,7 +770,7 @@
       console.error('Error removing from wishlist:', error);
       showToast('An error occurred. Please try again.', 'error');
     } finally {
-      $this.prop('disabled', false).text('×');
+      $this.prop('disabled', false).text('�');
     }
   });
   
@@ -852,6 +847,10 @@
   
   // Function to show quick view modal
   function showQuickViewModal(product) {
+    if (product && product.id != null) {
+      window.location.href = 'product?id=' + encodeURIComponent(product.id);
+      return;
+    }
     const productImage = product.imageURL || product.imageUrl || 'https://www.holoimage.net/images/no-image.jpg';
     const productName = product.name || 'Product Name';
     

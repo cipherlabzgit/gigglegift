@@ -5,721 +5,285 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4B1761" />
   <base href="/">
 
-  <title>About Us - Sensory - Kids Toys Store</title>
+  <title>About Us - Giggles & Gifts</title>
 
-  <!--== Favicon ==-->
   <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
 
-  <!--== Google Fonts ==-->
-  <link href="https://fonts.googleapis.com/css?family=Fredoka+One:400" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!--== Bootstrap CSS ==-->
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <!--== Font-awesome Icons CSS ==-->
   <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
-  <!--== Pe Icon 7 Min Icons CSS ==-->
   <link href="/assets/css/pe-icon-7-stroke.min.css" rel="stylesheet" />
-  <!--== Ionicons CSS ==-->
   <link href="/assets/css/ionicons.css" rel="stylesheet" />
-  <!--== Animate CSS ==-->
   <link href="/assets/css/animate.css" rel="stylesheet" />
-  <!--== Aos CSS ==-->
   <link href="/assets/css/aos.css" rel="stylesheet" />
-  <!--== FancyBox CSS ==-->
   <link href="/assets/css/jquery.fancybox.min.css" rel="stylesheet" />
-  <!--== Slicknav CSS ==-->
   <link href="/assets/css/slicknav.css" rel="stylesheet" />
-  <!--== Swiper CSS ==-->
   <link href="/assets/css/swiper.min.css" rel="stylesheet" />
-  <!--== Slick CSS ==-->
   <link href="/assets/css/slick.css" rel="stylesheet" />
-  <!--== Main Style CSS ==-->
   <link href="/assets/css/style.css" rel="stylesheet" />
-
-  <!--== Custom Category Slider Overlay Styles ==-->
-  <style>
-    .category-slider-section {
-      padding: 100px 0;
-      background: linear-gradient(to bottom, #ffffff, #f8f9fa);
-    }
-    
-    .category-slider-section .section-title {
-      margin-bottom: 60px;
-    }
-    
-    .category-slider-section .section-title .title {
-      font-size: 36px;
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 15px;
-      font-family: "Fredoka One", cursive;
-    }
-    
-    .category-slider-section .section-title .desc {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .category-slider-section .section-title .desc p {
-      font-size: 16px;
-      color: #666;
-      line-height: 1.6;
-      margin: 0;
-    }
-    
-    .category-slider-container .category-item {
-      position: relative;
-      padding: 0 10px;
-    }
-    
-    .category-slide-link {
-      display: block;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-    }
-    
-    .category-slide-link:hover {
-      transform: translateY(-5px);
-    }
-    
-    .category-image-wrapper {
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px;
-      height: 250px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f5f5f5;
-      margin: 0 auto;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-    
-    .category-item:hover .category-image-wrapper {
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-    
-    .category-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .category-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), transparent);
-      padding: 25px 20px 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    
-    .category-name {
-      color: #ffffff;
-      font-size: 20px;
-      font-weight: 600;
-      margin: 0 0 5px 0;
-      text-transform: capitalize;
-      font-family: "Rubik", sans-serif;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      letter-spacing: 0.5px;
-    }
-    
-    .category-product-count {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 14px;
-      font-weight: 400;
-      margin: 0;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-    
-    .category-item:hover .category-image-wrapper img {
-      transform: scale(1.15);
-    }
-    
-    .category-item:hover .category-overlay {
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4), transparent);
-      padding-bottom: 25px;
-    }
-    
-    .category-item:hover .category-name {
-      transform: translateY(-2px);
-    }
-    
-    @media (max-width: 991px) {
-      .category-slider-section {
-        padding: 80px 0;
-      }
-      
-      .category-slider-section .section-title .title {
-        font-size: 30px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .category-slider-section {
-        padding: 60px 0;
-      }
-      
-      .category-image-wrapper {
-        height: 200px;
-        border-radius: 12px;
-      }
-      
-      .category-name {
-        font-size: 18px;
-      }
-      
-      .category-overlay {
-        padding: 20px 15px 15px;
-      }
-      
-      .category-slider-section .section-title {
-        margin-bottom: 40px;
-      }
-      
-      .category-slider-section .section-title .title {
-        font-size: 26px;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .category-image-wrapper {
-        height: 180px;
-      }
-      
-      .category-name {
-        font-size: 16px;
-      }
-      
-      .category-product-count {
-        font-size: 12px;
-      }
-    }
-  </style>
-
+  <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 </head>
 
-<body>
+<body class="sm-store">
 
-  <!--wrapper start-->
-  <div class="wrapper about-default-wrapper">
+<div class="wrapper about-default-wrapper">
 
-    <!--== Start Preloader Content ==-->
-    <div class="preloader-wrap">
-      <div class="preloader">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span>
-          <span></span>
-          <span></span>
+  <div class="preloader-wrap">
+    <div class="preloader">
+      <span class="dot"></span>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <header class="header-wrapper">
+    <div class="header-top">
+      <div class="container">
+        <div class="sm-topbar">
+          <a href="https://wa.me/94761487787" target="_blank" rel="noopener">Order on WhatsApp +94 76 148 7787</a>
+          <span>Loved by Sri Lankan families</span>
+          <span>Islandwide delivery</span>
+          <span>Kaduwela, Sri Lanka</span>
         </div>
       </div>
     </div>
-    <!--== End Preloader Content ==-->
-
-    <!--== Start Header Wrapper ==-->
-    <header class="header-wrapper">
-      <div class="header-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-5 col-md-4 col-lg-6">
-              <div class="header-info-left">
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-7 col-md-8 col-lg-6 sm-pl-0 xs-pl-15 header-top-right">
-              <div class="header-info">
-                <a href="tel://+94761487787"><i class="fa fa-phone"></i> +94761487787</a>
-                <a href="mailto:sales@sensory.lk"><i class="fa fa-envelope"></i> sales@sensory.lk</a>
-                <a href="login-register"><i class="fa fa-user"></i> Account</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="header-middle">
-        <div class="container">
-          <div class="row row-gutter-0 align-items-center">
-            <div class="col-12">
-              <div class="header-align">
-                <div class="header-align-left">
-                  <div class="header-logo-area">
-                    <a href="/">
-                      <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                      <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
-                    </a>
-                  </div>
+    <div class="header-middle">
+      <div class="container">
+        <div class="row row-gutter-0 align-items-center">
+          <div class="col-12">
+            <div class="header-align">
+              <div class="header-align-left">
+                <div class="header-logo-area">
+                  <a href="/">
+                    <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                    <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                  </a>
                 </div>
-                <div class="header-align-center">
-                  <div class="header-search-box">
-                    <form action="#" method="post">
-                      <div class="form-input-item">
-                        <label for="search" class="sr-only">Search Everything</label>
-                        <input type="text" id="search" placeholder="Search Everything">
-                        <button type="submit" class="btn-src">
-                          <i class="pe-7s-search"></i>
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+              </div>
+              <div class="header-align-center">
+                <div class="header-search-box">
+                  <form action="#" method="post">
+                    <div class="form-input-item">
+                      <label for="search" class="sr-only">Search Everything</label>
+                      <input type="text" id="search" placeholder="Search Everything">
+                      <button type="submit" class="btn-src"><i class="pe-7s-search"></i></button>
+                    </div>
+                  </form>
                 </div>
-                <div class="header-align-right">
-                  <div class="header-action-area">
-                    <div class="header-action-wishlist">
-                      <button class="btn-wishlist" onclick="window.location.href='shop-wishlist'">
-                        <span class="wishlist-count">0</span>
-                        <i class="pe-7s-like"></i>
-                      </button>
-                    </div>
-                    <div class="header-action-cart">
-                      <button class="btn-cart cart-icon" onclick="window.location.href='shop-cart'">
-                        <span class="cart-count">0</span>
-                        <i class="pe-7s-shopbag"></i>
-                      </button>
-                    </div>
-                    <button class="btn-menu d-md-none">
-                      <i class="ion-navicon"></i>
+              </div>
+              <div class="header-align-right">
+                <div class="header-action-area">
+                  <div class="header-action-wishlist">
+                    <button class="btn-wishlist" onclick="window.location.href='shop-wishlist'">
+                      <span class="wishlist-count">0</span>
+                      <i class="pe-7s-like"></i>
                     </button>
                   </div>
+                  <div class="header-action-cart">
+                    <button class="btn-cart cart-icon" onclick="window.location.href='shop-cart'">
+                      <span class="cart-count">0</span>
+                      <i class="pe-7s-shopbag"></i>
+                    </button>
+                  </div>
+                  <button class="btn-menu d-md-none"><i class="ion-navicon"></i></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="header-area header-default sticky-header">
-        <div class="container">
-          <div class="row row-gutter-0 align-items-center">
-            <div class="col-4 col-sm-6 col-lg-2">
-              <div class="header-logo-area">
-                <a href="/">
-                  <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                  <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
-                </a>
-              </div>
+    </div>
+    <div class="header-area header-default sticky-header">
+      <div class="container">
+        <div class="row row-gutter-0 align-items-center">
+          <div class="col-4 col-sm-6 col-lg-2">
+            <div class="header-logo-area">
+              <a href="/">
+                <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+              </a>
             </div>
-            <div class="col-lg-8 sticky-md-none">
-              <div class="header-nav-scroll-wrap">
-                <button type="button" class="nav-scroll-btn nav-scroll-left" aria-label="Scroll menu left">
-                  <i class="fa fa-angle-left"></i>
-                </button>
-                <div class="header-navigation-area d-none d-md-block">
-                  <ul class="main-menu nav position-relative" id="main-nav-menu">
-                    <li><a class="ml--2" href="/">Home</a></li>
-                    <!-- Main category links are injected by JS (up to 5 categories) -->
-                  </ul>
-                </div>
-                <button type="button" class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
-                  <i class="fa fa-angle-right"></i>
-                </button>
+          </div>
+          <div class="col-lg-8 sticky-md-none">
+            <div class="header-nav-scroll-wrap">
+              <button type="button" class="nav-scroll-btn nav-scroll-left" aria-label="Scroll menu left">
+                <i class="fa fa-angle-left"></i>
+              </button>
+              <div class="header-navigation-area d-none d-md-block">
+                <ul class="main-menu nav position-relative" id="main-nav-menu">
+                  <li><a class="ml--2" href="/">Home</a></li>
+                  <li><a href="shop">Shop</a></li>
+                </ul>
               </div>
+              <button type="button" class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
+                <i class="fa fa-angle-right"></i>
+              </button>
             </div>
-<div class="col-8 col-sm-6 col-lg-2">
+          </div>
+          <div class="col-8 col-sm-6 col-lg-2">
             <div class="header-action-area">
-                <div class="header-action-search">
-                  <button class="btn-search btn-search-menu">
-                    <i class="pe-7s-search"></i>
-                  </button>
-                </div>
-                <div class="header-action-login">
-                  <button class="btn-login" onclick="window.location.href='login-register'">
-                    <i class="pe-7s-users"></i>
-                  </button>
-                </div>
-                <div class="header-action-wishlist">
-                  <button class="btn-wishlist" onclick="window.location.href='shop-wishlist'">
-                    <i class="pe-7s-like"></i>
-                  </button>
-                </div>
-                <div class="header-action-cart">
-                  <button class="btn-cart cart-icon" onclick="window.location.href='shop-cart'">
-                    <span class="cart-count">0</span>
-                    <i class="pe-7s-shopbag"></i>
-                  </button>
-                </div>
-                <button class="btn-menu d-lg-none">
-                  <i class="ion-navicon"></i>
+              <div class="header-action-search">
+                <button class="btn-search btn-search-menu"><i class="pe-7s-search"></i></button>
+              </div>
+              <div class="header-action-login">
+                <button class="btn-login" onclick="window.location.href='login-register'"><i class="pe-7s-users"></i></button>
+              </div>
+              <div class="header-action-wishlist">
+                <button class="btn-wishlist" onclick="window.location.href='shop-wishlist'">
+                  <span class="wishlist-count">0</span>
+                  <i class="pe-7s-like"></i>
                 </button>
               </div>
+              <div class="header-action-cart">
+                <button class="btn-cart cart-icon" onclick="window.location.href='shop-cart'">
+                  <span class="cart-count">0</span>
+                  <i class="pe-7s-shopbag"></i>
+                </button>
+              </div>
+              <button class="btn-menu d-lg-none"><i class="ion-navicon"></i></button>
             </div>
           </div>
         </div>
       </div>
-    </header>
-    <!--== End Header Wrapper ==-->
+    </div>
+  </header>
 
-    <main class="main-content">
-      <!--== Start Page Title Area ==-->
-      <section class="page-title-area">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12 m-auto">
-              <div class="page-title-content text-center">
-                <h2 class="title">About Us</h2>
-                <!-- <div class="bread-crumbs"><a href="/"> Home </a><span class="breadcrumb-sep"> // </span><span
-                    class="active"> About Us</span></div> -->
-              </div>
+  <main class="main-content">
+    <section class="sm-about-hero">
+      <div class="container">
+        <p class="sm-kicker">About Giggles & Gifts</p>
+        <h1>Toys that play,<br>books that build.</h1>
+        <p class="sm-about-lead">Thoughtfully chosen sensory books, toys and gifts for early learning - packed in Kaduwela for families across Sri Lanka.</p>
+      </div>
+    </section>
+
+    <section class="sm-about-story">
+      <div class="container">
+        <div class="sm-about-grid">
+          <div class="sm-about-photo">
+            <img src="/assets/img/new/51.jpg" alt="Children exploring play and early learning">
+          </div>
+          <div class="sm-about-copy">
+            <p class="sm-kicker">Our story</p>
+            <h2>Made for little hands, chosen by parents.</h2>
+            <p>At Giggles & Gifts, we believe early learning begins with touch, curiosity, and meaningful play. We curate sensory books, toys and learning tools that support thinking, movement and feeling in a child�s early years.</p>
+            <p>Each piece is chosen for safety, quality and developmental value � so parents, educators and gift-givers can shop with a clear view of what they are buying.</p>
+            <a class="sm-btn-hero" href="shop">Shop the collection</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sm-trust sm-about-trust">
+      <div class="container">
+        <div class="sm-trust-grid">
+          <div class="sm-trust-item">
+            <span class="sm-trust-icon"><i class="ion-ios-lightbulb-outline"></i></span>
+            <div>
+              <strong>Early Learning</strong>
+              <span>Play that builds thinking skills</span>
+            </div>
+          </div>
+          <div class="sm-trust-item">
+            <span class="sm-trust-icon"><i class="ion-ios-color-wand"></i></span>
+            <div>
+              <strong>Sensory play</strong>
+              <span>Textures, colours and sounds</span>
+            </div>
+          </div>
+          <div class="sm-trust-item">
+            <span class="sm-trust-icon"><i class="ion-ios-checkmark-outline"></i></span>
+            <div>
+              <strong>Safe materials</strong>
+              <span>Child-safe pieces only</span>
+            </div>
+          </div>
+          <div class="sm-trust-item">
+            <span class="sm-trust-icon"><i class="ion-ios-location-outline"></i></span>
+            <div>
+              <strong>From Kaduwela</strong>
+              <span>Islandwide delivery</span>
             </div>
           </div>
         </div>
-      </section>
-      <!--== End Page Title Area ==-->
+      </div>
+    </section>
 
-      <!--== Start Divider Area Wrapper ==-->
-      <section class="divider-area divider-style3-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-              <div class="thumb">
-                <img src="/assets/img/new/51.jpg" alt="Image">
-                <div class="shape-group">
-                  <div class="shape-style1">
-                    <img src="/assets/img/divider/shape3.png" alt="Image">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6" data-aos="fade-up" data-aos-duration="1000">
-              <div class="divider-content">
-                <h4 class="subtitle">Hello there!</h4>
-                <!-- <h2 class="title">At Sensory, we believe early learning begins with touch, curiosity, and meaningful
-                  play. We curate premium sensory products designed to support cognitive, motor, and emotional
-                  development during a child’s most formative years.</h2> -->
-                  <p>At Sensory, we believe early learning begins with touch, curiosity, and meaningful
-                  play. We curate premium sensory products designed to support cognitive, motor, and emotional
-                  development during a child’s most formative years. <br/>
-                  Our collections bring together thoughtfully crafted books, toys, and learning tools that encourage
-                  exploration, creativity, and independent discovery—each selected for safety, quality, and
-                  developmental value. Sensory exists to support parents, educators, and retailers seeking purposeful
-                  play solutions that nurture growing minds with care and intention.
-                </p>
-                <a class="btn-theme" href="contact">Contact Us</a>
-              </div>
-            </div>
-          </div>
+    <section class="sm-about-cats category-slider-section">
+      <div class="container">
+        <div class="sm-fav-copy text-center">
+          <p class="sm-kicker">Shop by theme</p>
+          <h2>Our collections</h2>
+          <p>Browse sensory books and toys by the themes parents shop most.</p>
         </div>
-      </section>
-      <!--== End Divider Area Wrapper ==-->
-
-      <!--== Start Category Area ==-->
-      <section class="category-slider-section" data-aos="fade-up" data-aos-duration="1000">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="section-title text-center mb-5">
-                <h2 class="title">Our Product Categories</h2>
-                <div class="desc">
-                  <p>Explore our wide range of sensory learning products designed to inspire and educate</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="swiper-container category-slider-container">
+          <div class="swiper-wrapper category-slider" id="category-slider-wrapper"></div>
         </div>
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <div class="swiper-container category-slider-container">
-                <div class="swiper-wrapper category-slider" id="category-slider-wrapper">
-                  <!-- Categories will be loaded dynamically here -->
-                </div>
-              </div>
-            </div>
-          </div>
+      </div>
+    </section>
+
+    <section class="sm-about-cta">
+      <div class="container">
+        <h2>Ready to find the right gift?</h2>
+        <p>Ask us on WhatsApp, or browse the full collection.</p>
+        <div class="sm-hero-actions">
+          <a class="sm-btn-hero" href="shop">See all products</a>
+          <a class="sm-btn-whatsapp" href="https://wa.me/94761487787" target="_blank" rel="noopener">
+            <i class="fa fa-whatsapp"></i> Message us
+          </a>
         </div>
-      </section>
-      <!--== End Category Area ==-->
+      </div>
+    </section>
+  </main>
 
-
-      <!--== Start Newsletter Area ==-->
-      <!-- <section class="testimonial-area testimonial-default-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 m-auto">
-              <div class="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
-                <h2 class="title">Testimonial</h2>
-                <div class="desc">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et
-                    dolore magna aliqua. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row" data-aos="fade-up" data-aos-duration="1300">
-            <div class="col-lg-12">
-              <div class="swiper-container testimonial-slider-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <div class="client-content">
-                        <div class="inner-content">
-                          <div class="icon">
-                            <img src="/assets/img/icons/1.png" alt="Image">
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consect adipisi elit sed do eiusmod temporlo incidid ut labore
-                            et dolore magnalop aliquall Ut enim ad minim.</p>
-                        </div>
-                        <div class="shape-group">
-                          <div class="shape-style1">
-                            <img src="/assets/img/testimonial/shape1.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="client-info">
-                        <div class="thumb">
-                          <img src="/assets/img/testimonial/1.png" alt="Image">
-                        </div>
-                        <div class="desc">
-                          <h4 class="title">Dasia Lovell</h4>
-                          <p>Customer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <div class="client-content">
-                        <div class="inner-content">
-                          <div class="icon">
-                            <img src="/assets/img/icons/1.png" alt="Image">
-                          </div>
-                          <p>There are many variations of passage of Lorem Ipsum available, but the on majority have
-                            suffered alteration in some form, by injected humour.</p>
-                        </div>
-                        <div class="shape-group">
-                          <div class="shape-style1">
-                            <img src="/assets/img/testimonial/shape1.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="client-info">
-                        <div class="thumb">
-                          <img src="/assets/img/testimonial/2.png" alt="Image">
-                        </div>
-                        <div class="desc">
-                          <h4 class="title">Demetri Caron</h4>
-                          <p>Customer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <div class="client-content">
-                        <div class="inner-content">
-                          <div class="icon">
-                            <img src="/assets/img/icons/1.png" alt="Image">
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consect adipisi elit sed do eiusmod temporlo incidid ut labore
-                            et dolore magnalop aliquall Ut enim ad minim.</p>
-                        </div>
-                        <div class="shape-group">
-                          <div class="shape-style1">
-                            <img src="/assets/img/testimonial/shape1.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="client-info">
-                        <div class="thumb">
-                          <img src="/assets/img/testimonial/3.png" alt="Image">
-                        </div>
-                        <div class="desc">
-                          <h4 class="title">Akhil Newman</h4>
-                          <p>Customer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <div class="client-content">
-                        <div class="inner-content">
-                          <div class="icon">
-                            <img src="/assets/img/icons/1.png" alt="Image">
-                          </div>
-                          <p>There are many variations of passage of Lorem Ipsum available, but the on majority have
-                            suffered alteration in some form, by injected humour.</p>
-                        </div>
-                        <div class="shape-group">
-                          <div class="shape-style1">
-                            <img src="/assets/img/testimonial/shape1.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="client-info">
-                        <div class="thumb">
-                          <img src="/assets/img/testimonial/1.png" alt="Image">
-                        </div>
-                        <div class="desc">
-                          <h4 class="title">Dasia Lovell</h4>
-                          <p>Customer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <div class="client-content">
-                        <div class="inner-content">
-                          <div class="icon">
-                            <img src="/assets/img/icons/1.png" alt="Image">
-                          </div>
-                          <p>Lorem ipsum dolor sit amet, consect adipisi elit sed do eiusmod temporlo incidid ut labore
-                            et dolore magnalop aliquall Ut enim ad minim.</p>
-                        </div>
-                        <div class="shape-group">
-                          <div class="shape-style1">
-                            <img src="/assets/img/testimonial/shape1.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="client-info">
-                        <div class="thumb">
-                          <img src="/assets/img/testimonial/2.png" alt="Image">
-                        </div>
-                        <div class="desc">
-                          <h4 class="title">Demetri Caron</h4>
-                          <p>Customer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="testimonial-item">
-                      <div class="client-content">
-                        <div class="inner-content">
-                          <div class="icon">
-                            <img src="/assets/img/icons/1.png" alt="Image">
-                          </div>
-                          <p>There are many variations of passage of Lorem Ipsum available, but the on majority have
-                            suffered alteration in some form, by injected humour.</p>
-                        </div>
-                        <div class="shape-group">
-                          <div class="shape-style1">
-                            <img src="/assets/img/testimonial/shape1.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="client-info">
-                        <div class="thumb">
-                          <img src="/assets/img/testimonial/3.png" alt="Image">
-                        </div>
-                        <div class="desc">
-                          <h4 class="title">Akhil Newman</h4>
-                          <p>Customer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="thumb-style bg-img" data-bg-img="/assets/img/testimonial/shape2.png"></div>
-      </section> -->
-      <!--== End Newsletter Area ==-->
-
-      <!--== Start Divider Area Wrapper ==-->
-      <section class="divider-area divider-style4-area" data-aos="fade-up" data-aos-duration="1000">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="divider-wrap bg-img" data-bg-img="/assets/img/new/61.jpg">
-                <div class="row align-items-center">
-                  <div class="col-lg-6 position-relative">
-                    <div class="content">
-                      <h2>Subscribe for Exclusive Sales & News</h2>
-                    </div>
-                    <div class="shape-group">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="newsletter-form">
-                      <form action="#">
-                        <input class="form-control" type="email" placeholder="Enter Your Email">
-                        <button class="btn btn-theme" type="submit">Subscribe</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--== End Divider Area Wrapper ==-->
-    </main>
-
-    <!--== Start Footer Area Wrapper ==-->
-  <footer class="footer-area default-style" >
+  <footer class="footer-area default-style sm-footer">
     <div class="footer-main">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-4">
-            <div class="widget-item item-style3">
-              <div class="about-widget">
-                <a class="footer-logo" href="/">
-                  <img src="/assets/img/logo-light.png" alt="Logo">
-                </a>
-                <p>
-                  Sensory a brand of ANKH Trading Pvt Ltd is a curated destination for premium sensory books, toddler sensory, and early learning products, created to support holistic childhood development. We bring together safe, reliable, and thoughtfully designed sensory essentials in one place—making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
-0 
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget-item item-style1">
-              <h4 class="widget-title">Quick Links</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-1">Quick Links</h4>
-              <div id="dividerId-1" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap">
-                  <ul class="nav-menu nav item-hover-style">
-                    <li><a href="/">- Home</a></li>
-                    <li><a href="about">- About</a></li>
-                    <li><a href="shop">- Shop</a></li>
-                    <li><a href="contact">- Contact</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="widget-item item-style2">
-              <h4 class="widget-title">Company</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-3">Company</h4>
-              <div id="dividerId-3" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap item-hover-style">
-                  <ul class="nav-menu nav">
-                    <li><a href="terms-and-conditions">- Terms & Conditions</a></li>
-                    <li><a href="privacy-policy">- Privacy Policy</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-3">
             <div class="widget-item">
-              <h4 class="widget-title">Store Information.</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-4">Store Information.</h4>
-              <div id="dividerId-4" class="collapse widget-collapse-body">
-                <p class="widget-address">296/A/1 , Level 2 <br>New Kandy Road, <br>Kothalawala, <br>Kaduwela,
-                    <br>Sri Lanka</p>
-                  <ul class="widget-contact-info">
-                    <li>Phone: <a href="tel://+94761487787">+94761487787</a></li>
-                    <li>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></li>
-                  </ul>
-              </div>
+              <a class="footer-logo" href="/">
+                <img src="/assets/img/logo.png" alt="Giggles & Gifts">
+              </a>
+              <p>Capturing the joy of firsts: sensory books, toys and gifts for early learning.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <div class="widget-item">
+              <h4 class="widget-title">Shop</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="shop">Shop All</a></li>
+                  <li><a href="about">About</a></li>
+                  <li><a href="contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Help</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="contact">Delivery info</a></li>
+                  <li><a href="terms-and-conditions">Returns</a></li>
+                  <li><a href="privacy-policy">Privacy</a></li>
+                  <li><a href="contact">FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Visit</h4>
+              <p>Call: <a href="tel:+94761487787">+94 76 148 7787</a></p>
+              <p>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></p>
+              <p>Kaduwela, Sri Lanka</p>
             </div>
           </div>
         </div>
@@ -727,303 +291,185 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <div class="footer-bottom-content">
-          <div class="row text-center">
-            <div class="col-sm-12">
-              <div class="widget-copyright">
-                <p><i class="fa fa-copyright"></i> 2025 <span>Sensory. </span> All Rights Reserved</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p><i class="fa fa-copyright"></i> 2026 Giggles & Gifts | sensory.lk</p>
       </div>
     </div>
-    <div class="footer-shape bg-img" data-bg-img="/assets/img/photos/footer1.png"></div>
   </footer>
-  <!--== End Footer Area Wrapper ==-->
 
-    <!--== Scroll Top Button ==-->
-    <div class="scroll-to-top"><span class="fa fa-angle-double-up"></span></div>
+  <div class="scroll-to-top"><span class="fa fa-angle-double-up"></span></div>
 
-    <!--== Start Aside Search Menu ==-->
-    <div class="search-box-wrapper">
-      <div class="search-box-content-inner">
-        <div class="search-box-form-wrap">
-          <div class="search-note">
-            <p>Start typing and press Enter to search</p>
-          </div>
-          <form action="#" method="post">
-            <div class="search-form position-relative">
-              <label for="search-input" class="sr-only">Search</label>
-              <input type="search" class="form-control" placeholder="Search" id="search-input">
-              <button class="search-button"><i class="pe-7s-search"></i></button>
-            </div>
-          </form>
+  <div class="search-box-wrapper">
+    <div class="search-box-content-inner">
+      <div class="search-box-form-wrap">
+        <div class="search-note">
+          <p>Start typing and press Enter to search</p>
         </div>
+        <form action="#" method="post">
+          <div class="search-form position-relative">
+            <label for="search-input" class="sr-only">Search</label>
+            <input type="search" class="form-control" placeholder="Search" id="search-input">
+            <button class="search-button"><i class="pe-7s-search"></i></button>
+          </div>
+        </form>
       </div>
-      <!--== End Aside Search Menu ==-->
-      <a href="javascript:;" class="search-close"><i class="pe-7s-close"></i></a>
     </div>
-    <!--== End Aside Search Menu ==-->
-
-    <!--== Start Sidebar Cart Menu ==-->
-    <aside class="sidebar-cart-modal">
-      <div class="sidebar-cart-inner">
-        <div class="sidebar-cart-content">
-          <a class="cart-close" href="javascript:void(0);"><i class="pe-7s-close"></i></a>
-          <div class="sidebar-cart-all">
-            <div class="cart-header">
-              <h3>Shopping Cart</h3>
-              <div class="close-style-wrap">
-                <span class="close-style close-style-width-1 cart-close"></span>
-              </div>
-            </div>
-            <div class="cart-content cart-content-padding">
-              <ul id="sidebar-cart-items">
-                <!-- Cart items will be loaded dynamically here -->
-              </ul>
-              <div class="cart-total">
-                <h4>Subtotal: <span id="sidebar-cart-subtotal">LKR 0.00</span></h4>
-              </div>
-              <div class="cart-checkout-btn">
-                <a class="cart-btn" href="shop-cart">view cart</a>
-                <a class="checkout-btn" href="shop-checkout">checkout</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </aside>
-    <div class="sidebar-cart-overlay"></div>
-    <!--== End Sidebar Cart Menu ==-->
-
-    <!--== Start Side Menu ==-->
-    <aside class="off-canvas-wrapper">
-      <div class="off-canvas-inner">
-        <div class="off-canvas-overlay d-none"></div>
-        <!-- Start Off Canvas Content Wrapper -->
-        <div class="off-canvas-content">
-          <!-- Off Canvas Header -->
-          <div class="off-canvas-header">
-            <div class="close-action">
-              <button class="btn-close"><i class="pe-7s-close"></i></button>
-            </div>
-          </div>
-
-          <div class="off-canvas-item">
-            <!-- Start Mobile Menu Wrapper -->
-            <div class="res-mobile-menu">
-              <!-- Note Content Auto Generate By Jquery From Main Menu -->
-            </div>
-            <!-- End Mobile Menu Wrapper -->
-          </div>
-          <!-- Off Canvas Footer -->
-          <div class="off-canvas-footer"></div>
-        </div>
-        <!-- End Off Canvas Content Wrapper -->
-      </div>
-    </aside>
-    <!--== End Side Menu ==-->
+    <a href="javascript:;" class="search-close"><i class="pe-7s-close"></i></a>
   </div>
 
-  <!--=======================Javascript============================-->
-
-  <!--=== Modernizr Min Js ===-->
-  <script src="/assets/js/modernizr.js"></script>
-  <!--=== jQuery Min Js ===-->
-  <script src="/assets/js/jquery-main.js"></script>
-  <!--=== jQuery Migration Min Js ===-->
-  <script src="/assets/js/jquery-migrate.js"></script>
-  <!--=== Popper Min Js ===-->
-  <script src="/assets/js/popper.min.js"></script>
-  <!--=== Bootstrap Min Js ===-->
-  <script src="/assets/js/bootstrap.min.js"></script>
-  <!--=== jquery Appear Js ===-->
-  <script src="/assets/js/jquery.appear.js"></script>
-  <!--=== jquery Swiper Min Js ===-->
-  <script src="/assets/js/swiper.min.js"></script>
-  <!--=== jquery Fancybox Min Js ===-->
-  <script src="/assets/js/fancybox.min.js"></script>
-  <!--=== jquery Aos Min Js ===-->
-  <script src="/assets/js/aos.min.js"></script>
-  <!--=== jquery Slicknav Js ===-->
-  <script src="/assets/js/jquery.slicknav.js"></script>
-  <!--=== jquery Countdown Js ===-->
-  <script src="/assets/js/jquery.countdown.min.js"></script>
-  <!--=== jquery Tippy Js ===-->
-  <script src="/assets/js/tippy.all.min.js"></script>
-  <!--=== Isotope Min Js ===-->
-  <script src="/assets/js/isotope.pkgd.min.js"></script>
-  <!--=== Parallax Min Js ===-->
-  <script src="/assets/js/parallax.min.js"></script>
-  <!--=== Slick  Min Js ===-->
-  <script src="/assets/js/slick.min.js"></script>
-  <!--=== jquery Wow Min Js ===-->
-  <script src="/assets/js/wow.min.js"></script>
-  <!--=== jquery Zoom Min Js ===-->
-  <script src="/assets/js/jquery-zoom.min.js"></script>
-
-  <!--=== API Config Js ===-->
-  <script src="/assets/js/config.js"></script>
-  <!--=== Cart & Wishlist Service Js ===-->
-  <script src="/assets/js/cart-service.js"></script>
-  <!--=== API Service Js ===-->
-  <script src="/assets/js/api-service.js"></script>
-  <!--=== Custom Js ===-->
-  <script src="/assets/js/custom.js"></script>
-
-  <!-- Category Slider Loader Script -->
-  <script>
-    (function($) {
-      'use strict';
-
-      // Render categories in slider format
-      function renderCategorySlider(categories) {
-        const container = $('#category-slider-wrapper');
-        if (!container.length || !categories || categories.length === 0) {
-          container.html('<div class="swiper-slide"><p class="text-center">No categories found</p></div>');
-          return;
-        }
-
-        // Use all categories
-        let displayCategories = categories;
-        
-        // Ensure we have at least 6 slides for smooth infinite loop
-        // If we have fewer, duplicate the categories
-        if (displayCategories.length < 6) {
-          const duplicatesNeeded = Math.ceil(6 / displayCategories.length);
-          const duplicated = [];
-          for (let i = 0; i < duplicatesNeeded; i++) {
-            duplicated.push(...displayCategories);
-          }
-          displayCategories = duplicated.slice(0, 6);
-        }
-        
-        container.empty();
-        
-        displayCategories.forEach((category, index) => {
-          // Get imageUrl from category data (check both imageUrl and imageURL for compatibility)
-          const categoryImage = category.imageUrl || category.imageURL;
-          const productCount = category.productCount || 0;
-          const productCountText = productCount > 0 ? `${productCount} ${productCount === 1 ? 'Product' : 'Products'}` : 'Explore';
-          
-          // Build style attribute for background image only if imageUrl exists
-          let backgroundStyle = '';
-          if (categoryImage && categoryImage.trim() !== '') {
-            backgroundStyle = `style="background-image: url('${categoryImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;"`;
-          }
-          
-          const categoryHtml = `
-            <div class="swiper-slide category-item">
-              <a href="shop?category=${category.id}" class="category-slide-link">
-                <div class="category-image-wrapper" ${backgroundStyle}>
-                  <div class="category-overlay">
-                    <h3 class="category-name">${category.name}</h3>
-                    <p class="category-product-count">${productCountText}</p>
-                  </div>
-                </div>
-              </a>
+  <aside class="sidebar-cart-modal">
+    <div class="sidebar-cart-inner">
+      <div class="sidebar-cart-content">
+        <a class="cart-close" href="javascript:void(0);"><i class="pe-7s-close"></i></a>
+        <div class="sidebar-cart-all">
+          <div class="cart-header">
+            <h3>Shopping Cart</h3>
+          </div>
+          <div class="cart-content cart-content-padding">
+            <ul id="sidebar-cart-items"></ul>
+            <div class="cart-total">
+              <h4>Subtotal: <span id="sidebar-cart-subtotal">LKR 0.00</span></h4>
             </div>
-          `;
-          
-          container.append(categoryHtml);
-        });
+            <div class="cart-checkout-btn">
+              <a class="cart-btn" href="shop-cart">view cart</a>
+              <a class="checkout-btn" href="shop-checkout">checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-cart-overlay"></div>
 
-        // Reinitialize the slider after content is loaded
-        if (typeof Swiper !== 'undefined') {
-          // Destroy existing instance if any
-          const sliderElement = document.querySelector('.category-slider-container');
-          if (sliderElement && sliderElement.swiper) {
-            sliderElement.swiper.destroy(true, true);
-          }
-          
-          // Reinitialize slider (the initialization in custom.js will handle this)
-          // But we need to trigger it manually since content is loaded dynamically
-          setTimeout(function() {
-            if (typeof window.initCategorySlider === 'function') {
-              window.initCategorySlider();
-            } else {
-              // Fallback: manually initialize
-              const totalSlides = displayCategories.length;
-              
-              new Swiper('.category-slider-container', {
-                slidesPerView: 6,
-                loop: true,
-                loopedSlides: Math.max(totalSlides, 5),
-                loopAdditionalSlides: 2,
-                speed: 1000,
-                spaceBetween: 30,
-                autoplay: {
-                  delay: 3000,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: false,
-                  stopOnLastSlide: false,
-                },
-                allowTouchMove: true,
-                watchSlidesProgress: true,
-                watchSlidesVisibility: true,
-                breakpoints: {
-                  1200: {
-                    slidesPerView: 6,
-                    spaceBetween: 30
-                  },
-                  992: {
-                    slidesPerView: 4,
-                    spaceBetween: 30
-                  },
-                  768: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                  },
-                  576: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                  },
-                  380: {
-                    slidesPerView: 2,
-                    spaceBetween: 30
-                  },
-                  0: {
-                    slidesPerView: 2,
-                    spaceBetween: 30
-                  }
-                }
-              });
-            }
-          }, 100);
-        }
+  <aside class="off-canvas-wrapper">
+    <div class="off-canvas-inner">
+      <div class="off-canvas-overlay d-none"></div>
+      <div class="off-canvas-content">
+        <div class="off-canvas-header">
+          <div class="close-action">
+            <button class="btn-close"><i class="pe-7s-close"></i></button>
+          </div>
+        </div>
+        <div class="off-canvas-item">
+          <div class="res-mobile-menu"></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script src="/assets/js/modernizr.js"></script>
+<script src="/assets/js/jquery-main.js"></script>
+<script src="/assets/js/jquery-migrate.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.appear.js"></script>
+<script src="/assets/js/swiper.min.js"></script>
+<script src="/assets/js/fancybox.min.js"></script>
+<script src="/assets/js/aos.min.js"></script>
+<script src="/assets/js/jquery.slicknav.js"></script>
+<script src="/assets/js/jquery.countdown.min.js"></script>
+<script src="/assets/js/tippy.all.min.js"></script>
+<script src="/assets/js/isotope.pkgd.min.js"></script>
+<script src="/assets/js/parallax.min.js"></script>
+<script src="/assets/js/slick.min.js"></script>
+<script src="/assets/js/wow.min.js"></script>
+<script src="/assets/js/jquery-zoom.min.js"></script>
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/cart-service.js?v=wishlist-local-1"></script>
+<script src="/assets/js/api-service.js?v=catalog-counts-3"></script>
+<script src="/assets/js/parent-shop.js?v=2"></script>
+<script src="/assets/js/custom.js?v=landing-motion-1"></script>
+
+<script>
+  (function($) {
+    'use strict';
+
+    function renderCategorySlider(categories) {
+      var container = $('#category-slider-wrapper');
+      if (!container.length || !categories || categories.length === 0) {
+        container.html('<div class="swiper-slide"><p class="text-center">No categories found</p></div>');
+        return;
       }
 
-      // Load categories from API
-      async function loadCategorySlider() {
-        try {
-          if (typeof fetchCategories === 'function') {
-            const categories = await fetchCategories();
-            if (categories && categories.length > 0) {
-              renderCategorySlider(categories);
-            } else {
-              $('#category-slider-wrapper').html('<div class="swiper-slide"><p class="text-center">No categories found</p></div>');
-            }
-          } else {
-            console.error('fetchCategories function not available');
-          }
-        } catch (error) {
-          console.error('Error loading categories:', error);
-          $('#category-slider-wrapper').html('<div class="swiper-slide"><p class="text-center">Error loading categories</p></div>');
+      var displayCategories = categories.slice();
+      if (displayCategories.length < 6) {
+        var copies = Math.ceil(6 / displayCategories.length);
+        var duplicated = [];
+        for (var i = 0; i < copies; i++) {
+          duplicated = duplicated.concat(displayCategories);
         }
+        displayCategories = duplicated.slice(0, 6);
       }
 
-      // Load categories when page is ready
-      $(document).ready(function() {
-        // Wait a bit for all scripts to load
-        setTimeout(function() {
-          loadCategorySlider();
-        }, 500);
+      container.empty();
+      displayCategories.forEach(function (category) {
+        var categoryImage = category.imageUrl || category.imageURL;
+        var productCount = category.productCount || 0;
+        var productCountText = productCount > 0
+          ? productCount + (productCount === 1 ? ' product' : ' products')
+          : 'Explore';
+        var photoStyle = categoryImage && String(categoryImage).trim()
+          ? 'style="background-image:url(\'' + categoryImage + '\')"'
+          : '';
+
+        container.append(
+          '<div class="swiper-slide sm-about-cat">' +
+            '<a href="shop?category=' + category.id + '">' +
+              '<div class="sm-about-cat-photo" ' + photoStyle + '></div>' +
+              '<strong>' + category.name + '</strong>' +
+              '<span>' + productCountText + '</span>' +
+            '</a>' +
+          '</div>'
+        );
       });
 
-    })(window.jQuery);
-  </script>
+      if (typeof Swiper === 'undefined') {
+        return;
+      }
+
+      var sliderElement = document.querySelector('.category-slider-container');
+      if (sliderElement && sliderElement.swiper) {
+        sliderElement.swiper.destroy(true, true);
+      }
+
+      setTimeout(function () {
+        new Swiper('.category-slider-container', {
+          slidesPerView: 4,
+          loop: displayCategories.length > 4,
+          speed: 700,
+          spaceBetween: 20,
+          autoplay: { delay: 4000, disableOnInteraction: false },
+          breakpoints: {
+            1200: { slidesPerView: 4, spaceBetween: 20 },
+            992: { slidesPerView: 3, spaceBetween: 18 },
+            576: { slidesPerView: 2, spaceBetween: 14 },
+            0: { slidesPerView: 1.4, spaceBetween: 12 }
+          }
+        });
+      }, 80);
+    }
+
+    async function loadCategorySlider() {
+      try {
+        if (typeof fetchCategories !== 'function') {
+          return;
+        }
+        var categories = await fetchCategories();
+        if (categories && categories.length) {
+          renderCategorySlider(categories);
+        } else {
+          $('#category-slider-wrapper').html('<div class="swiper-slide"><p class="text-center">No categories found</p></div>');
+        }
+      } catch (error) {
+        $('#category-slider-wrapper').html('<div class="swiper-slide"><p class="text-center">Categories will appear here.</p></div>');
+      }
+    }
+
+    $(document).ready(function () {
+      setTimeout(loadCategorySlider, 400);
+    });
+  })(window.jQuery);
+</script>
 
 </body>
-
 </html>

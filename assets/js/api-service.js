@@ -42,79 +42,228 @@ async function fetchCategories() {
   }
 }
 
-// Fetch products
-async function fetchProducts(skipCount = 0, maxResultCount = 8, categoryId = null, keyword = '') {
+function isShopVisibleProduct(product) {
+  if (!product || product.isActive === false) {
+    return false;
+  }
+  const sellingPrice = Number(product.sellingPrice);
+  return Number.isFinite(sellingPrice) && sellingPrice > 0;
+}
+
+async function hydrateProductsList(items, options) {
+  if (!Array.isArray(items) || !items.length) {
+    return items || [];
+  }
+  if (typeof window.hydrateProductImages !== 'function') {
+    return items;
+  }
+  return Promise.all(items.map(function (product) {
+    return window.hydrateProductImages(product, options);
+  }));
+}
+
+function normalizeShopProduct(product) {
+  return {
+    ...product,
+    imageURL: product.imageUrl || product.imageURL || null,
+    unitPrice: product.unitPrice || product.sellingPrice || 0,
+    offerPrice: product.offerPrice ?? product.OfferPrice ?? null,
+    offerDiscountAmount: product.offerDiscountAmount ?? product.OfferDiscountAmount ?? null,
+    offerBadgeText: product.offerBadgeText ?? product.OfferBadgeText ?? null,
+    offerBannerId: product.offerBannerId ?? product.OfferBannerId ?? null
+  };
+}
+
+function getBaseProductPrice(product) {
+  var selling = Number(product && (product.sellingPrice ?? product.SellingPrice));
+  if (Number.isFinite(selling) && selling > 0) {
+    return selling;
+  }
+  var unit = Number(product && (product.unitPrice ?? product.UnitPrice));
+  return Number.isFinite(unit) && unit > 0 ? unit : 0;
+}
+
+function getEffectivePrice(product) {
+  var offer = Number(product && (product.offerPrice ?? product.OfferPrice));
+  if (Number.isFinite(offer) && offer > 0) {
+    return offer;
+  }
+  return getBaseProductPrice(product);
+}
+
+function getOriginalProductPrice(product) {
+  return getBaseProductPrice(product);
+}
+
+function hasProductOffer(product) {
+  var offer = Number(product && (product.offerPrice ?? product.OfferPrice));
+  var base = getBaseProductPrice(product);
+  return Number.isFinite(offer) && offer > 0 && base > offer;
+}
+
+function escapePriceHtml(text) {
+  return String(text || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function renderPriceHtml(product) {
+  var effective = getEffectivePrice(product);
+  var original = getOriginalProductPrice(product);
+  if (!hasProductOffer(product)) {
+    return formatPrice(effective);
+  }
+  var badge = product.offerBadgeText || product.OfferBadgeText || '';
+  var badgeHtml = badge ? '<span class="sm-offer-badge">' + escapePriceHtml(badge) + '</span>' : '';
+  return badgeHtml +
+    '<span class="sm-price-old">' + formatPrice(original) + '</span>' +
+    '<span class="sm-price-offer">' + formatPrice(effective) + '</span>';
+}
+
+async function fetchProductPage(pageNumber, pageSize, categoryId = null, keyword = '') {
+  const queryParams = new URLSearchParams({
+    pageNumber: pageNumber.toString(),
+    pageSize: pageSize.toString()
+  });
+
+  if (keyword && keyword.trim() !== '') {
+    queryParams.append('keyword', keyword.trim());
+  }
+  if (categoryId) {
+    queryParams.append('categoryId', categoryId.toString());
+  }
+
+  const response = await fetch(API_CONFIG.BASE_URL + '/inventory/products?' + queryParams.toString(), {
+    method: 'GET',
+    headers: getAuthHeaders()
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Network response was not ok: ${response.status} ${errorText}`);
+  }
+
+  const data = await response.json();
+  if (!data.success || !data.data || !data.data.items) {
+    throw new Error('Invalid response format');
+  }
+
+  return {
+    items: data.data.items,
+    totalCount: Number(data.data.totalCount) || data.data.items.length
+  };
+}
+
+// Homepage most-selling products (featured + sales data from backend)
+async function fetchMostSellingProducts(limit = 8, categoryId = null) {
   try {
-    // Calculate pageNumber from skipCount and maxResultCount
-    const pageNumber = Math.floor(skipCount / maxResultCount) + 1;
-    const pageSize = maxResultCount;
-    
-    // Build query parameters
     const queryParams = new URLSearchParams({
-      pageNumber: pageNumber.toString(),
-      pageSize: pageSize.toString()
+      limit: String(limit)
     });
-
-    // Add keyword if provided
-    if (keyword && keyword.trim() !== '') {
-      queryParams.append('keyword', keyword.trim());
-    }
-
-    // Add categoryId if provided
     if (categoryId) {
-      queryParams.append('categoryId', categoryId.toString());
+      queryParams.append('categoryId', String(categoryId));
     }
-    
-    const apiUrl = API_CONFIG.BASE_URL + '/inventory/products?' + queryParams.toString();
-    
-    const headers = getAuthHeaders();
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: headers
-    });
+
+    const response = await fetch(
+      API_CONFIG.BASE_URL + '/inventory/products/most-selling?' + queryParams.toString(),
+      {
+        method: 'GET',
+        headers: getAuthHeaders()
+      }
+    );
 
     if (!response.ok) {
-      const errorText = await response.text();
-      // API Error Response
-      throw new Error(`Network response was not ok: ${response.status} ${errorText}`);
+      throw new Error('Network response was not ok');
     }
 
     const data = await response.json();
-    
-    if (data.success && data.data && data.data.items) {
-      const activeProducts = data.data.items.filter(product => {
-        if (!product || product.isActive === false) {
-          return false;
-        }
-
-        // Business rule: never display products with zero selling price.
-        const sellingPrice = Number(product.sellingPrice);
-        return Number.isFinite(sellingPrice) && sellingPrice > 0;
-      });
-
-      // Normalize product data to match existing code expectations
-      const normalizedItems = activeProducts.map(product => ({
-        ...product,
-        // Map imageUrl to imageURL for backward compatibility
-        imageURL: product.imageUrl || product.imageURL || null,
-        // Map unitPrice from sellingPrice if unitPrice doesn't exist
-        unitPrice: product.unitPrice || product.sellingPrice || 0
-      }));
-      
-      return {
-        items: normalizedItems,
-        totalCount: normalizedItems.length
-      };
-    } else {
-      // Invalid response format
+    if (!data.success || !Array.isArray(data.data)) {
       throw new Error('Invalid response format');
     }
+
+    const normalizedItems = data.data.filter(isShopVisibleProduct).map(normalizeShopProduct);
+    return await hydrateProductsList(normalizedItems);
   } catch (error) {
-    // Error fetching products
+    return [];
+  }
+}
+
+// Fetch products
+async function fetchProducts(skipCount = 0, maxResultCount = 8, categoryId = null, keyword = '') {
+  try {
+    const pageNumber = Math.floor(skipCount / maxResultCount) + 1;
+    const page = await fetchProductPage(pageNumber, maxResultCount, categoryId, keyword);
+    const normalizedItems = page.items.filter(isShopVisibleProduct).map(normalizeShopProduct);
+
+    return {
+      items: normalizedItems,
+      totalCount: normalizedItems.length
+    };
+  } catch (error) {
     return {
       items: [],
       totalCount: 0
     };
+  }
+}
+
+let allProductsCache = null;
+let allProductsCachePromise = null;
+
+// Page through every product so sidebar counts are not limited to the first API page
+async function fetchAllProducts(categoryId = null, keyword = '') {
+  const useCache = !categoryId && !(keyword && String(keyword).trim());
+  if (useCache && allProductsCache) {
+    return { items: allProductsCache, totalCount: allProductsCache.length };
+  }
+  if (useCache && allProductsCachePromise) {
+    const items = await allProductsCachePromise;
+    return { items: items, totalCount: items.length };
+  }
+
+  const loadAll = (async function() {
+    const pageSize = 500;
+    let pageNumber = 1;
+    let rawItems = [];
+    let totalCount = Infinity;
+
+    while (rawItems.length < totalCount) {
+      const page = await fetchProductPage(pageNumber, pageSize, categoryId, keyword);
+      rawItems = rawItems.concat(page.items || []);
+      totalCount = page.totalCount;
+      if (!page.items || page.items.length < pageSize) {
+        break;
+      }
+      pageNumber += 1;
+    }
+
+    return rawItems.filter(isShopVisibleProduct).map(normalizeShopProduct);
+  })();
+
+  if (useCache) {
+    allProductsCachePromise = loadAll;
+  }
+
+  try {
+    const normalizedItems = await loadAll;
+    if (useCache) {
+      allProductsCache = normalizedItems;
+    }
+    return {
+      items: normalizedItems,
+      totalCount: normalizedItems.length
+    };
+  } catch (error) {
+    return {
+      items: [],
+      totalCount: 0
+    };
+  } finally {
+    if (useCache) {
+      allProductsCachePromise = null;
+    }
   }
 }
 
@@ -129,17 +278,18 @@ function formatPrice(price) {
 // Fetch single product by ID
 async function fetchProductById(productId) {
   try {
-    // Fetch products and find the one with matching ID
-    const result = await fetchProducts(0, 1000, null, '');
-    
-    if (result && result.items && result.items.length > 0) {
-      const product = result.items.find(p => p.id === productId);
-      return product || null;
+    var product = await fetchProductByIdRaw(productId);
+    if (product) {
+      return product;
     }
-    
-    return null;
+    const result = await fetchAllProducts();
+    if (!result || !result.items || !result.items.length) {
+      return null;
+    }
+    return result.items.find(function (item) {
+      return String(item.id) === String(productId);
+    }) || null;
   } catch (error) {
-    // Error fetching product
     return null;
   }
 }
@@ -473,6 +623,210 @@ async function refreshAuthToken() {
   }
 }
 
+function normalizeWebsiteBanner(banner) {
+  if (!banner || typeof banner !== 'object') {
+    return null;
+  }
+  var productIds = banner.productIds || banner.ProductIds || [];
+  if (!Array.isArray(productIds)) {
+    productIds = [];
+  }
+  return {
+    id: banner.id != null ? banner.id : banner.Id,
+    type: banner.type || banner.Type || 'Hero',
+    title: banner.title || banner.Title || '',
+    subtitle: banner.subtitle || banner.Subtitle || '',
+    buttonText: banner.buttonText || banner.ButtonText || 'Shop now',
+    imageUrl: banner.imageUrl || banner.ImageUrl || banner.imageURL || banner.ImageURL || '',
+    linkUrl: banner.linkUrl || banner.LinkUrl || banner.linkURL || 'shop',
+    sortOrder: banner.sortOrder != null ? banner.sortOrder : (banner.SortOrder != null ? banner.SortOrder : 0),
+    isActive: banner.isActive != null ? banner.isActive : banner.IsActive,
+    startDate: banner.startDate || banner.StartDate || null,
+    endDate: banner.endDate || banner.EndDate || null,
+    discountType: banner.discountType || banner.DiscountType || null,
+    discountValue: banner.discountValue != null ? banner.discountValue : banner.DiscountValue,
+    badgeText: banner.badgeText || banner.BadgeText || null,
+    productIds: productIds.map(function (id) { return Number(id); }).filter(function (id) { return id > 0; })
+  };
+}
+
+function isBannerCurrentlyActive(banner) {
+  if (!banner || banner.isActive === false) {
+    return false;
+  }
+  var now = Date.now();
+  if (banner.startDate && new Date(banner.startDate).getTime() > now) {
+    return false;
+  }
+  if (banner.endDate && new Date(banner.endDate).getTime() < now) {
+    return false;
+  }
+  return true;
+}
+
+async function fetchBanners(type) {
+  const items = await requestBanners(type, true);
+  if (items.length > 0) {
+    return items;
+  }
+
+  const fallback = await requestBanners(type, false);
+  if (!fallback.length) {
+    return [];
+  }
+
+  return fallback.filter(isBannerCurrentlyActive);
+}
+
+/** Offer banners for promo; falls back to Hero banners when no offers exist. */
+async function fetchPromoBanners() {
+  var offers = await fetchBanners('Offer');
+  if (offers.length > 0) {
+    return offers;
+  }
+  return await fetchBanners('Hero');
+}
+
+async function requestBanners(type, activeOnly) {
+  try {
+    const queryParams = new URLSearchParams({
+      pageNumber: '1',
+      pageSize: '50',
+      activeOnly: activeOnly ? 'true' : 'false'
+    });
+    if (type) {
+      queryParams.append('type', type);
+    }
+
+    const headers = getAuthHeaders();
+    const response = await fetch(API_CONFIG.BASE_URL + '/inventory/banners?' + queryParams.toString(), {
+      method: 'GET',
+      headers: headers
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    if (data.success && data.data && data.data.items) {
+      return data.data.items
+        .map(normalizeWebsiteBanner)
+        .filter(Boolean);
+    }
+    return [];
+  } catch (error) {
+    return [];
+  }
+}
+
+/** Full catalog from API without shop visibility filter (used for offer banners). */
+async function fetchAllProductsRaw() {
+  const pageSize = 500;
+  let pageNumber = 1;
+  let rawItems = [];
+  let totalCount = Infinity;
+
+  while (rawItems.length < totalCount) {
+    const page = await fetchProductPage(pageNumber, pageSize, null, '');
+    rawItems = rawItems.concat(page.items || []);
+    totalCount = page.totalCount;
+    if (!page.items || page.items.length < pageSize) {
+      break;
+    }
+    pageNumber += 1;
+  }
+
+  return rawItems.map(normalizeShopProduct);
+}
+
+async function fetchProductByIdRaw(productId) {
+  try {
+    const response = await fetch(
+      API_CONFIG.BASE_URL + '/inventory/products/' + encodeURIComponent(productId),
+      { method: 'GET', headers: getAuthHeaders() }
+    );
+    if (!response.ok) {
+      return null;
+    }
+    const data = await response.json();
+    if (data.success && data.data) {
+      var normalized = normalizeShopProduct(data.data);
+      if (typeof window.hydrateProductImages === 'function') {
+        return window.hydrateProductImages(normalized);
+      }
+      return normalized;
+    }
+    return null;
+  } catch (_) {
+    return null;
+  }
+}
+
+/** Load products assigned to an offer — includes items without selling price or web visibility. */
+async function fetchOfferProducts(productIds) {
+  var ids = (Array.isArray(productIds) ? productIds : [])
+    .map(function (id) { return Number(id); })
+    .filter(function (id) { return id > 0; });
+  if (!ids.length) {
+    return [];
+  }
+
+  var rawCatalog = [];
+  try {
+    rawCatalog = await fetchAllProductsRaw();
+  } catch (_) {
+    rawCatalog = [];
+  }
+
+  var byId = new Map();
+  rawCatalog.forEach(function (product) {
+    if (product && product.id != null) {
+      byId.set(String(product.id), product);
+    }
+  });
+
+  var results = [];
+  for (var i = 0; i < ids.length; i++) {
+    var id = ids[i];
+    var product = byId.get(String(id));
+    if (!product && typeof fetchProductByIdRaw === 'function') {
+      product = await fetchProductByIdRaw(id);
+    }
+    if (product) {
+      results.push(product);
+    }
+  }
+  return results;
+}
+
+async function fetchProductsByIds(productIds) {
+  return fetchOfferProducts(productIds);
+}
+
+async function fetchBannerById(bannerId) {
+  if (bannerId == null || String(bannerId).trim() === '') {
+    return null;
+  }
+  try {
+    const headers = getAuthHeaders();
+    const response = await fetch(API_CONFIG.BASE_URL + '/inventory/banners/' + encodeURIComponent(bannerId), {
+      method: 'GET',
+      headers: headers
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    if (data.success && data.data) {
+      return normalizeWebsiteBanner(data.data);
+    }
+    return null;
+  } catch (error) {
+    return null;
+  }
+}
+
 // Get headers with authentication token
 function getAuthHeaders() {
   const headers = {
@@ -490,9 +844,21 @@ function getAuthHeaders() {
 
 // Make functions globally accessible
 window.fetchCategories = fetchCategories;
+window.fetchBanners = fetchBanners;
+window.fetchPromoBanners = fetchPromoBanners;
+window.fetchBannerById = fetchBannerById;
+window.fetchProductsByIds = fetchProductsByIds;
+window.fetchOfferProducts = fetchOfferProducts;
+window.normalizeWebsiteBanner = normalizeWebsiteBanner;
 window.fetchProducts = fetchProducts;
+window.fetchAllProducts = fetchAllProducts;
+window.fetchMostSellingProducts = fetchMostSellingProducts;
 window.fetchProductById = fetchProductById;
 window.formatPrice = formatPrice;
+window.getEffectivePrice = getEffectivePrice;
+window.getOriginalProductPrice = getOriginalProductPrice;
+window.hasProductOffer = hasProductOffer;
+window.renderPriceHtml = renderPriceHtml;
 window.registerCustomer = registerCustomer;
 window.loginCustomer = loginCustomer;
 window.getCurrentUser = getCurrentUser;

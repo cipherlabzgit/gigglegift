@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4B1761" />
     <base href="/">
 
-    <title>Checkout - Sensory - Kids Toys Store</title>
+    <title>Checkout - Giggles & Gifts</title>
 
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
@@ -40,10 +41,11 @@
     <link href="/assets/css/rangeslider.css" rel="stylesheet"/>
     <!--== Main Style CSS ==-->
     <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 
 </head>
 
-<body>
+<body class="sm-store">
 
 <!--wrapper start-->
 <div class="wrapper page-shop-wrapper">
@@ -65,18 +67,10 @@
   <header class="header-wrapper">
     <div class="header-top">
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-5 col-md-4 col-lg-6">
-            <div class="header-info-left">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-7 col-md-8 col-lg-6 sm-pl-0 xs-pl-15 header-top-right">
-            <div class="header-info">
-              <a href="tel://+94761487787"><i class="fa fa-phone"></i> +94761487787</a>
-              <a href="mailto:sales@sensory.lk"><i class="fa fa-envelope"></i> sales@sensory.lk</a>
-              <a href="login-register"><i class="fa fa-user"></i> Account</a>
-            </div>
-          </div>
+        <div class="sm-topbar">
+          <a href="tel:+94761487787">Call: +94 76 148 7787</a>
+          <span>Loved by Sri Lankan families � Islandwide delivery</span>
+          <span>Kaduwela, Sri Lanka</span>
         </div>
       </div>
     </div>
@@ -88,8 +82,8 @@
               <div class="header-align-left">
                 <div class="header-logo-area">
                   <a href="/">
-                    <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                    <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                    <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                    <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
                   </a>
                 </div>
               </div>
@@ -136,8 +130,8 @@
           <div class="col-4 col-sm-6 col-lg-2">
             <div class="header-logo-area">
               <a href="/">
-                <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
               </a>
             </div>
           </div>
@@ -210,32 +204,39 @@
     <!--== Start Checkout Area Wrapper ==-->
     <section class="product-area shop-checkout-area">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 m-auto">
-            <div class="section-title text-center">
-              <h2 class="title">Checkout</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-          </div>
-        </div>
+        <nav class="sm-checkout-steps" aria-label="Checkout progress">
+          <a class="sm-checkout-step is-done" href="shop-cart">
+            <span class="sm-checkout-step-num">1</span>
+            <span class="sm-checkout-step-label">Cart</span>
+          </a>
+          <span class="sm-checkout-step-divider"></span>
+          <span class="sm-checkout-step is-active">
+            <span class="sm-checkout-step-num">2</span>
+            <span class="sm-checkout-step-label">Details</span>
+          </span>
+          <span class="sm-checkout-step-divider"></span>
+          <span class="sm-checkout-step" id="checkout-step-payment">
+            <span class="sm-checkout-step-num">3</span>
+            <span class="sm-checkout-step-label">Payment</span>
+          </span>
+        </nav>
+
         <div class="row">
           <div class="col-lg-7">
-            <div class="billing-info-wrap">
-              <h3>Billing Details</h3>
+            <div class="billing-info-wrap sm-checkout-card">
+              <h3><i class="fa fa-map-marker"></i> Delivery Details</h3>
+              <p class="sm-checkout-card-desc">Where should we send your order?</p>
               <div class="row">
-                <div class="col-12">
+                <div class="col-md-6">
                   <div class="billing-info mb-20">
                     <label>First name <abbr class="required" title="required">*</abbr></label>
-                    <input type="text">
+                    <input type="text" placeholder="First name" autocomplete="given-name">
                   </div>
                 </div>
-                <div class="col-12">
+                <div class="col-md-6">
                   <div class="billing-info mb-20">
                     <label>Last name <abbr class="required" title="required">*</abbr></label>
-                    <input type="text">
+                    <input type="text" placeholder="Last name" autocomplete="family-name">
                   </div>
                 </div>
                 <div class="col-12">
@@ -266,14 +267,16 @@
                 </div>
                 <div class="col-12">
                   <div class="billing-info mb-20">
-                    <label>Phone <abbr class="required" title="required">*</abbr></label>
-                    <input type="text">
+                    <label for="billing_phone">Phone <abbr class="required" title="required">*</abbr></label>
+                    <input id="billing_phone" type="tel" autocomplete="tel" placeholder="e.g. 071 234 5678">
+                    <span class="sm-field-error" id="billing_phone_error" role="alert"></span>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="billing-info mb-20">
-                    <label>Email Address <abbr class="required" title="required">*</abbr></label>
-                    <input type="text">
+                    <label for="billing_email">Email Address <abbr class="required" title="required">*</abbr></label>
+                    <input id="billing_email" type="email" autocomplete="email" placeholder="you@example.com">
+                    <span class="sm-field-error" id="billing_email_error" role="alert"></span>
                   </div>
                 </div>
               </div>
@@ -284,44 +287,56 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <div class="your-order-area">
-              <h3>Your order</h3>
+            <div class="your-order-area sm-checkout-sidebar">
+              <h3><i class="fa fa-shopping-bag"></i> Order Summary</h3>
               <div class="your-order-wrap">
                 <div class="your-order-info-wrap">
                   <div class="your-order-title">
-                    <h4>Product <span>Subtotal</span></h4>
+                    <h4><span class="sm-order-col-name">Product</span><span class="sm-order-col-qty">Qty</span><span class="sm-order-col-price">Subtotal</span></h4>
                   </div>
                   <div class="your-order-product">
                     <ul>
                       <!-- Order items will be loaded dynamically here -->
                     </ul>
                   </div>
-                  <div class="your-order-subtotal">
-                    <h3>Subtotal <span id="checkout-subtotal">LKR 0.00</span></h3>
-                  </div>
-                  <div class="your-order-shipping">
-                    <h3>Delivery <span id="checkout-shipping">LKR 450.00</span></h3>
-                    <p class="shipping-note" style="font-size: 12px; color: #666; margin-top: 8px; margin-bottom: 0;">Free delivery for orders over LKR 40,000</p>
-                  </div>
-                  <div class="your-order-total">
-                    <h3>Total <span id="checkout-total">LKR 0.00</span></h3>
-                  </div>
-                </div>
-                <div class="payment-method">
-                  <div class="pay-top sin-payment">
-                    <input id="payment_method_1" class="input-radio" type="radio" value="directpay" checked="checked" name="payment_method">
-                    <label for="payment_method_1"> Pay with Card (DirectPay) </label>
-                    <div class="payment-box payment_method_directpay">
-                      <p>Pay securely using your Visa or Mastercard. Your payment is processed through DirectPay payment gateway.</p>
-                      <div class="payment-cards-icons" style="margin-top: 10px; display: flex; align-items: center; gap: 8px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 750 471"><g fill="none" fill-rule="evenodd"><rect width="750" height="471" fill="#0E4595" rx="40"/><path fill="#FFF" d="M278.198 334.228l33.36-195.763h53.358l-33.384 195.763zM524.307 142.687c-10.57-3.966-27.135-8.222-47.822-8.222-52.725 0-89.863 26.551-90.18 64.604-.297 28.129 26.514 43.821 46.754 53.185 20.771 9.598 27.752 15.716 27.652 24.283-.133 13.123-16.586 19.116-31.924 19.116-21.355 0-32.701-2.967-50.225-10.274l-6.879-3.112-7.488 43.823c12.463 5.467 35.508 10.199 59.438 10.445 56.09 0 92.502-26.248 92.916-66.885.199-22.27-14.016-39.215-44.801-53.188-18.65-9.056-30.072-15.099-29.951-24.269 0-8.137 9.668-16.838 30.559-16.838 17.447-.271 30.088 3.534 39.936 7.5l4.781 2.259 7.234-42.427M661.615 138.464h-41.23c-12.773 0-22.332 3.486-27.941 16.234l-79.244 179.53h56.031s9.16-24.121 11.232-29.418c6.123 0 60.555.084 68.336.084 1.596 6.854 6.492 29.334 6.492 29.334h49.512l-43.188-195.764zm-65.417 126.408c4.414-11.279 21.26-54.724 21.26-54.724-.314.521 4.381-11.334 7.074-18.684l3.607 16.878s10.217 46.729 12.352 56.53h-44.293zM232.903 138.464l-52.24 133.496-5.565-27.129c-9.726-31.274-40.025-65.157-73.898-82.12l47.767 171.204 56.455-.063 84.004-195.388h-56.523"/><path fill="#F2AE14" d="M131.92 138.464H45.879l-.682 4.073c66.939 16.204 111.232 55.363 129.618 102.415l-18.71-89.96c-3.229-12.396-12.597-16.095-24.186-16.528"/></g></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 750 471"><g fill="none" fill-rule="evenodd"><rect width="750" height="471" fill="#FFF" rx="40"/><circle cx="250" cy="235" r="150" fill="#EB001B"/><circle cx="500" cy="235" r="150" fill="#F79E1B"/><path fill="#FF5F00" d="M325 235c0-54.3 28.8-101.8 72-128.1-32.1-21.2-70.6-33.6-112-33.6-112.4 0-203.5 89.5-203.5 200s91.1 200 203.5 200c41.4 0 79.9-12.4 112-33.6-43.2-26.3-72-73.8-72-128.1z"/></g></svg>
+                  <div class="sm-order-totals">
+                    <div class="sm-order-line">
+                      <span class="sm-order-line-label">Subtotal</span>
+                      <span class="sm-order-line-value" id="checkout-subtotal">LKR 0.00</span>
+                    </div>
+                    <div class="sm-order-line sm-order-line-shipping">
+                      <div class="sm-order-line-label-wrap">
+                        <span class="sm-order-line-label">Delivery</span>
+                        <p class="shipping-note">Free delivery for orders over LKR 40,000</p>
                       </div>
+                      <span class="sm-order-line-value" id="checkout-shipping">LKR 450.00</span>
+                    </div>
+                    <div class="sm-order-line sm-order-line-total">
+                      <span class="sm-order-line-label">Total</span>
+                      <span class="sm-order-line-value" id="checkout-total">LKR 0.00</span>
                     </div>
                   </div>
                 </div>
-                
-                <!-- Card Payment Container -->
+                <div class="payment-method sm-payment-method">
+                  <div class="pay-top sin-payment sm-payment-option">
+                    <input id="payment_method_1" class="input-radio" type="radio" value="directpay" checked="checked" name="payment_method">
+                    <label for="payment_method_1">
+                      <span class="sm-payment-option-title"><i class="fa fa-credit-card"></i> Pay with Card</span>
+                      <span class="sm-payment-option-desc">Visa &amp; Mastercard accepted</span>
+                    </label>
+                    <div class="payment-box payment_method_directpay sm-payment-trust">
+                      <div class="payment-cards-icons sm-card-brands">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 750 471" aria-hidden="true"><g fill="none" fill-rule="evenodd"><rect width="750" height="471" fill="#0E4595" rx="40"/><path fill="#FFF" d="M278.198 334.228l33.36-195.763h53.358l-33.384 195.763zM524.307 142.687c-10.57-3.966-27.135-8.222-47.822-8.222-52.725 0-89.863 26.551-90.18 64.604-.297 28.129 26.514 43.821 46.754 53.185 20.771 9.598 27.752 15.716 27.652 24.283-.133 13.123-16.586 19.116-31.924 19.116-21.355 0-32.701-2.967-50.225-10.274l-6.879-3.112-7.488 43.823c12.463 5.467 35.508 10.199 59.438 10.445 56.09 0 92.502-26.248 92.916-66.885.199-22.27-14.016-39.215-44.801-53.188-18.65-9.056-30.072-15.099-29.951-24.269 0-8.137 9.668-16.838 30.559-16.838 17.447-.271 30.088 3.534 39.936 7.5l4.781 2.259 7.234-42.427M661.615 138.464h-41.23c-12.773 0-22.332 3.486-27.941 16.234l-79.244 179.53h56.031s9.16-24.121 11.232-29.418c6.123 0 60.555.084 68.336.084 1.596 6.854 6.492 29.334 6.492 29.334h49.512l-43.188-195.764zm-65.417 126.408c4.414-11.279 21.26-54.724 21.26-54.724-.314.521 4.381-11.334 7.074-18.684l3.607 16.878s10.217 46.729 12.352 56.53h-44.293zM232.903 138.464l-52.24 133.496-5.565-27.129c-9.726-31.274-40.025-65.157-73.898-82.12l47.767 171.204 56.455-.063 84.004-195.388h-56.523"/><path fill="#F2AE14" d="M131.92 138.464H45.879l-.682 4.073c66.939 16.204 111.232 55.363 129.618 102.415l-18.71-89.96c-3.229-12.396-12.597-16.095-24.186-16.528"/></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 750 471" aria-hidden="true"><g fill="none" fill-rule="evenodd"><rect width="750" height="471" fill="#FFF" rx="40"/><circle cx="250" cy="235" r="150" fill="#EB001B"/><circle cx="500" cy="235" r="150" fill="#F79E1B"/><path fill="#FF5F00" d="M325 235c0-54.3 28.8-101.8 72-128.1-32.1-21.2-70.6-33.6-112-33.6-112.4 0-203.5 89.5-203.5 200s91.1 200 203.5 200c41.4 0 79.9-12.4 112-33.6-43.2-26.3-72-73.8-72-128.1z"/></g></svg>
+                      </div>
+                      <ul class="sm-payment-benefits">
+                        <li><i class="fa fa-lock"></i> Secure 256-bit encryption</li>
+                        <li><i class="fa fa-shield"></i> Card details never stored on our site</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
                 <div id="directpay_container" class="directpay-container" style="display: none; margin-top: 20px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fafafa;">
                   <div id="card_container">
                     <div class="directpay-professional-card">
@@ -334,12 +349,18 @@
                   </div>
                   <div id="directpay_sandbox_notice" style="display: none;"></div>
                 </div>
-                <div class="payment-condition">
-                  <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="privacy-policy">privacy policy</a>.</p>
+
+                <div class="sm-checkout-trust-badges">
+                  <span><i class="fa fa-truck"></i> Islandwide delivery</span>
+                  <span><i class="fa fa-whatsapp"></i> WhatsApp support</span>
+                </div>
+
+                <div class="payment-condition sm-checkout-privacy">
+                  <p>By placing your order you agree to our <a href="privacy-policy">privacy policy</a> and <a href="terms-and-conditions">terms</a>.</p>
                 </div>
               </div>
-              <div class="place-order">
-                <a href="#/">Place Order</a>
+              <div class="place-order sm-place-order">
+                <a href="#/" id="place-order-btn">Place Order</a>
               </div>
             </div>
           </div>
@@ -347,68 +368,53 @@
       </div>
     </section>
     <!--== End Checkout Area Wrapper ==-->
+
   </main>
 
   <!--== Start Footer Area Wrapper ==-->
-  <footer class="footer-area default-style" >
+    <footer class="footer-area default-style sm-footer">
     <div class="footer-main">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-4">
-            <div class="widget-item item-style3">
-              <div class="about-widget">
-                <a class="footer-logo" href="/">
-                  <img src="/assets/img/logo-light.png" alt="Logo">
-                </a>
-                <p>
-                  Sensory a brand of ANKH Trading Pvt Ltd is a curated destination for premium sensory books, toddler sensory, and early learning products, created to support holistic childhood development. We bring together safe, reliable, and thoughtfully designed sensory essentials in one place—making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
-0 
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget-item item-style1">
-              <h4 class="widget-title">Quick Links</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-1">Quick Links</h4>
-              <div id="dividerId-1" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap">
-                  <ul class="nav-menu nav item-hover-style">
-                    <li><a href="/">- Home</a></li>
-                    <li><a href="about">- About</a></li>
-                    <li><a href="shop">- Shop</a></li>
-                    <li><a href="contact">- Contact</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="widget-item item-style2">
-              <h4 class="widget-title">Company</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-3">Company</h4>
-              <div id="dividerId-3" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap item-hover-style">
-                  <ul class="nav-menu nav">
-                    <li><a href="terms-and-conditions">- Terms & Conditions</a></li>
-                    <li><a href="privacy-policy">- Privacy Policy</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-3">
             <div class="widget-item">
-              <h4 class="widget-title">Store Information.</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-4">Store Information.</h4>
-              <div id="dividerId-4" class="collapse widget-collapse-body">
-                <p class="widget-address">296/A/1 , Level 2 <br>New Kandy Road, <br>Kothalawala, <br>Kaduwela,
-                    <br>Sri Lanka</p>
-                  <ul class="widget-contact-info">
-                    <li>Phone: <a href="tel://+94761487787">+94761487787</a></li>
-                    <li>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></li>
-                  </ul>
-              </div>
+              <a class="footer-logo" href="/">
+                <img src="/assets/img/logo.png" alt="Giggles & Gifts">
+              </a>
+              <p>Capturing the joy of firsts: sensory books, toys and gifts for early learning.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <div class="widget-item">
+              <h4 class="widget-title">Shop</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="shop">Shop All</a></li>
+                  <li><a href="about">About</a></li>
+                  <li><a href="contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Help</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="contact">Delivery info</a></li>
+                  <li><a href="terms-and-conditions">Returns</a></li>
+                  <li><a href="privacy-policy">Privacy</a></li>
+                  <li><a href="contact">FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Visit</h4>
+              <p>Call: <a href="tel:+94761487787">+94 76 148 7787</a></p>
+              <p>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></p>
+              <p>Kaduwela, Sri Lanka</p>
             </div>
           </div>
         </div>
@@ -416,18 +422,9 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <div class="footer-bottom-content">
-          <div class="row text-center">
-            <div class="col-sm-12">
-              <div class="widget-copyright">
-                <p><i class="fa fa-copyright"></i> 2025 <span>Sensory. </span> All Rights Reserved</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p><i class="fa fa-copyright"></i> 2026 Giggles & Gifts | sensory.lk</p>
       </div>
     </div>
-    <div class="footer-shape bg-img" data-bg-img="/assets/img/photos/footer1.png"></div>
   </footer>
   <!--== End Footer Area Wrapper ==-->
   
@@ -654,7 +651,7 @@
     padding: 20px;
     margin-top: 20px;
   }
-  
+
   .directpay-container #card_container {
     min-height: 220px;
     background: #fff;
@@ -662,7 +659,7 @@
     border-radius: 6px;
     padding: 15px;
   }
-  
+
   .directpay-container #card_container:empty::before {
     content: "Preparing secure payment...";
     display: block;
@@ -670,13 +667,13 @@
     padding: 40px;
     color: #888;
   }
-  
+
   .directpay-container #card_container iframe {
     width: 100% !important;
     min-height: 350px;
     border: none !important;
   }
-  
+
   /* DirectPay form elements */
   .directpay-container input,
   .directpay-container .dp-input {
@@ -705,6 +702,7 @@
     border-color: #ddd;
     background: #fafafa;
   }
+
   
   .sin-payment input[type="radio"] {
     margin-right: 10px;
@@ -1140,7 +1138,11 @@ function saveOrderToLocal(apiOrder, orderData) {
       subtotal += itemTotal;
 
       const itemHtml = `
-        <li>${item.name} <span>x ${item.quantity}</span> <span class="float-end">${formatPrice(itemTotal)}</span></li>
+        <li class="sm-order-item">
+          <span class="sm-order-name">${item.name}</span>
+          <span class="sm-order-qty">x ${item.quantity}</span>
+          <span class="sm-order-price">${formatPrice(itemTotal)}</span>
+        </li>
       `;
       orderList.append(itemHtml);
     });
@@ -1164,16 +1166,12 @@ function saveOrderToLocal(apiOrder, orderData) {
       $('.billing-info-wrap input[type="text"]').eq(0).val(currentUser.firstName || '');
       $('.billing-info-wrap input[type="text"]').eq(1).val(currentUser.lastName || '');
 
-      // Find and fill phone and email fields
-      const phoneInput = $('.billing-info-wrap input[type="text"]').filter(function() {
-        return $(this).prev('label').text().toLowerCase().includes('phone');
-      });
-      const emailInput = $('.billing-info-wrap input[type="text"]').filter(function() {
-        return $(this).prev('label').text().toLowerCase().includes('email');
-      });
-
-      if (phoneInput.length) phoneInput.val(currentUser.mobileNo || '');
-      if (emailInput.length) emailInput.val(currentUser.email || '');
+      if (currentUser.mobileNo) {
+        $('#billing_phone').val(currentUser.mobileNo);
+      }
+      if (currentUser.email) {
+        $('#billing_email').val(currentUser.email);
+      }
 
       // Fill address if available
       if (currentUser.customerAddresses && currentUser.customerAddresses.length > 0) {
@@ -1210,19 +1208,120 @@ function saveOrderToLocal(apiOrder, orderData) {
       city: getInputByLabel('town / city'),
       district: getInputByLabel('district'),
       postalCode: getInputByLabel('postcode / zip'),
-      phone: getInputByLabel('phone'),
-      email: getInputByLabel('email') || (currentUser ? currentUser.email : '') || ''
+      phone: $('#billing_phone').val()?.trim() || getInputByLabel('phone'),
+      email: $('#billing_email').val()?.trim() || getInputByLabel('email') || (currentUser ? currentUser.email : '') || ''
     };
   }
 
-  // Validate billing info
-  function validateBillingInfo(billingInfo) {
-    if (!billingInfo.firstName || !billingInfo.lastName || 
-        !billingInfo.streetAddress1 || !billingInfo.city || !billingInfo.district || 
-        !billingInfo.phone || !billingInfo.email) {
-      return false;
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const contactFieldsTouched = { phone: false, email: false };
+
+  function showFieldError(inputId, errorId, message) {
+    const $input = $('#' + inputId);
+    const $error = $('#' + errorId);
+    $input.addClass('is-invalid').attr('aria-invalid', 'true');
+    $error.text(message).addClass('is-visible');
+  }
+
+  function clearFieldError(inputId, errorId) {
+    const $input = $('#' + inputId);
+    const $error = $('#' + errorId);
+    $input.removeClass('is-invalid').attr('aria-invalid', 'false');
+    $error.text('').removeClass('is-visible');
+  }
+
+  function validatePhoneValue(phone) {
+    const value = (phone || '').trim();
+    if (!value) {
+      return { valid: false, message: 'Phone number is required.' };
     }
-    return true;
+    const digits = value.replace(/\D/g, '');
+    let normalized = digits;
+
+    if (normalized.indexOf('94') === 0 && normalized.length >= 11) {
+      normalized = normalized.slice(2);
+    }
+    if (normalized.charAt(0) === '0') {
+      normalized = normalized.slice(1);
+    }
+
+    const isValidSlMobile = normalized.length === 9 && normalized.charAt(0) === '7';
+    if (!isValidSlMobile) {
+      return { valid: false, message: 'Enter a valid Sri Lankan mobile number (e.g. 071 234 5678).' };
+    }
+    return { valid: true, message: '' };
+  }
+
+  function validateEmailValue(email) {
+    const value = (email || '').trim();
+    if (!value) {
+      return { valid: false, message: 'Email address is required.' };
+    }
+    if (!EMAIL_REGEX.test(value)) {
+      return { valid: false, message: 'Enter a valid email address (e.g. you@example.com).' };
+    }
+    return { valid: true, message: '' };
+  }
+
+  function validatePhoneField(showError) {
+    const result = validatePhoneValue($('#billing_phone').val());
+    if (result.valid) {
+      clearFieldError('billing_phone', 'billing_phone_error');
+      return true;
+    }
+    if (showError) {
+      showFieldError('billing_phone', 'billing_phone_error', result.message);
+    }
+    return false;
+  }
+
+  function validateEmailField(showError) {
+    const result = validateEmailValue($('#billing_email').val());
+    if (result.valid) {
+      clearFieldError('billing_email', 'billing_email_error');
+      return true;
+    }
+    if (showError) {
+      showFieldError('billing_email', 'billing_email_error', result.message);
+    }
+    return false;
+  }
+
+  function validateContactFields(showErrors) {
+    const phoneValid = validatePhoneField(showErrors);
+    const emailValid = validateEmailField(showErrors);
+    return phoneValid && emailValid;
+  }
+
+  function scrollToFirstInvalidField() {
+    const $firstInvalid = $('.billing-info input.is-invalid').first();
+    if ($firstInvalid.length) {
+      $('html, body').animate({
+        scrollTop: $firstInvalid.offset().top - 120
+      }, 300);
+      $firstInvalid.focus();
+    }
+  }
+
+  // Validate billing info
+  function validateBillingInfo(billingInfo, showFieldErrors) {
+    let isValid = true;
+
+    if (!billingInfo.firstName || !billingInfo.lastName ||
+        !billingInfo.streetAddress1 || !billingInfo.city || !billingInfo.district) {
+      isValid = false;
+    }
+
+    if (!validateContactFields(showFieldErrors)) {
+      isValid = false;
+    }
+
+    if (showFieldErrors && !isValid) {
+      scrollToFirstInvalidField();
+    }
+
+    return isValid;
   }
 
   // Calculate order totals
@@ -1281,14 +1380,22 @@ function saveOrderToLocal(apiOrder, orderData) {
       shippingCost: totals.shippingCost,
       
       // Order items
-      orderItems: cart.map(item => ({
-        productId: item.id,
-        productName: item.name || 'Product',
-        productImageUrl: item.imageURL || item.imageUrl || null,
-        quantity: item.quantity || 1,
-        unitPrice: item.price || 0,
-        discountAmount: 0
-      })),
+      orderItems: cart.map(item => {
+        const effectivePrice = parseFloat(item.price) || 0;
+        const originalPrice = parseFloat(item.originalPrice) || effectivePrice;
+        const quantity = item.quantity || 1;
+        const lineDiscount = originalPrice > effectivePrice
+          ? (originalPrice - effectivePrice) * quantity
+          : 0;
+        return {
+          productId: item.id,
+          productName: item.name || 'Product',
+          productImageUrl: item.imageURL || item.imageUrl || null,
+          quantity: quantity,
+          unitPrice: originalPrice,
+          discountAmount: lineDiscount
+        };
+      }),
       
       // Discount and notes
       discountAmount: totals.discountAmount,
@@ -1374,6 +1481,31 @@ function saveOrderToLocal(apiOrder, orderData) {
     }
   }
 
+  async function completeSuccessfulOrder(result, placeOrderBtn, originalText) {
+    if (result && result.success && result.order) {
+      CartService.clearCart();
+      CartService.updateCartCount();
+      if (typeof DirectPayService !== 'undefined' && DirectPayService.clearStoredPaymentResult) {
+        DirectPayService.clearStoredPaymentResult();
+      }
+
+      const orderNumber = result.order.orderNumber || result.order.orderNo || 'N/A';
+      showToast('Order placed successfully! Order Number: ' + orderNumber, 'success');
+
+      setTimeout(function() {
+        window.location.href = 'payment-confirmation?order=' + encodeURIComponent(orderNumber);
+      }, 1500);
+      return true;
+    }
+
+    const errMsg = (result && result.message) || 'Failed to create order.';
+    showToast(errMsg, 'error');
+    if (placeOrderBtn && placeOrderBtn.length) {
+      placeOrderBtn.prop('disabled', false).text('Place Order');
+    }
+    return false;
+  }
+
   // Start DirectPay payment flow (popup / new tab)
   async function initializeDirectPayForm(billingInfo, totalAmount) {
     if (directPayInitializing) {
@@ -1396,7 +1528,6 @@ function saveOrderToLocal(apiOrder, orderData) {
       </div>
     `);
 
-    // Check if DirectPayService is available
     if (typeof DirectPayService === 'undefined') {
       console.error('[Checkout] DirectPayService is not defined!');
       $cardContainer.html('<p style="color: #dc3545; text-align: center; padding: 20px;">Payment service not available. Please refresh the page.</p>');
@@ -1405,11 +1536,9 @@ function saveOrderToLocal(apiOrder, orderData) {
     }
 
     try {
-      // Generate unique order ID
       const orderId = DirectPayService.generateOrderId('SNS');
       console.log('[Checkout] Generated order ID:', orderId);
-      
-      // Store billing info for later use
+
       pendingOrderData = {
         billingInfo: billingInfo,
         orderId: orderId
@@ -1417,7 +1546,6 @@ function saveOrderToLocal(apiOrder, orderData) {
 
       console.log('[Checkout] Initializing DirectPay with order:', orderId, 'Amount:', totalAmount);
 
-      // Launch DirectPay popup / new tab checkout
       await DirectPayService.initPopupPayment({
         amount: totalAmount,
         orderId: orderId,
@@ -1426,17 +1554,11 @@ function saveOrderToLocal(apiOrder, orderData) {
         email: billingInfo.email,
         phone: billingInfo.phone,
         logoUrl: window.location.origin + '/assets/img/logo.png',
-        // Server-side response URL (optional - for webhook)
-        // responseUrl: API_CONFIG.BASE_URL + '/pos/directpay-webhook',
-        
+
         onSuccess: async function(paymentResult) {
           console.log('[Checkout] DirectPay payment successful:', paymentResult);
-          console.log('[Checkout] Full payment result:', JSON.stringify(paymentResult, null, 2));
           directPayInitializing = false;
 
-          // onSuccess is only called by DirectPay SDK after verified successful payment.
-          // The result is already mapped by handlePaymentResponse in directpay-service.js.
-          // Extract transaction ID from mapped result, raw response, or fall back to our orderId.
           const txnId = paymentResult.transactionId
             || paymentResult.transaction_id
             || paymentResult.rawResponse?.transaction?.id
@@ -1444,20 +1566,19 @@ function saveOrderToLocal(apiOrder, orderData) {
             || orderId;
 
           showToast('Payment successful! Creating your order...', 'success');
-          
+
           DirectPayService.storePaymentResult(paymentResult);
-          
+
           const orderData = prepareOrderData(billingInfo, 'Card', 'Paid', {
             transactionId: String(txnId),
             orderId: paymentResult.orderId || orderId,
             reference: paymentResult.orderId || orderId,
             cardNumber: paymentResult.cardNumber || null
           });
-          
+
           const placeOrderBtn = $('.place-order a');
           placeOrderBtn.prop('disabled', true).text('Creating Order...');
-          
-          // Retry order creation up to 3 times
+
           let retries = 3;
           let result = null;
           while (retries > 0) {
@@ -1469,38 +1590,24 @@ function saveOrderToLocal(apiOrder, orderData) {
             }
             retries--;
             if (retries > 0) {
-              console.log('[Checkout] Retrying order creation... (' + retries + ' attempts left)');
               await new Promise(r => setTimeout(r, 2000));
             }
           }
 
           if (result && result.success && result.order) {
-            CartService.clearCart();
-            CartService.updateCartCount();
-            DirectPayService.clearStoredPaymentResult();
-            
-            const orderNumber = result.order.orderNumber || result.order.orderNo || 'N/A';
-            
-            showToast('Order placed successfully! Order Number: ' + orderNumber, 'success');
-            
-            setTimeout(() => {
-              window.location.href = 'payment-confirmation?order=' + encodeURIComponent(orderNumber);
-            }, 1500);
+            await completeSuccessfulOrder(result, placeOrderBtn, 'Place Order');
           } else {
             const errMsg = (result && result.message) || 'Failed to create order after payment.';
-            console.error('[Checkout] All order creation attempts failed:', errMsg);
             showToast('Payment was successful but order creation failed. Please contact support with reference: ' + orderId, 'error');
             placeOrderBtn.prop('disabled', false).text('Place Order');
           }
         },
-        
+
         onError: function(error) {
           console.error('[Checkout] DirectPay payment error:', error);
           directPayInitializing = false;
-          
-          // Build detailed error message
+
           let errorMessage = 'Payment failed. Please try again.';
-          
           if (error) {
             if (error.message) {
               errorMessage = error.message;
@@ -1514,13 +1621,9 @@ function saveOrderToLocal(apiOrder, orderData) {
               errorMessage = error.rawResponse.message;
             }
           }
-          
+
           showToast(errorMessage, 'error');
-          
-          // Log full error for debugging
-          console.log('[Checkout] Full error details:', JSON.stringify(error, null, 2));
-          
-          // Reset UI to allow retry
+
           $('#card_container').html(`
             <div class="directpay-professional-card">
               <div class="dp-title"><i class="fa fa-shield"></i> Secure Payment Window</div>
@@ -1537,7 +1640,7 @@ function saveOrderToLocal(apiOrder, orderData) {
 
     } catch (error) {
       console.error('[Checkout] Failed to initialize DirectPay:', error);
-      
+
       $('#card_container').html(`
         <div class="fallback-card-form" style="padding: 20px; text-align: center;">
           <p style="color: #dc3545; text-align: center; margin-bottom: 20px;">
@@ -1554,43 +1657,34 @@ function saveOrderToLocal(apiOrder, orderData) {
       `);
       showToast('Failed to open payment window: ' + (error.message || 'Unknown error'), 'error');
       directPayInitializing = false;
-    } finally {
-      // Keep directPayInitializing true while customer completes popup flow.
     }
   }
 
-  // Retry DirectPay initialization
   function retryDirectPay() {
     console.log('[Checkout] Retrying DirectPay initialization...');
     directPayInitializing = false;
-    
+
     const cart = CartService.getCart();
     if (cart.length > 0) {
       const billingInfo = getBillingInfo();
-      if (validateBillingInfo(billingInfo)) {
+      if (validateBillingInfo(billingInfo, true)) {
         const totals = calculateOrderTotals(cart);
         initializeDirectPayForm(billingInfo, totals.totalAmount);
       } else {
-        showToast('Please fill in all required billing fields.', 'warning');
+        showToast('Please fill in all required billing fields correctly.', 'warning');
       }
     } else {
       showToast('Your cart is empty.', 'warning');
     }
   }
-  
-  // Make retryDirectPay globally accessible
+
   window.retryDirectPay = retryDirectPay;
 
-  // Toggle payment method display
   function togglePaymentMethodDisplay() {
-    const selectedMethod = $('input[name="payment_method"]:checked').val();
-    
-    // Toggle payment boxes
     $('.payment-box').hide();
     $('input[name="payment_method"]:checked').closest('.sin-payment').find('.payment-box').show();
-    
-    // Toggle Card container
-    if (selectedMethod === 'directpay') {
+
+    if ($('input[name="payment_method"]:checked').val() === 'directpay') {
       $('#directpay_container').show();
     } else {
       $('#directpay_container').hide();
@@ -1620,6 +1714,24 @@ function saveOrderToLocal(apiOrder, orderData) {
     // Prefill billing details
     prefillBillingDetails();
     setupSriLankaTownCityAutocomplete();
+
+    $('#billing_phone').on('blur', function() {
+      contactFieldsTouched.phone = true;
+      validatePhoneField(true);
+    }).on('input', function() {
+      if (contactFieldsTouched.phone || $(this).hasClass('is-invalid')) {
+        validatePhoneField(true);
+      }
+    });
+
+    $('#billing_email').on('blur', function() {
+      contactFieldsTouched.email = true;
+      validateEmailField(true);
+    }).on('input', function() {
+      if (contactFieldsTouched.email || $(this).hasClass('is-invalid')) {
+        validateEmailField(true);
+      }
+    });
 
     // Setup payment method toggle
     $('input[name="payment_method"]').on('change', function() {
@@ -1651,8 +1763,8 @@ function saveOrderToLocal(apiOrder, orderData) {
 
       const billingInfo = getBillingInfo();
       
-      if (!validateBillingInfo(billingInfo)) {
-        showToast('Please fill in all required billing fields.', 'warning');
+      if (!validateBillingInfo(billingInfo, true)) {
+        showToast('Please fill in all required billing fields correctly.', 'warning');
         return;
       }
 
@@ -1686,7 +1798,6 @@ function saveOrderToLocal(apiOrder, orderData) {
         }
         return;
       }
-
 
       showToast('Please select a valid payment method.', 'warning');
     });

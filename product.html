@@ -8,14 +8,11 @@
     <meta name="theme-color" content="#4B1761" />
     <base href="/">
 
-    <title>Contact Us - Giggles & Gifts</title>
+    <title>Product - Giggles & Gifts</title>
 
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="/assets/css/pe-icon-7-stroke.min.css" rel="stylesheet"/>
@@ -26,28 +23,20 @@
     <link href="/assets/css/slicknav.css" rel="stylesheet"/>
     <link href="/assets/css/swiper.min.css" rel="stylesheet"/>
     <link href="/assets/css/slick.css" rel="stylesheet"/>
+    <link href="/assets/css/rangeslider.css" rel="stylesheet"/>
     <link href="/assets/css/style.css" rel="stylesheet" />
     <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 </head>
 
 <body class="sm-store">
 
-<div class="wrapper contact-default-wrapper">
-
-  <div class="preloader-wrap">
-    <div class="preloader">
-      <span class="dot"></span>
-      <div class="dots"><span></span><span></span><span></span></div>
-    </div>
-  </div>
-
+<div class="wrapper page-shop-wrapper">
   <header class="header-wrapper">
     <div class="header-top">
       <div class="container">
         <div class="sm-topbar">
-          <a href="https://wa.me/94761487787" target="_blank" rel="noopener">Order on WhatsApp +94 76 148 7787</a>
-          <span>Loved by Sri Lankan families</span>
-          <span>Islandwide delivery</span>
+          <a href="tel:+94761487787">Call: +94 76 148 7787</a>
+          <span>Loved by Sri Lankan families · Islandwide delivery</span>
           <span>Kaduwela, Sri Lanka</span>
         </div>
       </div>
@@ -65,17 +54,6 @@
                   </a>
                 </div>
               </div>
-              <div class="header-align-center">
-                <div class="header-search-box">
-                  <form action="#" method="post">
-                    <div class="form-input-item">
-                      <label for="search" class="sr-only">Search Everything</label>
-                      <input type="text" id="search" placeholder="Search Everything">
-                      <button type="submit" class="btn-src"><i class="pe-7s-search"></i></button>
-                    </div>
-                  </form>
-                </div>
-              </div>
               <div class="header-align-right">
                 <div class="header-action-area">
                   <div class="header-action-wishlist">
@@ -90,7 +68,9 @@
                       <i class="pe-7s-shopbag"></i>
                     </button>
                   </div>
-                  <button class="btn-menu d-md-none"><i class="ion-navicon"></i></button>
+                  <button class="btn-menu d-md-none">
+                    <i class="ion-navicon"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -111,27 +91,25 @@
           </div>
           <div class="col-lg-8 sticky-md-none">
             <div class="header-nav-scroll-wrap">
-              <button type="button" class="nav-scroll-btn nav-scroll-left" aria-label="Scroll menu left">
-                <i class="fa fa-angle-left"></i>
-              </button>
               <div class="header-navigation-area d-none d-md-block">
                 <ul class="main-menu nav position-relative" id="main-nav-menu">
                   <li><a class="ml--2" href="/">Home</a></li>
                   <li><a href="shop">Shop</a></li>
                 </ul>
               </div>
-              <button type="button" class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
-                <i class="fa fa-angle-right"></i>
-              </button>
             </div>
           </div>
           <div class="col-8 col-sm-6 col-lg-2">
             <div class="header-action-area">
               <div class="header-action-search">
-                <button class="btn-search btn-search-menu"><i class="pe-7s-search"></i></button>
+                <button class="btn-search btn-search-menu">
+                  <i class="pe-7s-search"></i>
+                </button>
               </div>
               <div class="header-action-login">
-                <button class="btn-login" onclick="window.location.href='login-register'"><i class="pe-7s-users"></i></button>
+                <button class="btn-login" onclick="window.location.href='login-register'">
+                  <i class="pe-7s-users"></i>
+                </button>
               </div>
               <div class="header-action-wishlist">
                 <button class="btn-wishlist" onclick="window.location.href='shop-wishlist'">
@@ -145,7 +123,9 @@
                   <i class="pe-7s-shopbag"></i>
                 </button>
               </div>
-              <button class="btn-menu d-lg-none"><i class="ion-navicon"></i></button>
+              <button class="btn-menu d-lg-none">
+                <i class="ion-navicon"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -154,64 +134,21 @@
   </header>
 
   <main class="main-content">
-    <section class="sm-about-hero">
+    <section class="page-title-area">
       <div class="container">
-        <p class="sm-kicker">Contact</p>
-        <h1>We are here to help.</h1>
-        <p class="sm-about-lead">Questions about a gift, an order, or delivery? Call, email, or send a note � we pack from Kaduwela.</p>
+        <div class="page-title-content">
+          <h2 class="title">Product details</h2>
+        </div>
       </div>
     </section>
 
-    <section class="sm-contact-info">
+    <section class="product-area pd-page-shell">
       <div class="container">
-        <div class="sm-contact-cards">
-          <a class="sm-contact-card" href="tel:+94761487787">
-            <span class="sm-trust-icon"><i class="ion-ios-telephone-outline"></i></span>
-            <strong>Phone</strong>
-            <span>+94 76 148 7787</span>
-          </a>
-          <div class="sm-contact-card">
-            <span class="sm-trust-icon"><i class="ion-ios-location-outline"></i></span>
-            <strong>Visit</strong>
-            <span>296/A/1, Level 2, New Kandy Road, Kothalawala, Kaduwela</span>
+        <div class="pd-page-card" id="product-page-root">
+          <div class="pd-page-status">
+            <h2>Loading product</h2>
+            <p>Please wait a moment.</p>
           </div>
-          <a class="sm-contact-card" href="mailto:sales@sensory.lk">
-            <span class="sm-trust-icon"><i class="ion-ios-email-outline"></i></span>
-            <strong>Email</strong>
-            <span>sales@sensory.lk</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sm-contact-map">
-      <div class="container">
-        <div class="sm-contact-map-frame">
-          <iframe title="Giggles & Gifts on New Kandy Road, Kaduwela" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.678958717839!2d79.97992557397755!3d6.928923418321378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae256ec41eea6c7%3A0x81fc6670195d553a!2s296A%2C%201%20New%20Kandy%20Rd%2C%20Kaduwela%2010115!5e0!3m2!1sen!2slk!4v1766301267550!5m2!1sen!2slk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </section>
-
-    <section class="sm-contact-form-wrap">
-      <div class="container">
-        <div class="sm-contact-form-card">
-          <p class="sm-kicker">Write to us</p>
-          <h2>Send a question</h2>
-          <form class="contact-form-wrapper" id="contact-form" action="assets/php/mail.php" method="post">
-            <div class="sm-contact-fields">
-              <input class="form-control" type="text" name="con_name" placeholder="Name *" required>
-              <input class="form-control" type="email" name="con_email" placeholder="Email *" required>
-              <input class="form-control sm-contact-full" type="text" name="con_subject" placeholder="Subject (optional)">
-              <textarea class="form-control sm-contact-full" name="con_message" placeholder="Message" rows="5" required></textarea>
-            </div>
-            <div class="sm-hero-actions">
-              <button class="sm-btn-hero" type="submit">Send message</button>
-              <a class="sm-btn-whatsapp" href="https://wa.me/94761487787" target="_blank" rel="noopener">
-                <i class="fa fa-whatsapp"></i> WhatsApp
-              </a>
-            </div>
-          </form>
-          <div class="form-message"></div>
         </div>
       </div>
     </section>
@@ -249,7 +186,6 @@
                   <li><a href="contact">Delivery info</a></li>
                   <li><a href="terms-and-conditions">Returns</a></li>
                   <li><a href="privacy-policy">Privacy</a></li>
-                  <li><a href="contact">FAQs</a></li>
                 </ul>
               </nav>
             </div>
@@ -277,9 +213,6 @@
   <div class="search-box-wrapper">
     <div class="search-box-content-inner">
       <div class="search-box-form-wrap">
-        <div class="search-note">
-          <p>Start typing and press Enter to search</p>
-        </div>
         <form action="#" method="post">
           <div class="search-form position-relative">
             <label for="search-input" class="sr-only">Search</label>
@@ -291,28 +224,6 @@
     </div>
     <a href="javascript:;" class="search-close"><i class="pe-7s-close"></i></a>
   </div>
-
-  <aside class="sidebar-cart-modal">
-    <div class="sidebar-cart-inner">
-      <div class="sidebar-cart-content">
-        <a class="cart-close" href="javascript:void(0);"><i class="pe-7s-close"></i></a>
-        <div class="sidebar-cart-all">
-          <div class="cart-header"><h3>Shopping Cart</h3></div>
-          <div class="cart-content cart-content-padding">
-            <ul id="sidebar-cart-items"></ul>
-            <div class="cart-total">
-              <h4>Subtotal: <span id="sidebar-cart-subtotal">LKR 0.00</span></h4>
-            </div>
-            <div class="cart-checkout-btn">
-              <a class="cart-btn" href="shop-cart">view cart</a>
-              <a class="checkout-btn" href="shop-checkout">checkout</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-cart-overlay"></div>
 
   <aside class="off-canvas-wrapper">
     <div class="off-canvas-inner">
@@ -326,6 +237,7 @@
         <div class="off-canvas-item">
           <div class="res-mobile-menu"></div>
         </div>
+        <div class="off-canvas-footer"></div>
       </div>
     </div>
   </aside>
@@ -349,10 +261,12 @@
 <script src="/assets/js/wow.min.js"></script>
 <script src="/assets/js/jquery-zoom.min.js"></script>
 <script src="/assets/js/config.js"></script>
+<script src="/assets/js/product-image-url.js?v=1"></script>
 <script src="/assets/js/cart-service.js?v=wishlist-local-1"></script>
-<script src="/assets/js/api-service.js?v=catalog-counts-3"></script>
+<script src="/assets/js/api-service.js?v=product-images-1"></script>
 <script src="/assets/js/parent-shop.js?v=2"></script>
-<script src="/assets/js/custom.js?v=landing-motion-1"></script>
-
+<script src="/assets/js/custom.js?v=parent-shop-2"></script>
+<script src="/assets/js/product-detail-modal.js?v=9"></script>
+<script src="/assets/js/product-page.js?v=1"></script>
 </body>
 </html>

@@ -5,16 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4B1761" />
     <base href="/">
 
-    <title>Home - Sensory - Kids Toys Store</title>
+    <title>Home - Giggles & Gifts</title>
 
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
 
     <!--== Google Fonts ==-->
-    <link href="https://fonts.googleapis.com/css?family=Fredoka+One:400" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!--== Bootstrap CSS ==-->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -38,10 +40,11 @@
     <link href="/assets/css/slick.css" rel="stylesheet"/>
     <!--== Main Style CSS ==-->
     <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
 
 </head>
 
-<body>
+<body class="sm-store">
 
 <!--wrapper start-->
 <div class="wrapper home-default-wrapper">
@@ -63,18 +66,11 @@
   <header class="header-wrapper">
     <div class="header-top">
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-5 col-md-4 col-lg-6">
-            <div class="header-info-left">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-7 col-md-8 col-lg-6 sm-pl-0 xs-pl-15 header-top-right">
-            <div class="header-info">
-              <a href="tel://+94761487787"><i class="fa fa-phone"></i> +94761487787</a>
-              <a href="mailto:sales@sensory.lk"><i class="fa fa-envelope"></i> sales@sensory.lk</a>
-              <a href="login-register"><i class="fa fa-user"></i> Account</a>
-            </div>
-          </div>
+        <div class="sm-topbar">
+          <a href="https://wa.me/94761487787" target="_blank" rel="noopener">Order on WhatsApp +94 76 148 7787</a>
+          <span>Loved by Sri Lankan families</span>
+          <span>Islandwide delivery</span>
+          <span>Kaduwela, Sri Lanka</span>
         </div>
       </div>
     </div>
@@ -86,8 +82,8 @@
               <div class="header-align-left">
                 <div class="header-logo-area">
                   <a href="/">
-                    <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                    <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                    <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                    <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
                   </a>
                 </div>
               </div>
@@ -134,8 +130,8 @@
           <div class="col-4 col-sm-6 col-lg-2">
             <div class="header-logo-area">
               <a href="/">
-                <img class="logo-main" src="/assets/img/logo.png" alt="Logo" />
-                <img class="logo-light" src="/assets/img/logo.png" alt="Logo" />
+                <img class="logo-main" src="/assets/img/logo.png" alt="Giggles & Gifts" />
+                <img class="logo-light" src="/assets/img/logo.png" alt="Giggles & Gifts" />
               </a>
             </div>
           </div>
@@ -147,7 +143,7 @@
               <div class="header-navigation-area d-none d-md-block">
                 <ul class="main-menu nav position-relative" id="main-nav-menu">
                   <li><a class="ml--2" href="/">Home</a></li>
-                  <!-- Main category links are injected by JS (up to 5 categories) -->
+                  <li><a href="shop">Shop</a></li>
                 </ul>
               </div>
               <button type="button" class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
@@ -191,817 +187,172 @@
   <!--== End Header Wrapper ==-->
   
   <main class="main-content">
-    <!--== Start Hero Area Wrapper ==-->
-    <section class="home-slider-area slider-default">
-      <div class="home-slider-content">
-        <div class="swiper-container home-slider-container">
-          <div class="swiper-wrapper">
-            <!-- Slide 1 (was 3rd - Awaken Their Senses) -->
-            <div class="swiper-slide">
-              <div class="home-slider-item">
-                <div class="thumb-one bg-img" data-bg-img="/assets/img/new/slide4.jpeg" style="background-image: url('/assets/img/new/slide4.jpeg');"></div>
-                <div class="home-slider-overlay">
-                  <div class="home-slider-overlay-content">
-                    <h2>Awaken Their Senses, Inspire Their World.</h2>
-                    <p>Curated educational toys and accessories delivered straight to your door, islandwide.</p>
-                    <a href="shop" class="btn-theme">Shop This Now</a>
-                  </div>
-                </div>
-                <div class="shape-top bg-img" data-bg-img="/assets/img/photos/1.png"></div>
-                <div class="shape-bottom bg-img" data-bg-img="/assets/img/photos/2.png"></div>
-              </div>
-            </div>
-            <!-- Slide 2 (Where Little Smiles) -->
-            <div class="swiper-slide">
-              <div class="home-slider-item">
-                <div class="thumb-one bg-img" data-bg-img="/assets/img/new/slide3.jpeg" style="background-image: url('/assets/img/new/slide3.jpeg');"></div>
-                <div class="home-slider-overlay">
-                  <div class="home-slider-overlay-content">
-                    <h2>Where Little Smiles Find Their Favourite Things</h2>
-                    <p>Curated educational toys and accessories delivered straight to your door, islandwide.</p>
-                    <a href="shop" class="btn-theme">Shop This Now</a>
-                  </div>
-                </div>
-                <div class="shape-top bg-img" data-bg-img="/assets/img/photos/1.png"></div>
-                <div class="shape-bottom bg-img" data-bg-img="/assets/img/photos/2.png"></div>
-              </div>
-            </div>
-            <!-- Slide 3 (was 1st - Thoughtful Gifts) -->
-            <div class="swiper-slide">
-              <div class="home-slider-item slide-2">
-                <div class="thumb-one bg-img" data-bg-img="/assets/img/new/slide2.jpeg" style="background-image: url('/assets/img/new/slide2.jpeg');"></div>
-                <div class="home-slider-overlay">
-                  <div class="home-slider-overlay-content">
-                    <h2>Thoughtful Gifts for Their Brightest Beginnings</h2>
-                    <p>Curated educational toys and accessories delivered straight to your door, islandwide.</p>
-                    <a href="shop" class="btn-theme">Shop This Now</a>
-                  </div>
-                </div>
-                <div class="shape-top bg-img" data-bg-img="/assets/img/photos/1.png"></div>
-                <div class="shape-bottom bg-img" data-bg-img="/assets/img/photos/2.png"></div>
-              </div>
-            </div>
-            <!-- Slide 4 (was slide 1 - Making Every Childhood Moment Magical) -->
-            <div class="swiper-slide">
-              <div class="home-slider-item">
-                <div class="thumb-one bg-img" data-bg-img="/assets/img/slider/31.jpg" style="background-image: url('/assets/img/slider/31.jpg');"></div>
-                <div class="home-slider-overlay">
-                  <div class="home-slider-overlay-content">
-                    <h2>Making Every Childhood Moment Magical.</h2>
-                    <p>Curated educational toys and accessories delivered straight to your door, islandwide.</p>
-                    <a href="shop" class="btn-theme">Shop This Now</a>
-                  </div>
-                </div>
-                <img class="thumb-two" src="/assets/img/new/441.png" alt="Image">
-                <div class="shape-top bg-img" data-bg-img="/assets/img/photos/1.png"></div>
-                <div class="shape-bottom bg-img" data-bg-img="/assets/img/photos/2.png"></div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </section>
-    <!--== End Hero Area Wrapper ==-->
-
-    <!--== Start Category Area Wrapper ==-->
-    <section class="category-area product-category1-area" data-aos="fade-up" data-aos-duration="1000">
+    <section class="sm-hero">
       <div class="container">
-        <div class="row category-items1" id="categories-container">
-          <!-- Categories will be loaded dynamically here -->
+        <div class="sm-hero-grid">
+          <div class="sm-hero-copy-wrap">
+            <p class="sm-kicker">Little moments. Big smiles</p>
+            <h1>Toys that play,<br>books that build,<br>memories that last.</h1>
+            <p class="sm-hero-copy">Thoughtfully chosen sensory books, toys and gifts for your little one's precious moments. Safe, non-toxic and made for early learning.</p>
+            <div class="sm-hero-actions">
+              <a class="sm-btn-hero" href="shop">Shop the collection</a>
+              <a class="sm-btn-whatsapp" href="https://wa.me/94761487787" target="_blank" rel="noopener">
+                <i class="fa fa-whatsapp"></i> Order on WhatsApp
+              </a>
+            </div>
+            <div class="sm-hero-proof">
+              <span><i class="fa fa-star"></i> Loved by Sri Lankan families</span>
+              <span>Islandwide delivery</span>
+              <span>Kaduwela, Sri Lanka</span>
+            </div>
+          </div>
+          <div class="sm-hero-visual">
+            <div class="sm-hero-circle">
+              <img src="/assets/img/new/slide4.jpeg" alt="A little one exploring Sensory play">
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    <!--== End Category Area Wrapper ==-->
 
-    <!--== Start Product Tab Area Wrapper ==-->
-    <section class="product-area product-style1-area">
+    <section class="sm-trust">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6 m-auto">
-            <div class="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
-              <h2 class="title">New Products</h2>
-              <div class="desc">
-                <p>
-                  Discover our newest sensory learning essentials—designed to inspire curiosity, creativity, and confident early development.
-                </p>
-              </div>
+        <div class="sm-trust-grid">
+          <div class="sm-trust-item sm-reveal">
+            <span class="sm-trust-icon is-pink"><i class="ion-ios-lightbulb-outline"></i></span>
+            <div>
+              <strong>Brain Development</strong>
+              <span>Play that builds thinking skills</span>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="product-tab-content">
-              <div class="tab-content" id="myTabContent" data-aos="fade-up" data-aos-duration="1300">
-                <div class="tab-pane fade show active" id="our-features" role="tabpanel" aria-labelledby="our-features-tab">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="product">
-                        <div class="row" id="products-container">
-                          <!-- Products will be loaded dynamically here -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="best-sellers" role="tabpanel" aria-labelledby="best-sellers-tab">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="product">
-                        <div class="row">
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/5.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Bruder Toys Mini Ships</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/6.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Abstract Boy Dress</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/7.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Funskool Teddy Pink</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/8.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Toys Box For Baby</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/1.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Funskool Teddy</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/2.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Baby Play Sets</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/3.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Jigsaw Puzzles For Kids</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/4.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Abstract Girl Dress</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="new-items" role="tabpanel" aria-labelledby="new-items-tab">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="product">
-                        <div class="row">
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/1.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Funskool Teddy</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/2.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Baby Play Sets</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/3.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Jigsaw Puzzles For Kids</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/4.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Abstract Girl Dress</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/5.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Bruder Toys Mini Ships</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/6.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Abstract Boy Dress</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/7.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Funskool Teddy Pink</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                          <div class="col-lg-3 col-md-4 col-sm-6">
-                            <!-- Start Product Item -->
-                            <div class="product-item">
-                              <div class="product-thumb">
-                                <img src="/assets/img/shop/8.png" alt="Image">
-                                <div class="product-action">
-                                  <a class="action-quick-view" href="shop-cart"><i class="ion-ios-cart"></i></a>
-                                  <a class="action-quick-view" href="javascript:void(0)"><i class="ion-arrow-expand"></i></a>
-                                  <a class="action-quick-view" href="shop-wishlist"><i class="ion-heart"></i></a>
-                                  <a class="action-quick-view" href="shop-compare"><i class="ion-shuffle"></i></a>
-                                </div>
-                              </div>
-                              <div class="product-info">
-                                <div class="rating">
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                  <span class="fa fa-star"></span>
-                                </div>
-                                <h4 class="title"><a href="shop.html">Toys Box For Baby</a></h4>
-                                <div class="prices">
-                                  <span class="price">LKR 0.00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Product Item -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="sm-trust-item sm-reveal">
+            <span class="sm-trust-icon is-yellow"><i class="ion-ios-color-wand"></i></span>
+            <div>
+              <strong>GiggleGift Stimulation</strong>
+              <span>Textures, colours and sounds</span>
+            </div>
+          </div>
+          <div class="sm-trust-item sm-reveal">
+            <span class="sm-trust-icon is-mint"><i class="ion-ios-checkmark-outline"></i></span>
+            <div>
+              <strong>Safe &amp; Non-Toxic</strong>
+              <span>Child-safe materials only</span>
+            </div>
+          </div>
+          <div class="sm-trust-item sm-reveal">
+            <span class="sm-trust-icon is-blue"><i class="ion-ios-book-outline"></i></span>
+            <div>
+              <strong>Early Learning</strong>
+              <span>Shapes, numbers and more</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!--== End Product Tab Area Wrapper ==-->
 
-    <!--== Start Divider Area Wrapper ==-->
-    <section class="divider-area divider-style1-area bg-img" data-bg-img="/assets/img/divider/bg1.png" data-aos="fade-up" data-aos-duration="1000">
-      <div class="container position-relative">
-        <div class="row">
-          <div class="col-lg-6 m-auto">
-            <div class="divider-content">
-              <h2 class="title">Deal Of The Day</h2>
-              <p><span>UPTO 35%  OFF </span> On All Other Baby Products</p>
-              <div class="countdown-content">
-                <ul class="countdown-timer">
-                  <li><span class="days">00</span><p class="days_text">Days</p></li>
-                  <li><span class="hours">00</span><p class="hours_text">Hours</p></li>
-                  <li><span class="minutes">00</span><p class="minutes_text">MINUTES</p></li>
-                  <li><span class="seconds">00</span><p class="seconds_text">SECONDS</p></li>
-                </ul>
-              </div>
-              <a class="btn-theme" href="shop">Shop Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="shape-group">
-          <div class="shape-style3">
-            <img src="/assets/img/new/442.png" alt="Image">
-          </div>
-          <div class="shape-style4">
-            <img src="/assets/img/new/443.png" alt="Image">
-          </div>
-        </div>
-      </div>
-      <div class="shape-group">
-        <div class="shape-style1" data-bg-img="/assets/img/divider/shape1.png"></div>
-        <div class="shape-style2" data-bg-img="/assets/img/divider/shape2.png"></div>
-      </div>
-    </section>
-    <!--== End Divider Area Wrapper ==-->
-
-    <!--== Start Category Area Wrapper ==-->
-    <section class="category-area product-category2-area" data-aos="fade-up" data-aos-duration="1000" style="display: none;">
+    <section class="sm-collection sm-reveal">
       <div class="container">
-        <div class="row category-items2">
-          <div class="col-md-6">
-            <div class="category-item">
-              <div class="thumb">
-                <img class="w-100" src="/assets/img/new/121.jpg" alt="Image">
-                <div class="content">
-                  <div class="contact-info">
-                    <h2 class="title text-white">Collection</h2>
-                    <h4 class="price text-white">Flat <span>20%</span> Off</h4>
-                  </div>
-                  <a class="btn-theme" href="shop">Shop Now</a>
-                </div>
-              </div>
-            </div>
+        <div class="sm-parent-bar">
+          <div class="sm-parent-group">
+            <span>Child's Age</span>
+            <div class="sm-parent-chips" data-parent="age"></div>
           </div>
-          <div class="col-md-6">
-            <div class="category-item mt-sm-50">
-              <div class="thumb">
-                <img class="w-100" src="/assets/img/new/171.jpg" alt="Image">
-                <div class="content">
-                  <div class="contact-info">
-                    <h2 class="title">Collection</h2>
-                    <h4 class="price">Flat <span>30%</span> Off</h4>
-                  </div>
-                  <a class="btn-theme" href="shop">Shop Now</a>
-                </div>
-              </div>
-            </div>
+          <div class="sm-parent-group">
+            <span>Gift Budget</span>
+            <div class="sm-parent-chips" data-parent="gift"></div>
           </div>
+          <a class="sm-parent-wa" data-parent-wa="gift" href="https://wa.me/94761487787" target="_blank" rel="noopener">
+            <i class="fa fa-whatsapp"></i> Ask for a gift idea
+          </a>
+        </div>
+        <div class="sm-fav-head">
+          <div class="sm-fav-copy">
+            <p class="sm-kicker">Shop the collection</p>
+            <h2>Most Selling Items</h2>
+          </div>
+          <div class="sm-category-tabs-wrap">
+            <button type="button" class="sm-cat-scroll-btn sm-cat-scroll-left" aria-label="Scroll categories left">
+              <i class="fa fa-angle-left"></i>
+            </button>
+            <div class="sm-category-tabs-scroll" id="category-tabs-scroll">
+              <ul class="nav" id="category-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="all-items-tab" type="button">All</button>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="sm-cat-scroll-btn sm-cat-scroll-right" aria-label="Scroll categories right">
+              <i class="fa fa-angle-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="row" id="products-container"></div>
+      </div>
+    </section>
+
+    <section class="sm-promo-section sm-reveal">
+      <div class="container">
+        <div id="promo-banners" class="sm-promo-banners"></div>
+        <div class="sm-promo" id="sm-promo-fallback">
+          <h2>Keep them busy, the fun way.</h2>
+          <p>Reusable busy books and fabric books for shapes, numbers, emotions and everyday skills.</p>
+          <div class="sm-promo-chips">
+            <span>Shapes &amp; colours</span>
+            <span>Numbers &amp; counting</span>
+            <span>Emotions &amp; expressions</span>
+            <span>Animals &amp; nature</span>
+            <span>Daily life skills</span>
+          </div>
+          <a class="sm-btn-primary" href="shop">See all themes</a>
         </div>
       </div>
     </section>
-    <!--== End Category Area Wrapper ==-->
-
-    <!--== Start Product Tab Area Wrapper ==-->
-    <section class="product-area product-style2-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 m-auto">
-            <div class="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
-              <h2 class="title">Trending Product</h2>
-              <div class="desc">
-                <p>
-                  Explore our most-loved sensory favourites, trusted by parents and designed for meaningful early learning.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="product-tab1-slider" data-aos="fade-up" data-aos-duration="1500" id="trending-products-container">
-              <!-- Trending products will be loaded dynamically here -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--== End Product Tab Area Wrapper ==-->
-
-    <!--== Start Blog Area Wrapper ==-->
-    <!-- <section class="blog-area blog-default-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-lg-6 m-auto">
-            <div class="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
-              <h2 class="title">Latest Blog</h2>
-              <div class="desc">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua. </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row" data-aos="fade-up" data-aos-duration="1300">
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="post-item">
-              <div class="thumb">
-                <a href="blog-details"><img src="/assets/img/blog/31.jpg" alt="Image"></a>
-              </div>
-              <div class="content">
-                <div class="meta">By, <a class="author" href="blog">June Cha </a><span class="dots"></span><span class="post-date">25 May, 2121</span></div>
-                <h4 class="title">
-                  <a href="blog-details">Baby Planet's toys makes learning so easy</a>
-                </h4>
-                <a class="btn-theme" href="blog-details">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="post-item mt-xs-30">
-              <div class="thumb">
-                <a href="blog-details"><img src="/assets/img/blog/2.jpg" alt="Image"></a>
-              </div>
-              <div class="content">
-                <div class="meta">By, <a class="author" href="blog">June Cha </a><span class="dots"></span><span class="post-date">July 24, 2022</span></div>
-                <h4 class="title">
-                  <a href="blog-details">Mother revolves around her children</a>
-                </h4>
-                <a class="btn-theme" href="blog-details">Read More</a>
-              </div>
-            </div>
-            
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="post-item mt-md-30">
-              <div class="thumb">
-                <a href="blog-details"><img src="/assets/img/blog/31.jpg" alt="Image"></a>
-              </div>
-              <div class="content">
-                <div class="meta">By, <a class="author" href="blog">June Cha </a><span class="dots"></span><span class="post-date">January 28, 2022</span></div>
-                <h4 class="title">
-                  <a href="blog-details">Learn while you grow toys Baby Planet</a>
-                </h4>
-                <a class="btn-theme" href="blog-details">Read More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!--== End Blog Area Wrapper ==-->
   </main>
 
   <!--== Start Footer Area Wrapper ==-->
-  <footer class="footer-area default-style" >
+  <footer class="footer-area default-style sm-footer">
     <div class="footer-main">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-4">
-            <div class="widget-item item-style3">
-              <div class="about-widget">
-                <a class="footer-logo" href="/">
-                  <img src="/assets/img/logo-light.png" alt="Logo">
-                </a>
-                <p>
-                  Sensory a brand of ANKH Trading Pvt Ltd is a curated destination for premium sensory books, toddler sensory, and early learning products, created to support holistic childhood development. We bring together safe, reliable, and thoughtfully designed sensory essentials in one place—making it easier for parents, educators, and retailers to access quality products that encourage learning through play, exploration, and imagination.
-0 
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget-item item-style1">
-              <h4 class="widget-title">Quick Links</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-1">Quick Links</h4>
-              <div id="dividerId-1" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap">
-                  <ul class="nav-menu nav item-hover-style">
-                    <li><a href="/">- Home</a></li>
-                    <li><a href="about">- About</a></li>
-                    <li><a href="shop">- Shop</a></li>
-                    <li><a href="contact">- Contact</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="widget-item item-style2">
-              <h4 class="widget-title">Company</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-3">Company</h4>
-              <div id="dividerId-3" class="collapse widget-collapse-body">
-                <nav class="widget-menu-wrap item-hover-style">
-                  <ul class="nav-menu nav">
-                    <li><a href="terms-and-conditions">- Terms & Conditions</a></li>
-                    <li><a href="privacy-policy">- Privacy Policy</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-3">
             <div class="widget-item">
-              <h4 class="widget-title">Store Information.</h4>
-              <h4 class="widget-title widget-collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-4">Store Information.</h4>
-              <div id="dividerId-4" class="collapse widget-collapse-body">
-                <p class="widget-address">296/A/1 , Level 2 <br>New Kandy Road, <br>Kothalawala, <br>Kaduwela,
-                    <br>Sri Lanka</p>
-                  <ul class="widget-contact-info">
-                    <li>Phone: <a href="tel://+94761487787">+94761487787</a></li>
-                    <li>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></li>
-                  </ul>
-              </div>
+              <a class="footer-logo" href="/">
+                <img src="/assets/img/logo.png" alt="Giggles & Gifts">
+              </a>
+              <p>Capturing the joy of firsts: sensory books, toys and gifts for early learning.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <div class="widget-item">
+              <h4 class="widget-title">Shop</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="shop">Shop All</a></li>
+                  <li><a href="about">About</a></li>
+                  <li><a href="contact">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Help</h4>
+              <nav class="widget-menu-wrap">
+                <ul class="nav-menu nav">
+                  <li><a href="contact">Delivery info</a></li>
+                  <li><a href="terms-and-conditions">Returns</a></li>
+                  <li><a href="privacy-policy">Privacy</a></li>
+                  <li><a href="contact">FAQs</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <div class="widget-item">
+              <h4 class="widget-title">Visit</h4>
+              <p>Call: <a href="tel:+94761487787">+94 76 148 7787</a></p>
+              <p>Email: <a href="mailto:sales@sensory.lk">sales@sensory.lk</a></p>
+              <p>Kaduwela, Sri Lanka</p>
             </div>
           </div>
         </div>
@@ -1009,18 +360,9 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <div class="footer-bottom-content">
-          <div class="row text-center">
-            <div class="col-sm-12">
-              <div class="widget-copyright">
-                <p><i class="fa fa-copyright"></i> 2025 <span>Sensory. </span> All Rights Reserved</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p><i class="fa fa-copyright"></i> 2026 Giggles & Gifts | sensory.lk</p>
       </div>
     </div>
-    <div class="footer-shape bg-img" data-bg-img="/assets/img/photos/footer1.png"></div>
   </footer>
   <!--== End Footer Area Wrapper ==-->
   
@@ -1033,22 +375,8 @@
       <button type="button" class="btn-close product-quick-view-close">
         <span class="pe-7s-close"><i class="lastudioicon-e-remove"></i></span>
       </button>
-      <div class="product-quick-view-content">
-        <div class="row row-gutter-0">
-          <div class="col-lg-6 col-md-6 col-12">
-            <div class="thumb">
-              <img id="quick-view-main-image" src="/assets/img/shop/quick-view1.jpg" alt="Image">
-              <div class="product-image-thumbnails" id="quick-view-thumbnails">
-                <!-- Thumbnails will be loaded dynamically -->
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-12">
-            <div class="content" id="quick-view-content">
-              <!-- Quick view content will be loaded dynamically -->
-            </div>
-          </div>
-        </div>
+      <div class="product-quick-view-content" id="quick-view-page">
+        <!-- Product detail popup is rendered here -->
       </div>
     </div>
     <div class="canvas-overlay"></div>
@@ -1175,12 +503,15 @@
 
 <!--=== API Config Js ===-->
 <script src="/assets/js/config.js"></script>
+<script src="/assets/js/product-image-url.js?v=1"></script>
 <!--=== Cart & Wishlist Service Js ===-->
-<script src="/assets/js/cart-service.js"></script>
+<script src="/assets/js/cart-service.js?v=wishlist-toggle-1"></script>
 <!--=== API Service Js ===-->
-<script src="/assets/js/api-service.js"></script>
+<script src="/assets/js/api-service.js?v=product-images-1"></script>
 <!--=== Custom Js ===-->
-<script src="/assets/js/custom.js"></script>
+<script src="/assets/js/parent-shop.js?v=2"></script>
+<script src="/assets/js/custom.js?v=offer-banners-1"></script>
+<script src="/assets/js/product-detail-modal.js?v=9"></script>
 
 <!-- Product Quick View Modal Styles -->
 <style>
@@ -1333,7 +664,7 @@
   }
 
   .product-item.out-of-stock-item .product-thumb img {
-    opacity: 0.6;
+    opacity: 1;
   }
 
   .product-item .product-thumb {
@@ -1538,173 +869,17 @@
         showQuickViewModal(product);
       }
 
-      // Function to show quick view modal with product data
       async function showQuickViewModal(product) {
-        const productName = product.name || 'Product Name';
-        
-        // Get price - handle null, undefined, and 0 values properly
-        let productPrice = 0;
-        
-        // Check sellingPrice first
-        if (product.sellingPrice !== null && product.sellingPrice !== undefined) {
-          if (product.sellingPrice > 0) {
-            productPrice = product.sellingPrice;
-          } else if (product.unitPrice !== null && product.unitPrice !== undefined && product.unitPrice > 0) {
-            productPrice = product.unitPrice;
-          } else {
-            productPrice = product.sellingPrice; // Use even if 0
-          }
-        } 
-        // If no sellingPrice, check unitPrice
-        else if (product.unitPrice !== null && product.unitPrice !== undefined) {
-          productPrice = product.unitPrice;
-        }
-        
-        const productDescription = product.description || 'No description available.';
-        // Use formatPrice function with thousand separators
-        const formattedPrice = window.formatPrice ? window.formatPrice(productPrice) : (productPrice > 0 ? 'LKR ' + parseFloat(productPrice).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 'Price not available');
-        
-        // Handle images - use images array if available, otherwise fallback to imageUrl/imageURL
-        let productImages = [];
-        let mainImage = 'https://www.holoimage.net/images/no-image.jpg';
-        
-        if (product.images && Array.isArray(product.images) && product.images.length > 0) {
-          // Use images array - first image as main, all as thumbnails
-          productImages = product.images.map(img => img.imageUrl || img.imageURL).filter(url => url);
-          if (productImages.length > 0) {
-            mainImage = productImages[0];
-          }
-        } else if (product.imageUrls && Array.isArray(product.imageUrls) && product.imageUrls.length > 0) {
-          // Fallback to imageUrls array
-          productImages = product.imageUrls.filter(url => url);
-          if (productImages.length > 0) {
-            mainImage = productImages[0];
-          }
-        } else {
-          // Fallback to single imageUrl/imageURL
-          const singleImage = product.imageUrl || product.imageURL;
-          if (singleImage) {
-            mainImage = singleImage;
-            productImages = [singleImage];
-          }
-        }
-        
-        // Update modal main image
-        $('#quick-view-main-image').attr('src', mainImage).attr('alt', productName);
-        
-        // Update thumbnails
-        const thumbnailsContainer = $('#quick-view-thumbnails');
-        thumbnailsContainer.empty();
-        
-        // Show thumbnails if there are multiple images
-        if (productImages.length > 1) {
-          thumbnailsContainer.show(); // Ensure container is visible
-          productImages.forEach((imageUrl, index) => {
-            const isActive = index === 0 ? 'active' : '';
-            const thumbnailHtml = `
-              <div class="thumbnail-item ${isActive}" data-image-index="${index}">
-                <img src="${imageUrl}" alt="${productName} - Image ${index + 1}">
-              </div>
-            `;
-            thumbnailsContainer.append(thumbnailHtml);
-          });
-          
-          // Add click handlers for thumbnails
-          thumbnailsContainer.off('click', '.thumbnail-item').on('click', '.thumbnail-item', function() {
-            const $this = $(this);
-            const imageUrl = $this.find('img').attr('src');
-            
-            // Update main image
-            $('#quick-view-main-image').attr('src', imageUrl);
-            
-            // Update active state
-            thumbnailsContainer.find('.thumbnail-item').removeClass('active');
-            $this.addClass('active');
-          });
-        } else {
-          // Hide thumbnails container if only one image
-          thumbnailsContainer.hide();
-        }
-
-        let stockMap = new Map();
         try {
           if (typeof window.getStockMap === 'function') {
-            stockMap = await window.getStockMap();
+            window.shopStockMap = await window.getStockMap();
           }
         } catch (error) {
-          stockMap = new Map();
+          window.shopStockMap = window.shopStockMap || new Map();
         }
-
-        const stockFromMap = stockMap.get(product.id) ?? stockMap.get(String(product.id)) ?? stockMap.get(Number(product.id));
-        const fallbackStock = Number(product.maxStock);
-        const productStock = Number.isFinite(stockFromMap)
-          ? Number(stockFromMap)
-          : (Number.isFinite(fallbackStock) && fallbackStock > 0 ? fallbackStock : 0);
-        const isOutOfStock = productStock <= 0;
-
-        let stockInfoHtml = '';
-        if (isOutOfStock) {
-          stockInfoHtml = '<div class="modal-stock-info out-of-stock"><i class="ion-close-circled"></i> Out of Stock</div>';
-        } else if (productStock <= 5) {
-          stockInfoHtml = `<div class="modal-stock-info low-stock"><i class="ion-alert-circled"></i> Only ${productStock} left in stock - order soon!</div>`;
-        } else {
-          stockInfoHtml = `<div class="modal-stock-info in-stock"><i class="ion-checkmark-circled"></i> In Stock (${productStock} available)</div>`;
+        if (window.SensoryProductModal) {
+          window.SensoryProductModal.open(product);
         }
-
-        product.maxStock = productStock;
-        
-        // Update modal content
-        const modalContent = `
-          <div class="single-product-info">
-            <h4 class="title">${productName}</h4>
-            <div class="prices">
-              <span class="price">${formattedPrice}</span>
-            </div>
-            <div class="product-rating">
-              <div class="rating">
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-              </div>
-            </div>
-            ${stockInfoHtml}
-            <p class="product-desc">${productDescription}</p>
-            <div class="quick-product-action">
-              <div class="action-top">
-                ${isOutOfStock ? '' : `
-                <div class="pro-qty">
-                  <input type="text" id="modal-quantity" title="Quantity" value="1" min="1" max="${productStock}" data-max-stock="${productStock}" />
-                </div>
-                <button class="btn btn-theme add-to-cart-btn" data-product='${JSON.stringify(product)}'>Add to Cart</button>
-                `}
-                <a class="btn-wishlist add-to-wishlist-btn" href="javascript:void(0)" data-product='${JSON.stringify(product)}">Add to Wishlist</a>
-              </div>
-            </div>
-          </div>
-        `;
-        
-        $('#quick-view-content').html(modalContent);
-        
-        // Initialize quantity buttons for the modal
-        const modalProQty = $('#quick-view-content .pro-qty');
-        if (modalProQty.length > 0 && modalProQty.find('.qty-btn').length === 0) {
-          modalProQty.append('<a href="#" class="inc qty-btn"><i class="fa fa-plus"></i></a>');
-          modalProQty.append('<a href="#" class="dec qty-btn"><i class="fa fa-minus"></i></a>');
-        }
-        
-        // Prevent any scroll behavior - just lock the scroll
-        const scrollPosition = window.pageYOffset || window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        
-        // Store scroll position
-        $('html, body').data('scroll-position', scrollPosition);
-        
-        // Lock scroll by adding fix class to both html and body
-        $('html, body').addClass('fix');
-        
-        // Show modal
-        $('.product-quick-view-modal').addClass('active');
       }
 
       // Toast notification function
@@ -1796,6 +971,7 @@
       
       $(document).off('click', '.add-to-wishlist-btn').on('click', '.add-to-wishlist-btn', async function(e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         const $this = $(this);
         let productData;
         
@@ -1814,12 +990,21 @@
           $this.prop('disabled', true);
           
           try {
-            const result = await window.WishlistService.addToWishlist(productData);
+            const toggle = typeof window.WishlistService.toggleWishlist === 'function'
+              ? window.WishlistService.toggleWishlist
+              : window.WishlistService.addToWishlist;
+            const result = await toggle.call(window.WishlistService, productData);
             
             if (result.success) {
-              showToast(result.message || 'Product added to wishlist!', 'success');
+              if (result.removed) {
+                $this.removeClass('is-favourited added');
+                showToast(result.message || 'Removed from wishlist', 'success');
+              } else {
+                $this.addClass('is-favourited');
+                showToast(result.message || 'Product added to wishlist!', 'success');
+              }
             } else {
-              showToast(result.message || 'Failed to add product to wishlist', 'error');
+              showToast(result.message || 'Failed to update wishlist', 'error');
             }
           } catch (error) {
             showToast('An error occurred. Please try again.', 'error');

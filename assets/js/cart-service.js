@@ -116,11 +116,17 @@ const CartService = {
           existingItem.maxStock = product.maxStock;
         }
       } else {
+        const basePrice = product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0);
+        const effectivePrice = typeof window.getEffectivePrice === 'function'
+          ? window.getEffectivePrice(product)
+          : basePrice;
         const newItem = {
           id: product.id,
           name: product.name,
           imageURL: product.imageURL || product.imageUrl,
-          price: product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0),
+          price: effectivePrice,
+          originalPrice: basePrice,
+          offerBannerId: product.offerBannerId || product.OfferBannerId || null,
           quantity: quantity
         };
         // Store max stock for future reference
@@ -389,15 +395,86 @@ const WishlistService = {
     return this.getUserId() !== null;
   },
 
+  getWishlistKey: function() {
+    const userId = this.getUserId();
+    return userId ? ('wishlist_' + userId) : 'wishlist_guest';
+  },
+
+  getLocalWishlist: function() {
+    try {
+      const stored = localStorage.getItem(this.getWishlistKey());
+      const parsed = stored ? JSON.parse(stored) : [];
+      return Array.isArray(parsed) ? parsed.filter(function (item) {
+        return item && (item.productId || item.id);
+      }) : [];
+    } catch (error) {
+      return [];
+    }
+  },
+
+  saveLocalWishlist: function(items) {
+    const list = Array.isArray(items) ? items : [];
+    localStorage.setItem(this.getWishlistKey(), JSON.stringify(list));
+    this._wishlistCache = list;
+    this._wishlistCountCache = list.length;
+  },
+
+  toLocalWishlistItem: function(product) {
+    const price = Number(product.sellingPrice) > 0
+      ? Number(product.sellingPrice)
+      : (Number(product.unitPrice) > 0 ? Number(product.unitPrice) : 0);
+    return {
+      id: 'local-' + String(product.id) + '-' + Date.now(),
+      productId: product.id,
+      productName: product.name || 'Product',
+      productPrice: price,
+      imageURL: product.imageURL || product.imageUrl || '',
+      name: product.name || 'Product',
+      sellingPrice: price,
+      unitPrice: price
+    };
+  },
+
+  addLocalWishlistItem: function(product) {
+    if (!product || product.id == null) {
+      return { success: false, message: 'Product details are missing' };
+    }
+    const items = this.getLocalWishlist();
+    const exists = items.some(function (item) {
+      return String(item.productId || item.id) === String(product.id);
+    });
+    if (exists) {
+      return { success: false, message: 'Product is already in your wishlist' };
+    }
+    items.push(this.toLocalWishlistItem(product));
+    this.saveLocalWishlist(items);
+    return { success: true, message: 'Product added to wishlist' };
+  },
+
+  removeLocalWishlistItem: function(productId, itemId) {
+    const items = this.getLocalWishlist().filter(function (item) {
+      if (itemId && String(item.id) === String(itemId)) {
+        return false;
+      }
+      if (productId && String(item.productId || item.id) === String(productId)) {
+        return false;
+      }
+      return true;
+    });
+    this.saveLocalWishlist(items);
+    return { success: true, message: 'Product removed from wishlist' };
+  },
+
   // Get wishlist from API
   getWishlist: async function(pageNumber = 1, pageSize = 100) {
     try {
       const userId = this.getUserId();
       
       if (!userId) {
-        // User not logged in, return empty array
-        this._wishlistCache = [];
-        return [];
+        const localItems = this.getLocalWishlist();
+        this._wishlistCache = localItems;
+        this._wishlistCountCache = localItems.length;
+        return localItems;
       }
 
       const headers = typeof getAuthHeaders === 'function' ? getAuthHeaders() : {
@@ -412,10 +489,10 @@ const WishlistService = {
 
       // Ensure API_CONFIG is available
       if (typeof API_CONFIG === 'undefined' || !API_CONFIG || !API_CONFIG.BASE_URL) {
-        // API_CONFIG is not defined
-        this._wishlistCache = [];
-        this._wishlistCountCache = 0;
-        return [];
+        const localItems = this.getLocalWishlist();
+        this._wishlistCache = localItems;
+        this._wishlistCountCache = localItems.length;
+        return localItems;
       }
       
       const response = await fetch(
@@ -427,12 +504,10 @@ const WishlistService = {
       );
 
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          // User not authenticated
-          this._wishlistCache = [];
-          return [];
-        }
-        throw new Error(`Failed to fetch wishlist: ${response.status}`);
+        const localItems = this.getLocalWishlist();
+        this._wishlistCache = localItems;
+        this._wishlistCountCache = localItems.length;
+        return localItems;
       }
 
       const data = await response.json();
@@ -474,115 +549,131 @@ const WishlistService = {
         totalCount = data.length;
       }
       
+      if (!items.length) {
+        items = this.getLocalWishlist();
+        totalCount = items.length;
+      }
+
       // Parsed wishlist items
       this._wishlistCache = items;
       this._wishlistCountCache = totalCount;
       return items;
     } catch (error) {
-      // Error getting wishlist
-      this._wishlistCache = [];
-      return [];
+      const localItems = this.getLocalWishlist();
+      this._wishlistCache = localItems;
+      this._wishlistCountCache = localItems.length;
+      return localItems;
     }
   },
 
-  // Add product to wishlist (requires login)
+  // Add product to wishlist. Uses the API when it is available, otherwise local storage.
   addToWishlist: async function(product) {
     try {
-      const userId = this.getUserId();
-      
-      if (!userId) {
-        // Redirect to login page
-        if (confirm('Please login to add items to your wishlist. Would you like to login now?')) {
-          window.location.href = 'login-register?redirect=' + encodeURIComponent(window.location.pathname);
-        }
-        return { success: false, message: 'Please login to add items to wishlist' };
+      if (!product || product.id == null) {
+        return { success: false, message: 'Product details are missing' };
       }
 
-      // Check if product is already in wishlist
-      const isInWishlist = await this.checkProductInWishlist(product.id);
-      if (isInWishlist) {
-        return { success: false, message: 'Product is already in your wishlist' };
-      }
-
-      const headers = typeof getAuthHeaders === 'function' ? getAuthHeaders() : {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      };
-      
-      const token = typeof getAuthToken === 'function' ? getAuthToken() : null;
-      if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-      }
-
-      const productPrice = product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0);
-      
-      // Ensure API_CONFIG is available
-      if (typeof API_CONFIG === 'undefined' || !API_CONFIG || !API_CONFIG.BASE_URL) {
-        // API_CONFIG is not defined
-        return { success: false, message: 'API configuration not available' };
-      }
-
-      const wishlistItem = {
-        userId: userId,
-        productId: product.id,
-        productName: product.name || 'Product',
-        productPrice: productPrice
-      };
-
-      const response = await fetch(`${API_CONFIG.BASE_URL}/pos/wishlists/items`, {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(wishlistItem)
+      const alreadyLocal = this.getLocalWishlist().some(function (item) {
+        return String(item.productId || item.id) === String(product.id);
       });
-
-      if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          if (confirm('Your session has expired. Please login again. Would you like to login now?')) {
-            window.location.href = 'login-register?redirect=' + encodeURIComponent(window.location.pathname);
-          }
-          return { success: false, message: 'Please login to add items to wishlist' };
-        }
-        
-        // Get error details from response
-        let errorMessage = 'Failed to add to wishlist';
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.message || errorData.error?.message || errorData.error || `Server error: ${response.status}`;
-          // Wishlist API error response
-        } catch (e) {
-          errorMessage = `Server error: ${response.status} ${response.statusText}`;
-        }
-        
-        throw new Error(errorMessage);
+      if (alreadyLocal) {
+        await this.updateWishlistCount();
+        return { success: false, message: 'Product is already in your wishlist', alreadyInWishlist: true };
       }
 
-      const data = await response.json();
-      
-      // Clear cache to force refresh
-      this._wishlistCache = null;
-      this._wishlistCountCache = null;
-      
-      // Force refresh count from API
-      const newCount = await this.getWishlistCount();
-      this._wishlistCountCache = newCount;
-      
-      // Update wishlist count badge (await to ensure it completes)
+      const userId = this.getUserId();
+      if (userId && typeof API_CONFIG !== 'undefined' && API_CONFIG && API_CONFIG.BASE_URL) {
+        try {
+          const isInWishlist = await this.checkProductInWishlist(product.id);
+          if (isInWishlist) {
+            this.addLocalWishlistItem(product);
+            await this.updateWishlistCount();
+            return { success: false, message: 'Product is already in your wishlist', alreadyInWishlist: true };
+          }
+
+          const headers = typeof getAuthHeaders === 'function' ? getAuthHeaders() : {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          };
+          const token = typeof getAuthToken === 'function' ? getAuthToken() : null;
+          if (token) {
+            headers['Authorization'] = 'Bearer ' + token;
+          }
+
+          const productPrice = Number(product.sellingPrice) > 0
+            ? Number(product.sellingPrice)
+            : (Number(product.unitPrice) > 0 ? Number(product.unitPrice) : 0);
+          const response = await fetch(API_CONFIG.BASE_URL + '/pos/wishlists/items', {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({
+              userId: userId,
+              productId: product.id,
+              productName: product.name || 'Product',
+              productPrice: productPrice
+            })
+          });
+
+          if (response.ok) {
+            this.addLocalWishlistItem(product);
+            this._wishlistCache = null;
+            this._wishlistCountCache = null;
+            await this.updateWishlistCount();
+            return { success: true, message: 'Product added to wishlist', added: true };
+          }
+        } catch (apiError) {
+          // Fall through to local storage
+        }
+      }
+
+      const localResult = this.addLocalWishlistItem(product);
       await this.updateWishlistCount();
-      
-      return { success: true, message: 'Product added to wishlist successfully', data: data.data };
+      return Object.assign({}, localResult, { added: !!localResult.success });
     } catch (error) {
-      // Error adding to wishlist
-      return { success: false, message: error.message || 'Failed to add product to wishlist' };
+      const localResult = this.addLocalWishlistItem(product);
+      await this.updateWishlistCount();
+      return localResult.success
+        ? Object.assign({}, localResult, { added: true })
+        : { success: false, message: error.message || 'Failed to add product to wishlist' };
     }
+  },
+
+  // Toggle: add if missing, remove if already favourited
+  toggleWishlist: async function(product) {
+    if (!product || product.id == null) {
+      return { success: false, message: 'Product details are missing' };
+    }
+
+    const inWishlist = await this.checkProductInWishlist(product.id);
+    if (inWishlist) {
+      const removed = await this.removeProductFromWishlist(product.id);
+      return Object.assign({}, removed, {
+        removed: !!removed.success,
+        added: false,
+        message: removed.success ? 'Removed from wishlist' : (removed.message || 'Failed to remove from wishlist')
+      });
+    }
+
+    const added = await this.addToWishlist(product);
+    if (added.alreadyInWishlist) {
+      const removed = await this.removeProductFromWishlist(product.id);
+      return Object.assign({}, removed, {
+        removed: !!removed.success,
+        added: false,
+        message: removed.success ? 'Removed from wishlist' : (removed.message || 'Failed to remove from wishlist')
+      });
+    }
+    return Object.assign({}, added, { added: !!added.success, removed: false });
   },
 
   // Remove product from wishlist by item ID
   removeFromWishlist: async function(itemId) {
     try {
       const userId = this.getUserId();
-      
-      if (!userId) {
-        return { success: false, message: 'Please login to remove items from wishlist' };
+      this.removeLocalWishlistItem(null, itemId);
+      if (!userId || String(itemId).indexOf('local-') === 0) {
+        await this.updateWishlistCount();
+        return { success: true, message: 'Product removed from wishlist' };
       }
 
       const headers = typeof getAuthHeaders === 'function' ? getAuthHeaders() : {
@@ -629,9 +720,10 @@ const WishlistService = {
   removeProductFromWishlist: async function(productId) {
     try {
       const userId = this.getUserId();
-      
+      this.removeLocalWishlistItem(productId);
       if (!userId) {
-        return { success: false, message: 'Please login to remove items from wishlist' };
+        await this.updateWishlistCount();
+        return { success: true, message: 'Product removed from wishlist' };
       }
 
       const headers = typeof getAuthHeaders === 'function' ? getAuthHeaders() : {
@@ -679,6 +771,12 @@ const WishlistService = {
     try {
       const userId = this.getUserId();
       
+      if (this.getLocalWishlist().some(function (item) {
+        return String(item.productId || item.id) === String(productId);
+      })) {
+        return true;
+      }
+
       if (!userId) {
         return false;
       }
@@ -718,8 +816,9 @@ const WishlistService = {
     try {
       const userId = this.getUserId();
       
+      const localCount = this.getLocalWishlist().length;
       if (!userId) {
-        return 0;
+        return localCount;
       }
 
       // Return cached count if available and not forcing refresh
@@ -737,8 +836,7 @@ const WishlistService = {
 
       // Ensure API_CONFIG is available
       if (typeof API_CONFIG === 'undefined' || !API_CONFIG || !API_CONFIG.BASE_URL) {
-        // API_CONFIG is not defined
-        return 0;
+        return localCount;
       }
 
       const response = await fetch(
@@ -750,7 +848,7 @@ const WishlistService = {
       );
 
       if (!response.ok) {
-        return 0;
+        return localCount;
       }
 
       const data = await response.json();
@@ -776,25 +874,24 @@ const WishlistService = {
       
       if (count > 0) {
         this._wishlistCountCache = count;
-        // Wishlist count
         return count;
       }
-      
-      // Wishlist count API returned unexpected format
-      return 0;
+
+      return localCount;
     } catch (error) {
-      // Error getting wishlist count
-      return 0;
+      return this.getLocalWishlist().length;
     }
   },
 
   // Clear all wishlist items
   clearWishlist: async function() {
     try {
+      this.saveLocalWishlist([]);
       const userId = this.getUserId();
       
       if (!userId) {
-        return { success: false, message: 'Please login to clear wishlist' };
+        await this.updateWishlistCount();
+        return { success: true, message: 'Wishlist cleared successfully' };
       }
 
       const headers = typeof getAuthHeaders === 'function' ? getAuthHeaders() : {

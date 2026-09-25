@@ -22,7 +22,7 @@ header("Access-Control-Allow-Origin: *");
         $recipient = "sales@sensory.lk";
 
         // Set the email subject.
-        $subject = !empty($user_subject) ? "Sensory Contact: $user_subject" : "Sensory - Contact Form Message from $name";
+        $subject = !empty($user_subject) ? "Giggles & Gifts Contact: $user_subject" : "Giggles & Gifts - Contact Form Message from $name";
 
         // Build the email content.
         $email_content = 
@@ -265,7 +265,7 @@ header("Access-Control-Allow-Origin: *");
                         
 						<tr>
 							<td align="center" valign="top" style="color: #666; font-size: 12px;">
-                                <p>This message was sent from the Sensory website contact form.</p>
+                                <p>This message was sent from the Giggles & Gifts website contact form.</p>
                             </td>
 						</tr>
 
