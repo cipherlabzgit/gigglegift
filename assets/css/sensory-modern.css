@@ -4307,6 +4307,150 @@
   }
 }
 
+/* ===== Legal pages (Terms, Privacy) ===== */
+
+.sm-store .sm-legal-updated {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #f3ebf5;
+  color: #4B1761;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sm-store .sm-legal {
+  padding: 12px 0 72px;
+  background: #fbfbfe;
+}
+
+.sm-store .sm-legal-card {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 44px 48px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(34, 22, 74, 0.06);
+}
+
+.sm-store .sm-legal-intro {
+  margin: 0 0 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #efe9f3;
+  color: #5a5370;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.sm-store .sm-legal-section {
+  display: flex;
+  gap: 18px;
+  padding: 24px 0;
+  border-bottom: 1px solid #efe9f3;
+}
+
+.sm-store .sm-legal-section:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.sm-store .sm-legal-num {
+  flex: 0 0 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f3ebf5;
+  color: #4B1761;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 38px;
+  text-align: center;
+}
+
+.sm-store .sm-legal-section h2 {
+  margin: 6px 0 10px;
+  color: #4B1761;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.sm-store .sm-legal-section p {
+  margin: 0 0 10px;
+  color: #5a5370;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.sm-store .sm-legal-section p:last-child {
+  margin-bottom: 0;
+}
+
+.sm-store .sm-legal-section ul {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.sm-store .sm-legal-section ul li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 8px;
+  color: #5a5370;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.sm-store .sm-legal-section ul li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5BF527;
+}
+
+.sm-store .sm-legal-section a {
+  color: #4B1761;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.sm-store .sm-legal-address {
+  margin-top: 14px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: #faf7fb;
+}
+
+.sm-store .sm-legal-address strong {
+  color: #4B1761;
+}
+
+@media (max-width: 767px) {
+  .sm-store .sm-legal-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .sm-store .sm-legal-section {
+    gap: 12px;
+  }
+
+  .sm-store .sm-legal-num {
+    flex-basis: 32px;
+    height: 32px;
+    font-size: 13px;
+    line-height: 32px;
+  }
+
+  .sm-store .sm-legal-section h2 {
+    margin-top: 4px;
+    font-size: 18px;
+  }
+}
+
 /* ===== Checkout & Payment Modal ===== */
 
 .sm-store .sm-checkout-steps {

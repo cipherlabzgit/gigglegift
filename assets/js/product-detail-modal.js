@@ -457,9 +457,7 @@
     });
 
     showImageByIndex(0);
-    if (productName && productName !== 'Product') {
-      document.title = productName + ' - Giggles & Gifts';
-    }
+    document.title = 'gigglegift.lk';
   }
 
   function parseProductFromElement($el) {
