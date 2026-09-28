@@ -5,7 +5,7 @@
 (function (window) {
   'use strict';
 
-  var WHATSAPP_NUMBER = '94761487787';
+  var WHATSAPP_NUMBER = '94707660110';
 
   var AGE_BANDS = [
     { id: 'all', label: 'All Ages', min: 0, max: 216 },
