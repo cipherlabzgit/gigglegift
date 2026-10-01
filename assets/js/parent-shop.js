@@ -252,7 +252,7 @@
       '<div class="sm-delivery">' +
         '<h6>Delivery</h6>' +
         '<ul>' +
-          '<li>Packed from Kaduwela, Sri Lanka</li>' +
+          '<li>Packed from Sri Lanka</li>' +
           '<li>Colombo and nearby areas are usually dispatched first</li>' +
           '<li>Islandwide delivery — we confirm timing on WhatsApp after you order</li>' +
         '</ul>' +

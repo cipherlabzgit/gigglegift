@@ -1,16 +1,12 @@
 /**
  * API Configuration
- * Local dev: relative /api (proxied by server.local.js to local API Gateway)
- * Production: Sensory API Gateway
+ * Always call /api on the shop's own host so the browser does not make a
+ * cross-origin request (the live gateway does not allow gigglesngifts.lk).
+ * Local: server.local.js proxies /api to the local API Gateway.
+ * Production: vercel.json proxies /api to https://sensoryapigateway.openskylabz.com
  */
-const isLocalHost =
-  window.location.hostname === 'localhost' ||
-  window.location.hostname === '127.0.0.1';
-
 const API_CONFIG = {
-  BASE_URL: isLocalHost
-    ? '/api'
-    : 'https://sensoryapigateway.openskylabz.com/api'
+  BASE_URL: '/api'
 };
 
 // Make it globally accessible

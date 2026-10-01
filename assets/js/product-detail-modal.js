@@ -429,7 +429,7 @@
             (window.SensoryParent ? window.SensoryParent.deliveryHtml() : (
               '<div class="pd-notes">' +
                 '<span class="pd-note"><i class="ion-android-car"></i> Islandwide delivery</span>' +
-                '<span class="pd-note"><i class="ion-ios-location"></i> Kaduwela, Sri Lanka</span>' +
+                '<span class="pd-note"><i class="ion-ios-location"></i> Sri Lanka</span>' +
               '</div>'
             )) +
             (window.SensoryParent ? window.SensoryParent.parentFactsHtml(product) : '') +
