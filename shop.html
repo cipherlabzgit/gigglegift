@@ -935,10 +935,11 @@
         const productPrice = typeof getEffectivePrice === 'function' ? getEffectivePrice(product) : (product.sellingPrice > 0 ? product.sellingPrice : (product.unitPrice > 0 ? product.unitPrice : 0));
         const formattedPrice = typeof renderPriceHtml === 'function' ? renderPriceHtml(product) : formatPrice(productPrice);
         
-        // Get stock for this product (try both number and string keys)
-        const hasStockRecord = stockMap.has(product.id) || stockMap.has(String(product.id)) || stockMap.has(Number(product.id));
-        const productStock = stockMap.get(product.id) || stockMap.get(String(product.id)) || stockMap.get(Number(product.id)) || 0;
-        // Only treat as out-of-stock if there IS a stock record with 0 qty; no record = available
+        const stockInfo = typeof window.resolveProductStock === 'function'
+          ? window.resolveProductStock(product, stockMap)
+          : { quantity: 0, hasRecord: false };
+        const hasStockRecord = stockInfo.hasRecord;
+        const productStock = stockInfo.quantity;
         const isOutOfStock = hasStockRecord && productStock <= 0;
         
         // Store minimal product data for cart/wishlist (include all price fields and images)
@@ -974,14 +975,16 @@
         // Stock status badge HTML
         const stockBadgeHtml = isOutOfStock 
           ? '<span class="stock-badge out-of-stock">Out of Stock</span>' 
-          : (productStock <= 5 ? `<span class="stock-badge low-stock">Only ${productStock} left</span>` : '');
+          : (hasStockRecord && productStock > 0 && productStock <= 5 ? `<span class="stock-badge low-stock">Only ${productStock} left</span>` : '');
         
         // Available quantity line shown below the price
         let availableQtyHtml;
         if (isOutOfStock) {
           availableQtyHtml = '<p class="stock-qty-info" style="font-size:12px;color:#dc3545;margin:4px 0 0;">Out of Stock</p>';
-        } else {
+        } else if (hasStockRecord && productStock > 0) {
           availableQtyHtml = `<p class="stock-qty-info" style="font-size:12px;color:#28a745;margin:4px 0 0;">Available: ${productStock}</p>`;
+        } else {
+          availableQtyHtml = '';
         }
         
         // Hide cart button completely if out of stock
@@ -1354,11 +1357,10 @@
       }
       
       return products.filter(product => {
-        const productId = product.id;
-        const hasRecord = stockMap.has(productId) || stockMap.has(String(productId)) || stockMap.has(Number(productId));
-        const productStock = stockMap.get(productId) || stockMap.get(String(productId)) || stockMap.get(Number(productId)) || 0;
-        // No stock record = treat as in-stock (available)
-        const isOutOfStock = hasRecord && productStock <= 0;
+        const stockInfo = typeof window.resolveProductStock === 'function'
+          ? window.resolveProductStock(product, stockMap)
+          : { quantity: 0, hasRecord: false };
+        const isOutOfStock = stockInfo.hasRecord && stockInfo.quantity <= 0;
         
         if (stockFilter.showInStock && !stockFilter.showOutOfStock) {
           return !isOutOfStock;
@@ -1378,11 +1380,11 @@
       const productsToCount = filterProductsByPrice(allProducts);
       
       productsToCount.forEach(product => {
-        const productId = product.id;
-        const hasRecord = stockMap.has(productId) || stockMap.has(String(productId)) || stockMap.has(Number(productId));
-        const productStock = stockMap.get(productId) || stockMap.get(String(productId)) || stockMap.get(Number(productId)) || 0;
-        
-        if (!hasRecord || productStock > 0) {
+        const stockInfo = typeof window.resolveProductStock === 'function'
+          ? window.resolveProductStock(product, stockMap)
+          : { quantity: 0, hasRecord: false };
+
+        if (!stockInfo.hasRecord || stockInfo.quantity > 0) {
           inStockCount++;
         } else {
           outOfStockCount++;
@@ -2095,9 +2097,10 @@
           const hasStockFilter = !(stockFilter.showInStock && stockFilter.showOutOfStock);
           if (hasStockFilter) {
             productsForCounting = productsForCounting.filter(product => {
-              const hasRecord = stockMap.has(product.id) || stockMap.has(String(product.id)) || stockMap.has(Number(product.id));
-              const productStock = stockMap.get(product.id) || stockMap.get(String(product.id)) || stockMap.get(Number(product.id)) || 0;
-              const isOutOfStock = hasRecord && productStock <= 0;
+              const stockInfo = typeof window.resolveProductStock === 'function'
+                ? window.resolveProductStock(product, stockMap)
+                : { quantity: 0, hasRecord: false };
+              const isOutOfStock = stockInfo.hasRecord && stockInfo.quantity <= 0;
               if (stockFilter.showInStock && !stockFilter.showOutOfStock) return !isOutOfStock;
               if (stockFilter.showOutOfStock && !stockFilter.showInStock) return isOutOfStock;
               return true;

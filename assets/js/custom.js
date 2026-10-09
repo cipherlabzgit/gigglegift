@@ -1142,11 +1142,16 @@
 
   function getProductStockDetails(product, stockMap) {
     const resolvedStockMap = stockMap instanceof Map ? stockMap : new Map();
-    const hasRecord = resolvedStockMap.has(product.id) || resolvedStockMap.has(String(product.id)) || resolvedStockMap.has(Number(product.id));
-    const productStock = product && product.maxStock !== undefined
+    const stockInfo = typeof window.resolveProductStock === 'function'
+      ? window.resolveProductStock(product, resolvedStockMap)
+      : {
+          quantity: resolvedStockMap.get(product.id) || resolvedStockMap.get(String(product.id)) || resolvedStockMap.get(Number(product.id)) || 0,
+          hasRecord: resolvedStockMap.has(product.id) || resolvedStockMap.has(String(product.id)) || resolvedStockMap.has(Number(product.id))
+        };
+    const hasRecord = stockInfo.hasRecord;
+    const productStock = product && product.maxStock !== undefined && !hasRecord
       ? product.maxStock
-      : (resolvedStockMap.get(product.id) || resolvedStockMap.get(String(product.id)) || resolvedStockMap.get(Number(product.id)) || 0);
-    // No stock record = treat as available
+      : stockInfo.quantity;
     const isOutOfStock = hasRecord && productStock <= 0;
 
     return {
@@ -1154,7 +1159,7 @@
       isOutOfStock: isOutOfStock,
       stockBadgeHtml: isOutOfStock
         ? '<span class="stock-badge out-of-stock">Out of Stock</span>'
-        : (hasRecord && productStock <= 5 ? `<span class="stock-badge low-stock">Only ${productStock} left</span>` : '')
+        : (hasRecord && productStock > 0 && productStock <= 5 ? `<span class="stock-badge low-stock">Only ${productStock} left</span>` : '')
     };
   }
 

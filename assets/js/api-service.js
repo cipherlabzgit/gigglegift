@@ -63,15 +63,50 @@ async function hydrateProductsList(items, options) {
 }
 
 function normalizeShopProduct(product) {
+  var availableStock = product.availableStock ?? product.AvailableStock;
   return {
     ...product,
     imageURL: product.imageUrl || product.imageURL || null,
     unitPrice: product.unitPrice || product.sellingPrice || 0,
+    availableStock: availableStock,
     offerPrice: product.offerPrice ?? product.OfferPrice ?? null,
     offerDiscountAmount: product.offerDiscountAmount ?? product.OfferDiscountAmount ?? null,
     offerBadgeText: product.offerBadgeText ?? product.OfferBadgeText ?? null,
     offerBannerId: product.offerBannerId ?? product.OfferBannerId ?? null
   };
+}
+
+/**
+ * Resolve sellable qty for a product: stock-levels map (per warehouse, summed by getStockMap) then API availableStock.
+ */
+function resolveProductStock(productOrId, stockMap) {
+  stockMap = stockMap || (window.shopStockMap instanceof Map ? window.shopStockMap : new Map());
+  var productId = typeof productOrId === 'object' && productOrId != null ? productOrId.id : productOrId;
+  var product = typeof productOrId === 'object' && productOrId != null ? productOrId : null;
+
+  var fromMap = stockMap.get(productId);
+  if (fromMap === undefined) {
+    fromMap = stockMap.get(String(productId));
+  }
+  if (fromMap === undefined) {
+    fromMap = stockMap.get(Number(productId));
+  }
+  if (fromMap !== undefined && fromMap !== null) {
+    var qtyFromMap = Number(fromMap);
+    return {
+      quantity: Number.isFinite(qtyFromMap) ? qtyFromMap : 0,
+      hasRecord: true
+    };
+  }
+
+  if (product) {
+    var avail = Number(product.availableStock ?? product.AvailableStock);
+    if (Number.isFinite(avail)) {
+      return { quantity: avail, hasRecord: true };
+    }
+  }
+
+  return { quantity: 0, hasRecord: false };
 }
 
 function getBaseProductPrice(product) {
@@ -294,13 +329,15 @@ async function fetchProductById(productId) {
   }
 }
 
-// Fetch stock levels for products (no auth required - public endpoint)
+// Fetch stock levels for products (public list endpoint; sends Bearer when shopper is logged in)
 async function fetchStockLevels(pageNumber = 1, pageSize = 1000) {
   try {
-    const headers = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    };
+    const headers = typeof getAuthHeaders === 'function'
+      ? getAuthHeaders()
+      : {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        };
 
     var allItems = [];
     var currentPage = pageNumber;
@@ -866,6 +903,7 @@ window.getAuthToken = getAuthToken;
 window.saveCurrentUser = saveCurrentUser;
 window.logoutUser = logoutUser;
 window.getAuthHeaders = getAuthHeaders;
+window.resolveProductStock = resolveProductStock;
 window.isUserLoggedIn = isUserLoggedIn;
 window.refreshAuthToken = refreshAuthToken;
 window.fetchStockLevels = fetchStockLevels;

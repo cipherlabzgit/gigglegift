@@ -105,6 +105,26 @@ const DirectPayService = (function() {
   }
 
   /**
+   * Format phone for DirectPay IPG (E.164-style +94…)
+   * @param {string} phone - Raw phone from checkout
+   * @returns {string}
+   */
+  function formatPhoneForDirectPay(phone) {
+    if (!phone) return '';
+    var digits = String(phone).replace(/\D/g, '');
+    if (digits.indexOf('94') === 0 && digits.length >= 11) {
+      return '+' + digits;
+    }
+    if (digits.charAt(0) === '0') {
+      digits = digits.slice(1);
+    }
+    if (digits.length === 9) {
+      return '+94' + digits;
+    }
+    return phone.trim();
+  }
+
+  /**
    * Create base64 encoded payload
    * @param {Object} payloadData - The payment data
    * @returns {string} Base64 encoded payload
@@ -171,7 +191,7 @@ const DirectPayService = (function() {
         throw new Error('DirectPay live credentials are missing. Please configure merchantId and secretKey in directpay-config.js');
       }
 
-      // Create payload object
+      // Create payload object (customer fields prefill IPG — checkout already collected them)
       const payload = {
         merchant_id: config.merchantId,
         amount: formattedAmount,
@@ -181,7 +201,7 @@ const DirectPayService = (function() {
         first_name: options.firstName || '',
         last_name: options.lastName || '',
         email: options.email,
-        phone: options.phone || '',
+        phone: formatPhoneForDirectPay(options.phone || ''),
         logo: options.logoUrl || ''
       };
 
@@ -442,6 +462,7 @@ const DirectPayService = (function() {
     initPopupPayment: initPopupPayment,
     generateOrderId: generateOrderId,
     formatAmount: formatAmount,
+    formatPhoneForDirectPay: formatPhoneForDirectPay,
     createEncodedPayload: createEncodedPayload,
     generateSignature: generateSignature,
     storePaymentResult: storePaymentResult,

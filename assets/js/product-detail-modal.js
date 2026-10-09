@@ -135,6 +135,9 @@
   }
 
   function getStockCount(product) {
+    if (typeof window.resolveProductStock === 'function') {
+      return window.resolveProductStock(product, getStockMap()).quantity;
+    }
     var stockMap = getStockMap();
     var fromMap = stockMap.get(product.id);
     if (fromMap === undefined) {
@@ -288,8 +291,11 @@
     var productImages = getProductImages(product);
     var mainImage = productImages[0] || '';
     var unitName = product.unitOfMeasureName || '';
-    var productStock = getStockCount(product);
-    var hasStockRecord = getStockMap().has(product.id) || getStockMap().has(String(product.id)) || getStockMap().has(Number(product.id));
+    var stockResolved = typeof window.resolveProductStock === 'function'
+      ? window.resolveProductStock(product, getStockMap())
+      : { quantity: getStockCount(product), hasRecord: false };
+    var productStock = stockResolved.quantity;
+    var hasStockRecord = stockResolved.hasRecord;
     var isOutOfStock = hasStockRecord && productStock <= 0;
     var highlights = getHighlights(product);
     var productForCart = Object.assign({}, product, { maxStock: productStock });
@@ -317,9 +323,9 @@
     var stockHtml = '';
     if (isOutOfStock) {
       stockHtml = '<div class="pd-stock is-out"><i class="ion-close-circled"></i> Out of stock</div>';
-    } else if (productStock > 0 && productStock <= 5) {
+    } else if (hasStockRecord && productStock > 0 && productStock <= 5) {
       stockHtml = '<div class="pd-stock is-low"><i class="ion-alert-circled"></i> Only ' + productStock + ' left</div>';
-    } else if (productStock > 0) {
+    } else if (hasStockRecord && productStock > 0) {
       stockHtml = '<div class="pd-stock is-in"><i class="ion-checkmark-circled"></i> In stock · ' + productStock + ' available</div>';
     }
 

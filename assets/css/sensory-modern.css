@@ -4855,7 +4855,7 @@ body.sm-payment-open {
 .sm-payment-modal-dialog {
   position: relative;
   z-index: 1;
-  width: min(1080px, 100%);
+  width: min(560px, 100%);
   max-height: min(96vh, 900px);
   background: #fff;
   border-radius: 24px;
@@ -5154,7 +5154,7 @@ body.sm-payment-open {
   position: relative;
   width: 100%;
   min-width: 0;
-  min-height: 620px;
+  min-height: 420px;
 }
 
 .sm-payment-form-area #sm-payment-status {
@@ -5172,21 +5172,24 @@ body.sm-payment-open {
 }
 
 .sm-payment-form-area .directpay-container #card_container {
-  min-height: 620px;
+  min-height: 420px;
   width: 100%;
-  background: #fff;
-  border-radius: 12px;
-  overflow: visible;
+  background: #faf7fb;
+  border: 1px solid #f0eaee;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 4px;
 }
 
 .sm-payment-form-area .directpay-container #card_container iframe,
 .sm-payment-form-area .directpay-container #card_container .dp-if {
   display: block;
   width: 100% !important;
-  min-height: 640px;
-  height: 640px;
+  min-height: 400px;
+  height: 420px;
   border: none !important;
   border-radius: 12px;
+  background: #fff;
 }
 
 @media (max-width: 767px) {

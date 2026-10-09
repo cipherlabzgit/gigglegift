@@ -154,30 +154,31 @@ const CartService = {
       // Get stock level from API
       if (typeof window.getStockMap === 'function') {
         const stockMap = await window.getStockMap();
-        const availableStock = stockMap.get(product.id) || 0;
-        
-        // Check if product is in stock
-        if (availableStock <= 0) {
+        const stockInfo = typeof window.resolveProductStock === 'function'
+          ? window.resolveProductStock(product, stockMap)
+          : { quantity: stockMap.get(product.id) || 0, hasRecord: stockMap.has(product.id) };
+        const availableStock = stockInfo.quantity;
+
+        if (stockInfo.hasRecord && availableStock <= 0) {
           return { success: false, message: 'This product is out of stock' };
         }
-        
-        // Check current cart quantity
-        const cart = this.getCart();
-        const existingItem = cart.find(item => item.id === product.id);
-        const currentQty = existingItem ? existingItem.quantity : 0;
-        const newTotalQty = currentQty + quantity;
-        
-        // Validate against available stock
-        if (newTotalQty > availableStock) {
-          const canAdd = availableStock - currentQty;
-          if (canAdd <= 0) {
-            return { success: false, message: `You already have the maximum available quantity (${availableStock}) in your cart` };
+
+        if (stockInfo.hasRecord) {
+          const cart = this.getCart();
+          const existingItem = cart.find(item => item.id === product.id);
+          const currentQty = existingItem ? existingItem.quantity : 0;
+          const newTotalQty = currentQty + quantity;
+
+          if (newTotalQty > availableStock) {
+            const canAdd = availableStock - currentQty;
+            if (canAdd <= 0) {
+              return { success: false, message: `You already have the maximum available quantity (${availableStock}) in your cart` };
+            }
+            return { success: false, message: `Only ${canAdd} more can be added. Available stock: ${availableStock}` };
           }
-          return { success: false, message: `Only ${canAdd} more can be added. Available stock: ${availableStock}` };
+
+          product.maxStock = availableStock;
         }
-        
-        // Add maxStock to product for the sync addToCart
-        product.maxStock = availableStock;
       }
       
       // Call the sync version
@@ -243,13 +244,18 @@ const CartService = {
       // Get stock level from API
       if (typeof window.getStockMap === 'function') {
         const stockMap = await window.getStockMap();
-        const availableStock = stockMap.get(productId) || 0;
-        
-        if (quantity > availableStock) {
+        const cart = this.getCart();
+        const cartItem = cart.find(item => item.id === productId);
+        const stockInfo = typeof window.resolveProductStock === 'function'
+          ? window.resolveProductStock(cartItem || { id: productId }, stockMap)
+          : { quantity: stockMap.get(productId) || 0, hasRecord: stockMap.has(productId) };
+        const availableStock = stockInfo.quantity;
+
+        if (stockInfo.hasRecord && quantity > availableStock) {
           return { success: false, message: `Maximum available quantity is ${availableStock}` };
         }
-        
-        return this.updateQuantity(productId, quantity, availableStock);
+
+        return this.updateQuantity(productId, quantity, stockInfo.hasRecord ? availableStock : null);
       }
       
       return this.updateQuantity(productId, quantity);

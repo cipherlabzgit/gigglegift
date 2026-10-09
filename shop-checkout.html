@@ -44,7 +44,7 @@
     <link href="/assets/css/rangeslider.css" rel="stylesheet"/>
     <!--== Main Style CSS ==-->
     <link href="/assets/css/style.css" rel="stylesheet" />
-    <link href="/assets/css/sensory-modern.css?v=67" rel="stylesheet" />
+    <link href="/assets/css/sensory-modern.css?v=71" rel="stylesheet" />
 
 </head>
 
@@ -340,19 +340,6 @@
                   </div>
                 </div>
 
-                <div id="directpay_container" class="directpay-container" style="display: none; margin-top: 20px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background: #fafafa;">
-                  <div id="card_container">
-                    <div class="directpay-professional-card">
-                      <div class="dp-title"><i class="fa fa-shield"></i> Secure Payment Window</div>
-                      <div class="dp-subtitle">When you click Place Order, a DirectPay secure window opens for card and OTP verification.</div>
-                      <div class="dp-step"><i class="fa fa-check-circle"></i> Card and OTP entry happen only in DirectPay.</div>
-                      <div class="dp-step"><i class="fa fa-check-circle"></i> This page never stores your card details.</div>
-                      <div class="dp-step"><i class="fa fa-check-circle"></i> Order is created only after successful payment.</div>
-                    </div>
-                  </div>
-                  <div id="directpay_sandbox_notice" style="display: none;"></div>
-                </div>
-
                 <div class="sm-checkout-trust-badges">
                   <span><i class="fa fa-truck"></i> Islandwide delivery</span>
                   <span><i class="fa fa-whatsapp"></i> WhatsApp support</span>
@@ -373,6 +360,52 @@
     <!--== End Checkout Area Wrapper ==-->
 
   </main>
+
+  <!-- Secure card payment modal (DirectPay embedded checkout) -->
+  <div id="sm-payment-modal" class="sm-payment-modal" role="dialog" aria-modal="true" aria-labelledby="sm-payment-modal-title" aria-hidden="true">
+    <div class="sm-payment-modal-backdrop" data-sm-payment-close tabindex="-1"></div>
+    <div class="sm-payment-modal-dialog">
+      <div class="sm-payment-modal-header">
+        <div class="sm-payment-modal-brand">
+          <img src="/assets/img/logo.png" alt="Giggles &amp; Gifts">
+          <div>
+            <h3 id="sm-payment-modal-title">Secure Card Payment</h3>
+            <p>Complete payment without leaving checkout</p>
+          </div>
+        </div>
+        <button type="button" class="sm-payment-modal-close" data-sm-payment-close aria-label="Close payment">&times;</button>
+      </div>
+      <div class="sm-payment-modal-body">
+        <div class="sm-payment-summary">
+          <div class="sm-payment-summary-total">
+            <h4>Amount due</h4>
+            <p class="sm-payment-total" id="sm-payment-total">LKR 0.00</p>
+          </div>
+          <ul class="sm-payment-summary-items" id="sm-payment-items" aria-label="Order items"></ul>
+          <div class="sm-payment-summary-meta">
+            <span><i class="fa fa-lock"></i> 256-bit encryption</span>
+            <span><i class="fa fa-shield"></i> PCI secure</span>
+          </div>
+        </div>
+        <div class="sm-payment-form-area">
+          <div id="sm-payment-status" hidden>
+            <div class="sm-payment-loading">
+              <div class="sm-payment-spinner" role="status" aria-label="Loading"></div>
+              <p>Preparing secure payment</p>
+              <span>Connecting to DirectPay…</span>
+            </div>
+          </div>
+          <div class="directpay-container">
+            <div id="card_container" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sm-payment-modal-footer">
+        <span><i class="fa fa-credit-card"></i> Card &amp; OTP handled by DirectPay</span>
+        <span>We never store your card number</span>
+      </div>
+    </div>
+  </div>
 
   <!--== Start Footer Area Wrapper ==-->
     <footer class="footer-area default-style sm-footer">
@@ -956,9 +989,63 @@ function saveOrderToLocal(apiOrder, orderData) {
 (function($) {
   'use strict';
 
-  // Track DirectPay popup launch state
+  // Track DirectPay checkout state
   let directPayInitializing = false;
   let pendingOrderData = null;
+
+  function openPaymentModal() {
+    const $modal = $('#sm-payment-modal');
+    $('body').addClass('sm-payment-open');
+    $modal.attr('aria-hidden', 'false').addClass('is-open');
+  }
+
+  function closePaymentModal() {
+    const $modal = $('#sm-payment-modal');
+    $modal.removeClass('is-open').attr('aria-hidden', 'true');
+    $('body').removeClass('sm-payment-open');
+    $('#sm-payment-status').attr('hidden', true);
+  }
+
+  function populatePaymentModalSummary(cart, totals) {
+    const $items = $('#sm-payment-items');
+    $items.empty();
+    cart.forEach(function(item) {
+      const name = $('<div>').text(item.name || 'Item').html();
+      $items.append(
+        '<li><span class="sm-payment-item-name">' + name + '</span>' +
+        '<span class="sm-payment-item-qty">&times; ' + (item.quantity || 1) + '</span></li>'
+      );
+    });
+    $('#sm-payment-total').text(formatPrice(totals.totalAmount));
+  }
+
+  function showPaymentModalLoading(show) {
+    if (show) {
+      $('#sm-payment-status').removeAttr('hidden');
+    } else {
+      $('#sm-payment-status').attr('hidden', true);
+    }
+  }
+
+  function resetPaymentModalPlaceholder() {
+    $('#card_container').empty();
+    showPaymentModalLoading(false);
+  }
+
+  function showPaymentModalError(message, canRetry) {
+    showPaymentModalLoading(false);
+    const retryBtn = canRetry
+      ? '<button type="button" class="sm-payment-retry-btn" onclick="retryDirectPay()"><i class="fa fa-repeat"></i> Try again</button>'
+      : '';
+    $('#card_container').html(
+      '<div class="sm-payment-error">' +
+        '<i class="fa fa-exclamation-circle"></i>' +
+        '<p>' + $('<div>').text(message || 'Payment could not be started.').html() + '</p>' +
+        retryBtn +
+        '<button type="button" class="sm-payment-cancel-btn" data-sm-payment-close>Close</button>' +
+      '</div>'
+    );
+  }
 
   // Toast notification function
   function showToast(message, type = 'success') {
@@ -1509,31 +1596,30 @@ function saveOrderToLocal(apiOrder, orderData) {
     return false;
   }
 
-  // Start DirectPay payment flow (popup / new tab)
+  // Start DirectPay payment flow (branded modal + embedded checkout)
   async function initializeDirectPayForm(billingInfo, totalAmount) {
     if (directPayInitializing) {
-      throw new Error('Payment is already in progress. Please complete or cancel the opened payment window.');
+      throw new Error('Payment is already in progress. Please complete or cancel the payment window.');
     }
     directPayInitializing = true;
 
-    console.log('[Checkout] Starting DirectPay popup flow...');
+    const cart = CartService.getCart();
+    const totals = calculateOrderTotals(cart);
+
+    console.log('[Checkout] Starting DirectPay modal checkout...');
     console.log('[Checkout] Billing info:', billingInfo);
     console.log('[Checkout] Total amount:', totalAmount);
 
+    populatePaymentModalSummary(cart, totals);
+    openPaymentModal();
+    resetPaymentModalPlaceholder();
+    showPaymentModalLoading(true);
+
     const $cardContainer = $('#card_container');
-    $cardContainer.html(`
-      <div style="text-align: center; padding: 26px;">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <p style="margin-top: 12px; color: #49566a; font-weight: 600;">Opening secure payment window...</p>
-        <p style="font-size: 12px; color: #7a8797;">Complete card + OTP there to finish checkout.</p>
-      </div>
-    `);
 
     if (typeof DirectPayService === 'undefined') {
       console.error('[Checkout] DirectPayService is not defined!');
-      $cardContainer.html('<p style="color: #dc3545; text-align: center; padding: 20px;">Payment service not available. Please refresh the page.</p>');
+      showPaymentModalError('Payment service not available. Please refresh the page.', false);
       directPayInitializing = false;
       return;
     }
@@ -1549,7 +1635,9 @@ function saveOrderToLocal(apiOrder, orderData) {
 
       console.log('[Checkout] Initializing DirectPay with order:', orderId, 'Amount:', totalAmount);
 
-      await DirectPayService.initPopupPayment({
+      await DirectPayService.initOneTimePayment({
+        usePopup: false,
+        containerId: 'card_container',
         amount: totalAmount,
         orderId: orderId,
         firstName: billingInfo.firstName,
@@ -1561,6 +1649,8 @@ function saveOrderToLocal(apiOrder, orderData) {
         onSuccess: async function(paymentResult) {
           console.log('[Checkout] DirectPay payment successful:', paymentResult);
           directPayInitializing = false;
+          showPaymentModalLoading(false);
+          closePaymentModal();
 
           const txnId = paymentResult.transactionId
             || paymentResult.transaction_id
@@ -1626,39 +1716,20 @@ function saveOrderToLocal(apiOrder, orderData) {
           }
 
           showToast(errorMessage, 'error');
-
-          $('#card_container').html(`
-            <div class="directpay-professional-card">
-              <div class="dp-title"><i class="fa fa-shield"></i> Secure Payment Window</div>
-              <div class="dp-subtitle">When you click Place Order, a DirectPay secure window opens for card and OTP verification.</div>
-              <div class="dp-step"><i class="fa fa-check-circle"></i> Card and OTP entry happen only in DirectPay.</div>
-              <div class="dp-step"><i class="fa fa-check-circle"></i> This page never stores your card details.</div>
-              <div class="dp-step"><i class="fa fa-check-circle"></i> Order is created only after successful payment.</div>
-            </div>
-          `);
+          showPaymentModalError(errorMessage, true);
           $('.place-order a').prop('disabled', false).text('Place Order');
         }
       });
-      console.log('[Checkout] DirectPay popup launched');
+      showPaymentModalLoading(false);
+      console.log('[Checkout] DirectPay embedded checkout ready');
 
     } catch (error) {
       console.error('[Checkout] Failed to initialize DirectPay:', error);
-
-      $('#card_container').html(`
-        <div class="fallback-card-form" style="padding: 20px; text-align: center;">
-          <p style="color: #dc3545; text-align: center; margin-bottom: 20px;">
-            <i class="fa fa-exclamation-circle"></i> Could not open secure payment window.
-            <br><small>Error: ${error.message || 'Unknown error'}</small>
-          </p>
-          <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
-            <button type="button" class="btn btn-primary" onclick="retryDirectPay()" style="padding: 10px 30px;">
-              <i class="fa fa-repeat"></i> Try Again
-            </button>
-            <p style="color: #888; font-size: 12px; margin-top: 10px;">Check popup blocker and browser settings if issue persists.</p>
-          </div>
-        </div>
-      `);
-      showToast('Failed to open payment window: ' + (error.message || 'Unknown error'), 'error');
+      showPaymentModalError(
+        'Could not load the payment form. ' + (error.message || 'Please try again.'),
+        true
+      );
+      showToast('Failed to start payment: ' + (error.message || 'Unknown error'), 'error');
       directPayInitializing = false;
     }
   }
@@ -1686,12 +1757,24 @@ function saveOrderToLocal(apiOrder, orderData) {
   function togglePaymentMethodDisplay() {
     $('.payment-box').hide();
     $('input[name="payment_method"]:checked').closest('.sin-payment').find('.payment-box').show();
+  }
 
-    if ($('input[name="payment_method"]:checked').val() === 'directpay') {
-      $('#directpay_container').show();
-    } else {
-      $('#directpay_container').hide();
+  function cancelDirectPayCheckout() {
+    if (!directPayInitializing) {
+      closePaymentModal();
+      resetPaymentModalPlaceholder();
+      return;
     }
+    const confirmed = window.confirm('Close payment? You can place your order again when ready.');
+    if (!confirmed) {
+      return;
+    }
+    directPayInitializing = false;
+    pendingOrderData = null;
+    closePaymentModal();
+    resetPaymentModalPlaceholder();
+    $('.place-order a').prop('disabled', false).text('Place Order');
+    showToast('Payment cancelled.', 'info');
   }
 
   $(document).ready(function() {
@@ -1744,6 +1827,17 @@ function saveOrderToLocal(apiOrder, orderData) {
     // Initial toggle
     togglePaymentMethodDisplay();
 
+    $(document).on('click', '[data-sm-payment-close]', function(e) {
+      e.preventDefault();
+      cancelDirectPayCheckout();
+    });
+
+    $(document).on('keydown', function(e) {
+      if (e.key === 'Escape' && $('#sm-payment-modal').hasClass('is-open')) {
+        cancelDirectPayCheckout();
+      }
+    });
+
     // Handle place order button
     $('.place-order a').on('click', async function(e) {
       e.preventDefault();
@@ -1778,7 +1872,8 @@ function saveOrderToLocal(apiOrder, orderData) {
       // Handle Card payment
       if (selectedPaymentMethod === 'directpay') {
         if (directPayInitializing) {
-          showToast('Payment is already in progress. Complete or cancel it in the DirectPay window.', 'info');
+          openPaymentModal();
+          showToast('Payment is in progress. Complete card details in the window.', 'info');
           return;
         }
 
@@ -1788,12 +1883,12 @@ function saveOrderToLocal(apiOrder, orderData) {
           return;
         }
 
-        placeOrderBtn.prop('disabled', true).text('Opening Secure Payment...');
+        placeOrderBtn.prop('disabled', true).text('Opening Payment…');
 
         try {
           await initializeDirectPayForm(billingInfo, totals.totalAmount);
-          placeOrderBtn.text('Waiting for Payment...');
-          showToast('Secure payment window opened. Complete card and OTP there.', 'info');
+          placeOrderBtn.text('Complete Payment Above');
+          showToast('Enter your card details in the secure payment window.', 'info');
         } catch (error) {
           console.error('[Checkout] Failed to start DirectPay:', error);
           showToast('Unable to start payment gateway: ' + (error.message || 'Please try again.'), 'error');
