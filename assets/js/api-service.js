@@ -42,8 +42,21 @@ async function fetchCategories() {
   }
 }
 
+function isMarkedAvailableInWebStore(product) {
+  if (!product) {
+    return false;
+  }
+  const webStore = product.availableInWebStore != null
+    ? product.availableInWebStore
+    : product.AvailableInWebStore;
+  return webStore === true;
+}
+
 function isShopVisibleProduct(product) {
   if (!product || product.isActive === false) {
+    return false;
+  }
+  if (!isMarkedAvailableInWebStore(product)) {
     return false;
   }
   const sellingPrice = Number(product.sellingPrice);
@@ -315,7 +328,7 @@ async function fetchProductById(productId) {
   try {
     var product = await fetchProductByIdRaw(productId);
     if (product) {
-      return product;
+      return isShopVisibleProduct(product) ? product : null;
     }
     const result = await fetchAllProducts();
     if (!result || !result.items || !result.items.length) {
@@ -800,7 +813,7 @@ async function fetchProductByIdRaw(productId) {
   }
 }
 
-/** Load products assigned to an offer — includes items without selling price or web visibility. */
+/** Load products assigned to an offer. Items without a selling price stay included; web-store-disabled products do not. */
 async function fetchOfferProducts(productIds) {
   var ids = (Array.isArray(productIds) ? productIds : [])
     .map(function (id) { return Number(id); })
@@ -830,7 +843,7 @@ async function fetchOfferProducts(productIds) {
     if (!product && typeof fetchProductByIdRaw === 'function') {
       product = await fetchProductByIdRaw(id);
     }
-    if (product) {
+    if (product && isMarkedAvailableInWebStore(product)) {
       results.push(product);
     }
   }

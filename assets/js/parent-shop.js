@@ -124,23 +124,32 @@
   }
 
   function matchesAge(product, bandId) {
-    if (!bandId || bandId === 'all') {
+    if (!bandId) {
       return true;
     }
     var band = AGE_BANDS.find(function (item) { return item.id === bandId; });
+    if (!band) {
+      return bandId === 'all';
+    }
+    if (band.matchAll || band.id === 'all') {
+      return true;
+    }
     var info = getAgeInfo(product);
-    if (!band || !info) {
+    if (!info) {
       return false;
     }
     return rangesOverlap(info.min, info.max, band.min, band.max);
   }
 
   function matchesGift(product, bandId) {
-    if (!bandId || bandId === 'any') {
+    if (!bandId) {
       return true;
     }
     var band = GIFT_BANDS.find(function (item) { return item.id === bandId; });
     if (!band) {
+      return bandId === 'any';
+    }
+    if (band.matchAll || band.id === 'any') {
       return true;
     }
     var price = getPrice(product);
@@ -329,7 +338,91 @@
     }).join('');
   }
 
+  function fillChildAgeSelect() {
+    var select = document.getElementById('child-age');
+    if (!select) {
+      return;
+    }
+    var current = select.value || 'all';
+    select.innerHTML = AGE_BANDS.map(function (band) {
+      var label = band.id === 'all' ? 'Not set' : band.label;
+      return '<option value="' + escapeHtml(band.id) + '">' + escapeHtml(label) + '</option>';
+    }).join('');
+    if (AGE_BANDS.some(function (band) { return band.id === current; })) {
+      select.value = current;
+    }
+  }
+
+  function mapApiBand(row) {
+    var maxRaw = row.maxValue != null ? row.maxValue : row.MaxValue;
+    var max = maxRaw == null || maxRaw === '' ? Number.POSITIVE_INFINITY : Number(maxRaw);
+    var minRaw = row.minValue != null ? row.minValue : row.MinValue;
+    return {
+      id: String(row.code || row.Code || ''),
+      label: String(row.label || row.Label || ''),
+      min: Number(minRaw) || 0,
+      max: Number.isFinite(max) ? max : Number.POSITIVE_INFINITY,
+      matchAll: row.matchAll === true || row.MatchAll === true
+    };
+  }
+
+  function replaceBands(target, next) {
+    if (!next.length) {
+      return false;
+    }
+    target.splice(0, target.length);
+    next.forEach(function (item) { target.push(item); });
+    return true;
+  }
+
+  function ensureSelected(list, current, fallbackId) {
+    if (list.some(function (band) { return band.id === current; })) {
+      return current;
+    }
+    var matchAll = list.find(function (band) { return band.matchAll; });
+    return (matchAll && matchAll.id) || fallbackId || (list[0] && list[0].id) || current;
+  }
+
+  async function loadShopFilters() {
+    try {
+      var base = window.API_CONFIG && window.API_CONFIG.BASE_URL ? window.API_CONFIG.BASE_URL : '/api';
+      var response = await fetch(base + '/inventory/shop-filters?activeOnly=true', {
+        method: 'GET',
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) {
+        return;
+      }
+      var data = await response.json();
+      var rows = (data && (data.data || data.Data)) || [];
+      if (!Array.isArray(rows) || !rows.length) {
+        return;
+      }
+      var age = rows.filter(function (row) {
+        return String(row.kind || row.Kind) === 'Age';
+      }).map(mapApiBand).filter(function (band) { return band.id && band.label; });
+      var gift = rows.filter(function (row) {
+        return String(row.kind || row.Kind) === 'Gift';
+      }).map(mapApiBand).filter(function (band) { return band.id && band.label; });
+      var changed = false;
+      if (replaceBands(AGE_BANDS, age)) {
+        state.age = ensureSelected(AGE_BANDS, state.age, 'all');
+        changed = true;
+      }
+      if (replaceBands(GIFT_BANDS, gift)) {
+        state.gift = ensureSelected(GIFT_BANDS, state.gift, 'any');
+        changed = true;
+      }
+      if (changed) {
+        notifyChange();
+      }
+    } catch (err) {
+      // Keep the built-in bands when the API is unavailable.
+    }
+  }
+
   function syncBars() {
+    fillChildAgeSelect();
     document.querySelectorAll('[data-parent="age"]').forEach(function (node) {
       renderChipGroup(node, AGE_BANDS, state.age, 'age');
     });
@@ -397,4 +490,6 @@
     childGreeting: childGreeting,
     syncBars: syncBars
   };
+
+  loadShopFilters();
 })(window);

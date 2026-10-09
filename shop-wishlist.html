@@ -444,7 +444,7 @@
 <!--=== Cart & Wishlist Service Js ===-->
 <script src="/assets/js/cart-service.js?v=wishlist-local-1"></script>
 <!--=== API Service Js ===-->
-<script src="/assets/js/api-service.js"></script>
+<script src="/assets/js/api-service.js?v=web-store-1"></script>
 <!--=== Custom Js ===-->
 <script src="/assets/js/custom.js"></script>
 <!--=== Wishlist Page Js ===-->
@@ -681,14 +681,30 @@
         }
       }
       
-      if (!wishlist || wishlist.length === 0) {
+      let visibleWishlist = wishlist || [];
+      if (visibleWishlist.length > 0 && typeof fetchAllProducts === 'function') {
+        try {
+          const catalog = await fetchAllProducts(null, '');
+          const visibleIds = new Set(((catalog && catalog.items) || []).map(function (product) {
+            return String(product.id);
+          }));
+          visibleWishlist = visibleWishlist.filter(function (item) {
+            const productId = item.productId || item.id;
+            return visibleIds.has(String(productId));
+          });
+        } catch (error) {
+          visibleWishlist = wishlist || [];
+        }
+      }
+
+      if (!visibleWishlist || visibleWishlist.length === 0) {
         container.html('<div class="sm-wish-empty"><h3>Your wishlist is empty</h3><p>Save favourites from the shop and they will show up here.</p><a href="shop">Continue shopping</a></div>');
         return;
       }
       
       container.empty();
       
-      wishlist.forEach((item) => {
+      visibleWishlist.forEach((item) => {
         const itemId = item.id;
         const productId = item.productId || item.id;
         const productName = item.productName || item.name || 'Product';

@@ -417,19 +417,41 @@
     return '<a class="sm-promo-banner" href="' + linkUrl + '">' + chipHtml + imageHtml + copyHtml + '</a>';
   }
 
+  function syncPromoSection(show) {
+    var $section = $('.sm-promo-section');
+    if (!$section.length) {
+      return;
+    }
+    if (show) {
+      $section.show().attr('aria-hidden', 'false');
+    } else {
+      $('#promo-banners').empty();
+      $section.hide().attr('aria-hidden', 'true');
+    }
+  }
+
   function renderPromoBanners(banners) {
     var $slot = $('#promo-banners');
     if (!$slot.length || !banners || !banners.length) {
+      syncPromoSection(false);
       return false;
     }
-    var usable = banners.filter(function (banner) {
-      return banner && (banner.imageUrl || banner.imageURL || banner.title);
-    });
+    var usable = banners
+      .map(function (banner) {
+        if (typeof window.normalizeWebsiteBanner === 'function') {
+          return window.normalizeWebsiteBanner(banner);
+        }
+        return banner;
+      })
+      .filter(function (banner) {
+        return banner && (banner.imageUrl || banner.imageURL || banner.title);
+      });
     if (!usable.length) {
+      syncPromoSection(false);
       return false;
     }
     $slot.html(usable.slice(0, 3).map(buildPromoBanner).join(''));
-    $('#sm-promo-fallback').hide();
+    syncPromoSection(true);
     return true;
   }
 
@@ -482,10 +504,14 @@
       var promoBanners = typeof fetchPromoBanners === 'function'
         ? await fetchPromoBanners()
         : await fetchBanners('Offer');
-      if (promoBanners && promoBanners.length) {
-        if ($('#promo-banners').length) {
+      if ($('#promo-banners').length) {
+        if (promoBanners && promoBanners.length) {
           renderPromoBanners(promoBanners);
+        } else {
+          syncPromoSection(false);
         }
+      }
+      if (promoBanners && promoBanners.length) {
         var offerOnly = promoBanners.filter(function (banner) {
           return String(banner.type || '').toLowerCase() === 'offer';
         });
@@ -494,7 +520,7 @@
         }
       }
     } catch (error) {
-      // Keep the static promo if banners cannot be loaded
+      syncPromoSection(false);
     }
   }
 
